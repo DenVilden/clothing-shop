@@ -6,13 +6,15 @@ import {
   EmptyMessageContainer,
   CartDropdownButton
 } from './CartDropdown.styles';
-import CarItem from '../CartItem/CarItem';
+import CartItem from '../CartItem/CartItem';
 
 const CartDropdown = ({ cartItems, history, toggleCartHidden }) => (
   <CartDropdownContainer>
     <CartItemsContainer>
       {cartItems.length ? (
-        cartItems.map(cartItem => <CarItem key={cartItem.id} item={cartItem} />)
+        cartItems.map(cartItem => (
+          <CartItem key={cartItem.id} item={cartItem} />
+        ))
       ) : (
         <EmptyMessageContainer>Your cart is empty</EmptyMessageContainer>
       )}

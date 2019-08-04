@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   SignInContainer,
   SignInTitle,
@@ -6,23 +7,21 @@ import {
 } from './SignIn.styles';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
-import { auth, signInWithGoogle } from '../../api/firebase';
 
 export default class SignIn extends Component {
+  static propTypes = {
+    googleSignInStart: PropTypes.func.isRequired,
+    emailSignInStart: PropTypes.func.isRequired
+  };
+
   state = { email: '', password: '' };
 
   handleSubmit = async evt => {
     evt.preventDefault();
 
     const { email, password } = this.state;
-
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      this.setState({ email: '', password: '' });
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
-    }
+    const { emailSignInStart } = this.props;
+    emailSignInStart(email, password);
   };
 
   handleChange = evt => {
@@ -32,6 +31,7 @@ export default class SignIn extends Component {
 
   render() {
     const { email, password } = this.state;
+    const { googleSignInStart } = this.props;
 
     return (
       <SignInContainer>
@@ -58,8 +58,8 @@ export default class SignIn extends Component {
             <CustomButton type="submit">Sign in</CustomButton>
             <CustomButton
               isGoogleSignIn
-              onClick={signInWithGoogle}
-              type="submit"
+              onClick={googleSignInStart}
+              type="button"
             >
               Sign in with Google
             </CustomButton>

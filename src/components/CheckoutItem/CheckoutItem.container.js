@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import CheckoutItem from './CheckoutItem';
 import {
   clearItemFromCartAction,
@@ -13,11 +12,7 @@ const mapDispatchToProps = {
   removeItem: item => removeItemAction(item)
 };
 
-const CheckoutItemContainer = compose(
-  connect(
-    null,
-    mapDispatchToProps
-  )
+export default connect(
+  null,
+  mapDispatchToProps
 )(CheckoutItem);
-
-export default CheckoutItemContainer;

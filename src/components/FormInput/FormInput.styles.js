@@ -37,6 +37,10 @@ export const FormInputContainer = styled.input`
   &:focus ~ label {
     ${shrinkLabelStyles}
   }
+
+  ~ label {
+    ${({ value }) => value && shrinkLabelStyles}
+  }
 `;
 
 export const FormInputLabel = styled.label`
@@ -48,8 +52,4 @@ export const FormInputLabel = styled.label`
   position: absolute;
   top: 10px;
   transition: 300ms ease all;
-
-  &.shrink {
-    ${shrinkLabelStyles}
-  }
 `;

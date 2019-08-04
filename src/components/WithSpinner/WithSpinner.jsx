@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { SpinnerOverlay, SpinnerContainer } from './WithSpinner.styles';
 
-const WithSpinner = WrappedComponent => {
-  const Wrapped = ({ loading, ...props }) =>
+export default WrappedComponent => {
+  const hocComponent = ({ loading, ...props }) =>
     loading ? (
       <SpinnerOverlay>
         <SpinnerContainer />
@@ -12,11 +12,9 @@ const WithSpinner = WrappedComponent => {
       <WrappedComponent {...props} />
     );
 
-  Wrapped.propTypes = {
+  hocComponent.propTypes = {
     loading: PropTypes.bool.isRequired
   };
 
-  return Wrapped;
+  return hocComponent;
 };
-
-export default WithSpinner;

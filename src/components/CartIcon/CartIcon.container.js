@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import CartIcon from './CartIcon';
 import { toggleCartHiddenAction } from '../../actions/cart.actions';
@@ -13,11 +12,7 @@ const mapDispatchToProps = {
   toggleCartHidden: () => toggleCartHiddenAction()
 };
 
-const CartIconContainer = compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
 )(CartIcon);
-
-export default CartIconContainer;

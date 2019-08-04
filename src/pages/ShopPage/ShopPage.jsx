@@ -4,15 +4,15 @@ import { Route } from 'react-router-dom';
 import CollectionsOverviewContainer from '../../components/CollectionsOverview/CollectionsOverview.container';
 import CollectionPageContainer from '../CollectionPage/CollectionPage.container';
 
-class ShopPage extends Component {
+export default class ShopPage extends Component {
   static propTypes = {
     match: PropTypes.objectOf(PropTypes.any).isRequired,
-    fetchCollectionStartAsync: PropTypes.func.isRequired
+    fetchCollectionStart: PropTypes.func.isRequired
   };
 
   componentDidMount() {
-    const { fetchCollectionStartAsync } = this.props;
-    fetchCollectionStartAsync();
+    const { fetchCollectionStart } = this.props;
+    fetchCollectionStart();
   }
 
   render() {
@@ -33,5 +33,3 @@ class ShopPage extends Component {
     );
   }
 }
-
-export default ShopPage;

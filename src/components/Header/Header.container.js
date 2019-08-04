@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
 import Header from './Header';
 import { selectCartHidden } from '../../selectors/cart.selectors';
 import { selectCurrentUser } from '../../selectors/user.selectors';
@@ -10,6 +9,4 @@ const mapStateToProps = createStructuredSelector({
   hidden: selectCartHidden
 });
 
-const HeaderContainer = compose(connect(mapStateToProps))(Header);
-
-export default HeaderContainer;
+export default connect(mapStateToProps)(Header);

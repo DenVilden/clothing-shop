@@ -6,7 +6,7 @@ import cartReducer from './cart.reducer';
 import directoryReducer from './directory.reducer';
 import shopReducer from './shop.reducer';
 
-const persistConfig = { key: 'root', storage, whitelist: ['cart'] };
+const persistConfig = { key: 'cart', storage, whitelist: ['cart'] };
 
 const rootReducer = combineReducers({
   user: userReducer,

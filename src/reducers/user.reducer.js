@@ -1,13 +1,17 @@
-import { SET_CURRENT_USER } from '../types/user.types';
+import { SIGN_IN_SUCCESS, SIGN_IN_FAILURE } from '../constants/user.types';
 
 const initialState = {
-  currentUser: null
+  currentUser: null,
+  error: null
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case SET_CURRENT_USER:
-      return { ...state, currentUser: payload };
+    case SIGN_IN_SUCCESS:
+      return { ...state, currentUser: payload, error: null };
+
+    case SIGN_IN_FAILURE:
+      return { ...state, error: payload };
 
     default:
       return state;

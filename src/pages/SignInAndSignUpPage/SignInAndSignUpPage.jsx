@@ -1,11 +1,11 @@
 import React from 'react';
 import { SignInAndSignUpContainer } from './SignInAndSignUpPage.styles';
-import SignIn from '../../components/SignIn/SignIn';
+import SignInContainer from '../../components/SignIn/SignIn.container';
 import SignUp from '../../components/SignUp/SignUp';
 
 const SignInAndSignUpPage = () => (
   <SignInAndSignUpContainer>
-    <SignIn />
+    <SignInContainer />
     <SignUp />
   </SignInAndSignUpContainer>
 );

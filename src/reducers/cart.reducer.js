@@ -3,7 +3,7 @@ import {
   ADD_ITEM,
   CLEAR_ITEM_FROM_CART,
   REMOVE_ITEM
-} from '../types/cart.types';
+} from '../constants/cart.types';
 import { addItemToCard, removeItemFromCard } from '../utils/cart.utils';
 
 const initialState = {

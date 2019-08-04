@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export const FETCH_COLLECTIONS_START = 'FETCH_COLLECTIONS_START';
 export const FETCH_COLLECTIONS_SUCCESS = 'FETCH_COLLECTIONS_SUCCESS';
 export const FETCH_COLLECTIONS_FAILURE = 'FETCH_COLLECTIONS_FAILURE';

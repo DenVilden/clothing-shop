@@ -13,9 +13,7 @@ const mapStateToProps = createStructuredSelector({
   collections: selectShopCollectionsForPreview
 });
 
-const CollectionsOverviewContainer = compose(
+export default compose(
   connect(mapStateToProps),
   WithSpinner
 )(CollectionsOverview);
-
-export default CollectionsOverviewContainer;

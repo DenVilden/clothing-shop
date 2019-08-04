@@ -14,12 +14,10 @@ const mapDispatchToProps = {
   toggleCartHidden: () => toggleCartHiddenAction()
 };
 
-const CartDropdownContainer = compose(
+export default compose(
   connect(
     mapStateToProps,
     mapDispatchToProps
   ),
   withRouter
 )(CartDropdown);
-
-export default CartDropdownContainer;

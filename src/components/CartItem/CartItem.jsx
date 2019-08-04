@@ -6,7 +6,7 @@ import {
   ItemDetailsContainer
 } from './CartItem.styles';
 
-const CarItem = ({ item: { imageUrl, price, name, quantity } }) => (
+const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
   <CartItemContainer>
     <CartItemImage alt="item" src={imageUrl} />
     <ItemDetailsContainer>
@@ -18,7 +18,7 @@ const CarItem = ({ item: { imageUrl, price, name, quantity } }) => (
   </CartItemContainer>
 );
 
-CarItem.propTypes = {
+CartItem.propTypes = {
   item: PropTypes.shape({
     id: PropTypes.number,
     imageUrl: PropTypes.string,
@@ -28,4 +28,4 @@ CarItem.propTypes = {
   }).isRequired
 };
 
-export default CarItem;
+export default CartItem;

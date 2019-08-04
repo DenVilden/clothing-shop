@@ -12,9 +12,7 @@ const mapStateToProps = (state, props) => ({
   collection: selectShopCollection(props.match.params.collectionId)(state)
 });
 
-const CollectionPageContainer = compose(
+export default compose(
   connect(mapStateToProps),
   WithSpinner
 )(CollectionPage);
-
-export default CollectionPageContainer;

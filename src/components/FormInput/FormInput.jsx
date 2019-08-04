@@ -14,7 +14,7 @@ const FormInput = ({ handleChange, label, value, ...props }) => (
       value={value}
       {...props}
     />
-    {label && <FormInputLabel htmlFor={label}>{label}</FormInputLabel>}
+    <FormInputLabel htmlFor={label}>{label}</FormInputLabel>
   </GroupContainer>
 );
 

@@ -1,7 +1,25 @@
-import { SET_CURRENT_USER } from '../types/user.types';
+import {
+  GOOGLE_SIGN_IN_START,
+  EMAIL_SIGN_IN_START,
+  SIGN_IN_SUCCESS,
+  SIGN_IN_FAILURE
+} from '../constants/user.types';
 
-// eslint-disable-next-line import/prefer-default-export
-export const setCurrentUserAction = user => ({
-  type: SET_CURRENT_USER,
+export const googleSignInStartAction = () => ({
+  type: GOOGLE_SIGN_IN_START
+});
+
+export const emailSignInStartAction = emailAndPassword => ({
+  type: EMAIL_SIGN_IN_START,
+  payload: emailAndPassword
+});
+
+export const signInSuccessAction = user => ({
+  type: SIGN_IN_SUCCESS,
   payload: user
+});
+
+export const signInFailureAction = error => ({
+  type: SIGN_IN_FAILURE,
+  payload: error
 });
