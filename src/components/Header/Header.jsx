@@ -7,11 +7,10 @@ import {
   OptionLink
 } from './Header.styles';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
-import { auth } from '../../api/firebase';
 import CartIconContainer from '../CartIcon/CartIcon.container';
 import CartDropdownContainer from '../CartDropdown/CartDropdown.container';
 
-const Header = ({ currentUser, hidden }) => (
+const Header = ({ currentUser, hidden, signOutStart }) => (
   <HeaderContainer>
     <LogoContainer to="/">
       <Logo />
@@ -22,8 +21,8 @@ const Header = ({ currentUser, hidden }) => (
       {currentUser ? (
         <OptionLink
           as="div"
-          onClick={() => auth.signOut()}
-          onKeyPress={() => auth.signOut()}
+          onClick={signOutStart}
+          onKeyPress={signOutStart}
           role="button"
           tabIndex="0"
         >
@@ -52,7 +51,8 @@ Header.propTypes = {
     email: PropTypes.string,
     id: PropTypes.string
   }),
-  hidden: PropTypes.bool.isRequired
+  hidden: PropTypes.bool.isRequired,
+  signOutStart: PropTypes.func.isRequired
 };
 
 export default Header;

@@ -1,39 +1,27 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { SignUpContainer, SignUpTitle } from './SignUp.styles';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
-import { auth, createUserProfileDocument } from '../../api/firebase';
 
 export default class SignUp extends Component {
+  static propTypes = {
+    signUpStart: PropTypes.func.isRequired
+  };
+
   state = { displayName: '', email: '', password: '', confirmPassword: '' };
 
-  handleSubmit = async evt => {
+  handleSubmit = evt => {
     evt.preventDefault();
 
     const { displayName, email, password, confirmPassword } = this.state;
+    const { signUpStart } = this.props;
 
     if (password !== confirmPassword) {
       // eslint-disable-next-line no-alert
       alert("passwords don't match");
-    }
-
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      await createUserProfileDocument(user, { displayName });
-
-      this.setState({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-      });
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
+    } else {
+      signUpStart(email, password, displayName);
     }
   };
 

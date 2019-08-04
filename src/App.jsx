@@ -14,6 +14,7 @@ import ShopPageContainer from './pages/ShopPage/ShopPage.container';
 import CheckoutPageContainer from './pages/CheckoutPage/CheckoutPage.container';
 import SignInAndSignUpPage from './pages/SignInAndSignUpPage/SignInAndSignUpPage';
 import { selectCurrentUser } from './selectors/user.selectors';
+import { checkUserSessionAction } from './actions/user.actions';
 
 class App extends Component {
   static defaultProps = {
@@ -29,15 +30,13 @@ class App extends Component {
       displayName: PropTypes.string,
       email: PropTypes.string,
       id: PropTypes.string
-    })
+    }),
+    checkUserSession: PropTypes.func.isRequired
   };
 
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {}
-
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
+  componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
   }
 
   render() {
@@ -67,4 +66,11 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  checkUserSession: () => checkUserSessionAction()
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
