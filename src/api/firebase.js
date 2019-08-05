@@ -40,8 +40,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     try {
       await userRef.set({ displayName, email, createdAt, ...additionalData });
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.log('error creating user', error);
+      throw new Error(error.message);
     }
   }
 
@@ -69,9 +68,6 @@ export const convertCollectionsSnapshotToMap = collections => {
 
 export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
-
-  // eslint-disable-next-line no-console
-  console.log(collectionRef);
 
   const batch = firestore.batch();
 

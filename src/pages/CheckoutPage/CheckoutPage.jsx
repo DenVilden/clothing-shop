@@ -7,7 +7,6 @@ import {
   TotalContainer,
   WarningContainer
 } from './CheckoutPage.styles';
-
 import CheckoutItemContainer from '../../components/CheckoutItem/CheckoutItem.container';
 import StripeButton from '../../components/StripeButton/StripeButton';
 

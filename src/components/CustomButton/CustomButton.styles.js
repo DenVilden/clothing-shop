@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import styled, { css } from 'styled-components';
 
 const buttonStyles = css`
@@ -42,7 +43,7 @@ const getButtonStyles = ({ isGoogleSignIn, inverted }) => {
   return inverted ? invertedButtonStyles : buttonStyles;
 };
 
-const CustomButtonContainer = styled.button`
+export const CustomButtonContainer = styled.button`
   cursor: pointer;
   display: flex;
   font-family: 'Open Sans Condensed';
@@ -59,5 +60,3 @@ const CustomButtonContainer = styled.button`
 
   ${getButtonStyles}
 `;
-
-export default CustomButtonContainer;
