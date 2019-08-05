@@ -1,9 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import stripe from 'stripe';
-import path from 'path';
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const stripe = require('stripe');
+const path = require('path');
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
@@ -35,7 +35,7 @@ app.post('/payment', (req, res) => {
   const body = {
     source: req.body.token.id,
     amount: req.body.amount,
-    currency: 'usd'
+    currency: 'usd',
   };
 
   stripeApi.charges.create(body, (stripeErr, stripeRes) => {

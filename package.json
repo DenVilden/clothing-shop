@@ -2,7 +2,6 @@
   "name": "clothing-shop-server",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "engines": {
     "node": "12.7.0"
   },
@@ -23,15 +22,15 @@
   },
   "scripts": {
     "client": "cd client && yarn start",
-    "server": "nodemon --experimental-modules server.js",
+    "server": "nodemon server.js",
     "build": "cd client && yarn build",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node --experimental-modules server.js",
+    "start": "node server.js",
     "heroku-postbuild": "cd client && yarn install && yarn install --only=dev --no-shrinkwrap && yarn build"
   },
   "eslintConfig": {
-    "parserOptions": {
-      "sourceType": "module"
+    "env": {
+      "es6": true
     },
     "extends": [
       "airbnb-base/legacy",
