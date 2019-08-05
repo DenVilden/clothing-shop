@@ -20,7 +20,7 @@ const StripeButton = ({ price }) => {
       })
       .catch(error => {
         // eslint-disable-next-line no-console
-        console.log('Payment error:', JSON.parse(error));
+        console.log('Payment error:', error.message);
         alert(
           'There was an issue with your payment. Please make sure you use provided credit card'
         );

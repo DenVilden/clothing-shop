@@ -9,8 +9,6 @@ if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
 }
 
-const stripeApi = stripe(process.env.STRIPE_SECRET_KEY);
-
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -30,6 +28,8 @@ app.listen(port, error => {
   // eslint-disable-next-line no-console
   console.log(`Server running on port ${port}`);
 });
+
+const stripeApi = stripe(process.env.STRIPE_SECRET_KEY);
 
 app.post('/payment', (req, res) => {
   const body = {
