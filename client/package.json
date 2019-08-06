@@ -31,11 +31,8 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "parser": "babel-eslint",
-    "env": {
-      "browser": true
-    },
     "extends": [
+      "react-app",
       "airbnb",
       "prettier",
       "prettier/react"
