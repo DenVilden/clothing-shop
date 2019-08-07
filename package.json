@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "12.7.0"
+    "node": "12.x",
+    "yarn": "1.x"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -13,8 +14,6 @@
     "stripe": "^7.6.0"
   },
   "devDependencies": {
-    "compression": "^1.7.4",
-    "concurrently": "^4.1.1",
     "eslint": "5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^6.0.0",
