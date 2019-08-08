@@ -38,7 +38,7 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
 );
 
 Header.defaultProps = {
-  currentUser: null
+  currentUser: undefined
 };
 
 Header.propTypes = {

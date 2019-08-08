@@ -29,7 +29,7 @@ const MenuItem = ({ title, imageUrl, linkUrl, size, history, match }) => (
 );
 
 MenuItem.defaultProps = {
-  size: null
+  size: undefined
 };
 
 MenuItem.propTypes = {

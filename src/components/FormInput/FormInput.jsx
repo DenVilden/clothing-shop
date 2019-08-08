@@ -19,7 +19,7 @@ const FormInput = ({ handleChange, label, value, ...props }) => (
 );
 
 FormInput.defaultProps = {
-  handleChange: null
+  handleChange: undefined
 };
 
 FormInput.propTypes = {

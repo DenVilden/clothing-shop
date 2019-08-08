@@ -38,7 +38,7 @@ const App = ({ currentUser, checkUserSession }) => {
 };
 
 App.defaultProps = {
-  currentUser: null
+  currentUser: undefined
 };
 
 App.propTypes = {
