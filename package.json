@@ -35,11 +35,12 @@
   },
   "scripts": {
     "client": "react-scripts start",
-    "server": "nodemon server.js",
     "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "nodemon server.js",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node server.js",
-    "heroku-postbuild": "yarn install --only=dev --no-shrinkwrap && yarn build"
+    "start": "node server.js"
   },
   "eslintConfig": {
     "extends": [
