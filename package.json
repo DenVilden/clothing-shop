@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
+  "type": "module",
   "engines": {
     "node": "12.x",
     "yarn": "1.x"
@@ -13,10 +14,10 @@
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
-    "firebase": "^6.3.4",
+    "firebase": "^6.3.5",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
@@ -26,7 +27,7 @@
     "redux-persist": "^5.10.0",
     "redux-saga": "^1.0.5",
     "reselect": "^4.0.0",
-    "stripe": "^7.6.0",
+    "stripe": "^7.6.1",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
@@ -38,9 +39,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon server.js",
+    "server": "nodemon --experimental-modules server.js",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node server.js"
+    "start": "node --experimental-modules server.js"
   },
   "eslintConfig": {
     "extends": [
