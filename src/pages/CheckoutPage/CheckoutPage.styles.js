@@ -8,6 +8,10 @@ export const CheckoutPageContainer = styled.div`
   min-height: 90vh;
   width: 55%;
 
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+
   button {
     margin-left: auto;
     margin-top: 50px;
