@@ -9,6 +9,20 @@ export const CollectionItemContainer = styled.div`
   position: relative;
   width: 22vw;
 
+  @media (max-width: 800px) {
+    width: 40vw;
+
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+
+      button {
+        opacity: unset;
+      }
+    }
+  }
+
   &:hover {
     .image {
       opacity: 0.8;
@@ -27,6 +41,13 @@ export const AddButton = styled(CustomButton)`
   position: absolute;
   top: 255px;
   width: 80%;
+
+  @media (max-width: 800px) {
+    display: block;
+    min-width: unset;
+    opacity: 0.9;
+    padding: 0 10px;
+  }
 `;
 
 export const BackgroundImage = styled.div`
@@ -44,6 +65,10 @@ export const CollectionFooterContainer = styled.div`
   height: 5%;
   justify-content: space-between;
   width: 100%;
+
+  @media (max-width: 800px) {
+    width: 90%;
+  }
 `;
 
 export const NameContainer = styled.span`

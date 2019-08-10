@@ -10,7 +10,10 @@ export const MenuItemContainer = styled.div`
 	margin: 0 7.5px 15px;
 	min-width: 30%;
 	overflow: hidden;
-  overflow: hidden;
+
+  @media (max-width: 800px) {
+    height: 200px;
+  } 
   
 	&:hover {
     cursor: pointer;

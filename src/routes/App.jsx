@@ -6,6 +6,7 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
+import GlobalStyle from './App.styles';
 import HeaderContainer from '../components/Header/Header.container';
 import HomePage from '../pages/HomePage/HomePage';
 import ShopPageContainer from '../pages/ShopPage/ShopPage.container';
@@ -19,6 +20,7 @@ const App = ({ currentUser, checkUserSession }) => {
 
   return (
     <Router>
+      <GlobalStyle />
       <HeaderContainer />
       <Switch>
         <Route component={HomePage} exact path="/" />

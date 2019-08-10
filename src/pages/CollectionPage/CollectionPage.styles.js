@@ -16,6 +16,13 @@ export const CollectionItemsContainer = styled.div`
   grid-gap: 10px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
+  @media (max-width: 800px) {
+    align-self: center;
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr 1fr;
+  }
+
   & > div {
     margin-bottom: 30px;
   }
