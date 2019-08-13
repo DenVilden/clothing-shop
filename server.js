@@ -1,9 +1,9 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import stripe from 'stripe';
-import path from 'path';
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const stripe = require('stripe');
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 5000;
