@@ -5,14 +5,14 @@ import {
   CollectionTitle,
   CollectionItemsContainer
 } from './CollectionPage.styles';
-import CollectionItemContainer from '../../components/CollectionItem/CollectionItem.container';
+import CollectionItem from '../../components/CollectionItem/CollectionItem.container';
 
 const CollectionPage = ({ collection: { title, items } }) => (
   <CollectionPageContainer>
     <CollectionTitle>{title}</CollectionTitle>
     <CollectionItemsContainer>
       {items.map(item => (
-        <CollectionItemContainer key={item.id} item={item} />
+        <CollectionItem key={item.id} item={item} />
       ))}
     </CollectionItemsContainer>
   </CollectionPageContainer>

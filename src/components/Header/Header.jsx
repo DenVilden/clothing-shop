@@ -7,8 +7,8 @@ import {
   OptionLink
 } from './Header.styles';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
-import CartIconContainer from '../CartIcon/CartIcon.container';
-import CartDropdownContainer from '../CartDropdown/CartDropdown.container';
+import CartIcon from '../CartIcon/CartIcon.container';
+import CartDropdown from '../CartDropdown/CartDropdown.container';
 
 const Header = ({ currentUser, hidden, signOutStart }) => (
   <HeaderContainer>
@@ -30,9 +30,9 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
       ) : (
         <OptionLink to="/signin">SIGN IN</OptionLink>
       )}
-      <CartIconContainer />
+      <CartIcon />
     </OptionsContainer>
-    {!hidden && <CartDropdownContainer />}
+    {!hidden && <CartDropdown />}
   </HeaderContainer>
 );
 

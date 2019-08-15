@@ -1,8 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
-import CollectionsOverviewContainer from '../../components/CollectionsOverview/CollectionsOverview.container';
-import CollectionPageContainer from '../CollectionPage/CollectionPage.container';
+import Spinner from '../../components/Spinner/Spinner';
+
+const CollectionsOverview = lazy(() =>
+  import('../../components/CollectionsOverview/CollectionsOverview.container')
+);
+const CollectionPage = lazy(() =>
+  import('../CollectionPage/CollectionPage.container')
+);
 
 const ShopPage = ({ match, fetchCollectionStart }) => {
   useEffect(() => {
@@ -10,13 +16,10 @@ const ShopPage = ({ match, fetchCollectionStart }) => {
   }, [fetchCollectionStart]);
 
   return (
-    <>
-      <Route component={CollectionsOverviewContainer} exact path={match.path} />
-      <Route
-        component={CollectionPageContainer}
-        path={`${match.path}/:collectionId`}
-      />
-    </>
+    <Suspense fallback={<Spinner />}>
+      <Route component={CollectionsOverview} exact path={match.path} />
+      <Route component={CollectionPage} path={`${match.path}/:collectionId`} />
+    </Suspense>
   );
 };
 

@@ -7,7 +7,7 @@ import {
   TotalContainer,
   WarningContainer
 } from './CheckoutPage.styles';
-import CheckoutItemContainer from '../../components/CheckoutItem/CheckoutItem.container';
+import CheckoutItem from '../../components/CheckoutItem/CheckoutItem.container';
 import StripeButton from '../../components/StripeButton/StripeButton';
 
 const CheckoutPage = ({ cartItems, total }) => {
@@ -24,7 +24,7 @@ const CheckoutPage = ({ cartItems, total }) => {
       </CheckoutHeaderContainer>
 
       {cartItems.map(cartItem => (
-        <CheckoutItemContainer key={cartItem.id} cartItem={cartItem} />
+        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
       <TotalContainer>TOTAL: ${total}</TotalContainer>
       <WarningContainer>
