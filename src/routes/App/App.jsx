@@ -7,17 +7,17 @@ import {
   Redirect
 } from 'react-router-dom';
 import GlobalStyle from './App.styles';
-import HeaderContainer from '../components/Header/Header.container';
-import Spinner from '../components/Spinner/Spinner';
-import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
+import Header from '../../components/Header/Header.container';
+import Spinner from '../../components/Spinner/Spinner';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 
-const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
-const ShopPage = lazy(() => import('../pages/ShopPage/ShopPage.container'));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const Shop = lazy(() => import('../Shop/Shop.container'));
 const CheckoutPage = lazy(() =>
-  import('../pages/CheckoutPage/CheckoutPage.container')
+  import('../../pages/CheckoutPage/CheckoutPage.container')
 );
 const SignInAndSignUpPage = lazy(() =>
-  import('../pages/SignInAndSignUpPage/SignInAndSignUpPage')
+  import('../../pages/SignInAndSignUpPage/SignInAndSignUpPage')
 );
 
 const App = ({ currentUser, checkUserSession }) => {
@@ -28,12 +28,12 @@ const App = ({ currentUser, checkUserSession }) => {
   return (
     <Router>
       <GlobalStyle />
-      <HeaderContainer />
+      <Header />
       <Switch>
         <ErrorBoundary>
           <Suspense fallback={<Spinner />}>
             <Route component={HomePage} exact path="/" />
-            <Route component={ShopPage} path="/shop" />
+            <Route component={Shop} path="/shop" />
             <Route component={CheckoutPage} exact path="/checkout" />
             <Route
               exact

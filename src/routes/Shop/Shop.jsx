@@ -7,10 +7,10 @@ const CollectionsOverview = lazy(() =>
   import('../../components/CollectionsOverview/CollectionsOverview.container')
 );
 const CollectionPage = lazy(() =>
-  import('../CollectionPage/CollectionPage.container')
+  import('../../pages/CollectionPage/CollectionPage.container')
 );
 
-const ShopPage = ({ match, fetchCollectionStart }) => {
+const Shop = ({ match, fetchCollectionStart }) => {
   useEffect(() => {
     fetchCollectionStart();
   }, [fetchCollectionStart]);
@@ -23,9 +23,9 @@ const ShopPage = ({ match, fetchCollectionStart }) => {
   );
 };
 
-ShopPage.propTypes = {
+Shop.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
   fetchCollectionStart: PropTypes.func.isRequired
 };
 
-export default ShopPage;
+export default Shop;

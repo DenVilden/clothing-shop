@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectCurrentUser } from '../selectors/user.selectors';
-import { checkUserSessionAction } from '../actions/user.actions';
+import { selectCurrentUser } from '../../selectors/user.selectors';
+import { checkUserSessionAction } from '../../actions/user.actions';
 import App from './App';
 
 const mapStateToProps = createStructuredSelector({
