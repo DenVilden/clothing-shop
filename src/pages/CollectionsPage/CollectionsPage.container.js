@@ -5,8 +5,8 @@ import {
   selectIsCollectionFetching,
   selectShopCollectionsForPreview
 } from '../../selectors/shop.selector';
-import WithSpinner from '../WithSpinner/WithSpinner';
-import CollectionsOverview from './CollectionsOverview';
+import WithSpinner from '../../components/WithSpinner/WithSpinner';
+import CollectionsPage from './CollectionsPage';
 
 const mapStateToProps = createStructuredSelector({
   loading: selectIsCollectionFetching,
@@ -16,4 +16,4 @@ const mapStateToProps = createStructuredSelector({
 export default compose(
   connect(mapStateToProps),
   WithSpinner
-)(CollectionsOverview);
+)(CollectionsPage);

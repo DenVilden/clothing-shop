@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import Spinner from '../../components/Spinner/Spinner';
 
-const CollectionsOverview = lazy(() =>
-  import('../../components/CollectionsOverview/CollectionsOverview.container')
+const CollectionsPage = lazy(() =>
+  import('../../pages/CollectionsPage/CollectionsPage.container')
 );
 const CollectionPage = lazy(() =>
   import('../../pages/CollectionPage/CollectionPage.container')
@@ -17,7 +17,7 @@ const Shop = ({ match, fetchCollectionStart }) => {
 
   return (
     <Suspense fallback={<Spinner />}>
-      <Route component={CollectionsOverview} exact path={match.path} />
+      <Route component={CollectionsPage} exact path={match.path} />
       <Route component={CollectionPage} path={`${match.path}/:collectionId`} />
     </Suspense>
   );

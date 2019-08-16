@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
-import image from '../../assets/CUz.svg';
+import image from '../../assets/crown.svg';
 
 const StripeButton = ({ price }) => {
   const priceForStripe = price * 100;

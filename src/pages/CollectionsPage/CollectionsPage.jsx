@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CollectionsOverviewContainer } from './CollectionsOverview.styles';
-import CollectionPreview from '../CollectionPreview/CollectionPreview';
+import { CollectionsPageContainer } from './CollectionsPage.styles';
+import CollectionPreview from '../../components/CollectionPreview/CollectionPreview';
 
-const CollectionsOverview = ({ collections }) => (
-  <CollectionsOverviewContainer>
+const CollectionsPage = ({ collections }) => (
+  <CollectionsPageContainer>
     {collections.map(({ id, ...collection }) => (
       <CollectionPreview key={id} {...collection} />
     ))}
-  </CollectionsOverviewContainer>
+  </CollectionsPageContainer>
 );
 
-CollectionsOverview.propTypes = {
+CollectionsPage.propTypes = {
   collections: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string,
@@ -29,4 +29,4 @@ CollectionsOverview.propTypes = {
   ).isRequired
 };
 
-export default CollectionsOverview;
+export default CollectionsPage;
