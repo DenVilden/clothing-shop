@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import {
@@ -9,24 +9,30 @@ import {
   ContentSubtitle
 } from './MenuItem.styles';
 
-const MenuItem = ({ title, imageUrl, linkUrl, size, history, match }) => (
-  <MenuItemContainer
-    onClick={() => history.push(`${match.url}${linkUrl}`)}
-    onKeyPress={() => history.push(`${match.url}${linkUrl}`)}
-    role="button"
-    size={size}
-    tabIndex="0"
-  >
-    <BackgroundImageContainer
-      className="background-image"
-      imageUrl={imageUrl}
-    />
-    <ContentContainer className="content">
-      <ContentTitle>{title}</ContentTitle>
-      <ContentSubtitle>SHOP NOW</ContentSubtitle>
-    </ContentContainer>
-  </MenuItemContainer>
-);
+const MenuItem = ({ title, imageUrl, linkUrl, size, history, match }) => {
+  const goTo = useCallback(() => {
+    history.push(`${match.url}${linkUrl}`);
+  }, [history, linkUrl, match.url]);
+
+  return (
+    <MenuItemContainer
+      onClick={goTo}
+      onKeyPress={goTo}
+      role="button"
+      size={size}
+      tabIndex="0"
+    >
+      <BackgroundImageContainer
+        className="background-image"
+        imageUrl={imageUrl}
+      />
+      <ContentContainer className="content">
+        <ContentTitle>{title}</ContentTitle>
+        <ContentSubtitle>SHOP NOW</ContentSubtitle>
+      </ContentContainer>
+    </MenuItemContainer>
+  );
+};
 
 MenuItem.defaultProps = {
   size: undefined

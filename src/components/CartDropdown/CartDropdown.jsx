@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   CartDropdownContainer,
@@ -8,27 +8,27 @@ import {
 } from './CartDropdown.styles';
 import CartItem from '../CartItem/CartItem';
 
-const CartDropdown = ({ cartItems, history, toggleCartHidden }) => (
-  <CartDropdownContainer>
-    <CartItemsContainer>
-      {cartItems.length ? (
-        cartItems.map(cartItem => (
-          <CartItem key={cartItem.id} item={cartItem} />
-        ))
-      ) : (
-        <EmptyMessageContainer>Your cart is empty</EmptyMessageContainer>
-      )}
-    </CartItemsContainer>
-    <CartDropdownButton
-      onClick={() => {
-        toggleCartHidden();
-        history.push('/checkout');
-      }}
-    >
-      GO TO CHECKOUT
-    </CartDropdownButton>
-  </CartDropdownContainer>
-);
+const CartDropdown = ({ cartItems, history, toggleCartHidden }) => {
+  const goTo = useCallback(() => {
+    toggleCartHidden();
+    history.push('/checkout');
+  }, [history, toggleCartHidden]);
+
+  return (
+    <CartDropdownContainer>
+      <CartItemsContainer>
+        {cartItems.length ? (
+          cartItems.map(cartItem => (
+            <CartItem key={cartItem.id} item={cartItem} />
+          ))
+        ) : (
+          <EmptyMessageContainer>Your cart is empty</EmptyMessageContainer>
+        )}
+      </CartItemsContainer>
+      <CartDropdownButton onClick={goTo}>GO TO CHECKOUT</CartDropdownButton>
+    </CartDropdownContainer>
+  );
+};
 
 CartDropdown.propTypes = {
   cartItems: PropTypes.arrayOf(

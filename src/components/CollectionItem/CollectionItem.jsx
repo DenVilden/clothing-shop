@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   CollectionItemContainer,
@@ -12,6 +12,8 @@ import {
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
 
+  const onAdd = useCallback(() => () => addItem(item), [addItem, item]);
+
   return (
     <CollectionItemContainer>
       <BackgroundImage imageUrl={imageUrl} />
@@ -19,7 +21,7 @@ const CollectionItem = ({ item, addItem }) => {
         <NameContainer>{name}</NameContainer>
         <PriceContainer>${price}</PriceContainer>
       </CollectionFooterContainer>
-      <AddButton inverted onClick={() => addItem(item)}>
+      <AddButton inverted onClick={onAdd}>
         Add to cart
       </AddButton>
     </CollectionItemContainer>

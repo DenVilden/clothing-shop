@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   SignInContainer,
@@ -16,15 +16,21 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
 
   const { email, password } = userCredentials;
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
-    emailSignInStart(email, password);
-  };
+  const handleSubmit = useCallback(
+    evt => {
+      evt.preventDefault();
+      emailSignInStart(email, password);
+    },
+    [email, emailSignInStart, password]
+  );
 
-  const handleChange = evt => {
-    const { value, name } = evt.target;
-    setCredentials({ ...userCredentials, [name]: value });
-  };
+  const handleChange = useCallback(
+    evt => {
+      const { value, name } = evt.target;
+      setCredentials({ ...userCredentials, [name]: value });
+    },
+    [userCredentials]
+  );
 
   return (
     <SignInContainer>

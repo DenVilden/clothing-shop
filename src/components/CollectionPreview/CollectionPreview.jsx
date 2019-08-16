@@ -8,25 +8,31 @@ import {
 } from './CollectionPreview.styles';
 import CollectionItem from '../CollectionItem/CollectionItem.container';
 
-const CollectionPreview = ({ title, items, routeName, history, match }) => (
-  <CollectionPreviewContainer>
-    <TitleContainer
-      onClick={() => history.push(`${match.url}/${routeName}`)}
-      onKeyPress={() => history.push(`${match.url}/${routeName}`)}
-      role="button"
-      tabIndex="0"
-    >
-      {title}
-    </TitleContainer>
-    <PreviewContainer>
-      {items
-        .filter((item, index) => index < 4)
-        .map(item => (
-          <CollectionItem key={item.id} item={item} />
-        ))}
-    </PreviewContainer>
-  </CollectionPreviewContainer>
-);
+const CollectionPreview = ({ title, items, routeName, history, match }) => {
+  const goTo = useCallback(() => {
+    history.push(`${match.url}/${routeName}`);
+  }, [history, match.url, routeName]);
+
+  return (
+    <CollectionPreviewContainer>
+      <TitleContainer
+        onClick={goTo}
+        onKeyPress={goTo}
+        role="button"
+        tabIndex="0"
+      >
+        {title}
+      </TitleContainer>
+      <PreviewContainer>
+        {items
+          .filter((item, index) => index < 4)
+          .map(item => (
+            <CollectionItem key={item.id} item={item} />
+          ))}
+      </PreviewContainer>
+    </CollectionPreviewContainer>
+  );
+};
 
 CollectionPreview.propTypes = {
   title: PropTypes.string.isRequired,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   CheckoutItemContainer,
@@ -11,6 +11,18 @@ import {
 const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
 
+  const onRemove = useCallback(() => () => removeItem(cartItem), [
+    cartItem,
+    removeItem
+  ]);
+
+  const onAdd = useCallback(() => () => addItem(cartItem), [addItem, cartItem]);
+
+  const onClearCart = useCallback(() => clearItemFromCart(cartItem), [
+    cartItem,
+    clearItemFromCart
+  ]);
+
   return (
     <CheckoutItemContainer>
       <ImageContainer>
@@ -19,27 +31,22 @@ const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
       <TextContainer>{name}</TextContainer>
       <QuantityContainer>
         <div
-          onClick={() => removeItem(cartItem)}
-          onKeyPress={() => removeItem(cartItem)}
+          onClick={onRemove}
+          onKeyPress={onRemove}
           role="button"
           tabIndex="0"
         >
           &#10094;
         </div>
         <span>{quantity}</span>
-        <div
-          onClick={() => addItem(cartItem)}
-          onKeyPress={() => addItem(cartItem)}
-          role="button"
-          tabIndex="0"
-        >
+        <div onClick={onAdd} onKeyPress={onAdd} role="button" tabIndex="0">
           &#10095;
         </div>
       </QuantityContainer>
       <TextContainer>${price}</TextContainer>
       <RemoveButtonContainer
-        onClick={() => clearItemFromCart(cartItem)}
-        onKeyPress={() => clearItemFromCart(cartItem)}
+        onClick={onClearCart}
+        onKeyPress={onClearCart}
         role="button"
         tabIndex="0"
       >

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { SignUpContainer, SignUpTitle } from './SignUp.styles';
 import FormInput from '../FormInput/FormInput';
@@ -14,21 +14,26 @@ const SignUp = ({ signUpStart }) => {
 
   const { displayName, email, password, confirmPassword } = userCredentials;
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
+  const handleSubmit = useCallback(
+    evt => {
+      evt.preventDefault();
+      if (password !== confirmPassword) {
+        // eslint-disable-next-line no-alert
+        alert("passwords don't match");
+      } else {
+        signUpStart(email, password, displayName);
+      }
+    },
+    [confirmPassword, displayName, email, password, signUpStart]
+  );
 
-    if (password !== confirmPassword) {
-      // eslint-disable-next-line no-alert
-      alert("passwords don't match");
-    } else {
-      signUpStart(email, password, displayName);
-    }
-  };
-
-  const handleChange = evt => {
-    const { name, value } = evt.target;
-    setCredentials(...userCredentials, { [name]: value });
-  };
+  const handleChange = useCallback(
+    evt => {
+      const { name, value } = evt.target;
+      setCredentials(...userCredentials, { [name]: value });
+    },
+    [userCredentials]
+  );
 
   return (
     <SignUpContainer>
