@@ -11,12 +11,12 @@ import {
 const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
 
-  const onRemove = useCallback(() => () => removeItem(cartItem), [
+  const onRemove = useCallback(() => removeItem(cartItem), [
     cartItem,
     removeItem
   ]);
 
-  const onAdd = useCallback(() => () => addItem(cartItem), [addItem, cartItem]);
+  const onAdd = useCallback(() => addItem(cartItem), [addItem, cartItem]);
 
   const onClearCart = useCallback(() => clearItemFromCart(cartItem), [
     cartItem,

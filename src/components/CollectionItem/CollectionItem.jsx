@@ -12,7 +12,7 @@ import {
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
 
-  const onAdd = useCallback(() => () => addItem(item), [addItem, item]);
+  const onAdd = useCallback(() => addItem(item), [addItem, item]);
 
   return (
     <CollectionItemContainer>
