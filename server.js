@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const stripe = require('stripe');
 const compression = require('compression');
+const enforce = require('express-sslify');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,6 +13,7 @@ const port = process.env.PORT || 5000;
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
@@ -22,6 +24,10 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   dotenv.config();
 }
+
+app.get('/service-worker.js', (req, res) => {
+  res.send(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
+});
 
 const stripeApi = stripe(process.env.STRIPE_SECRET_KEY);
 
