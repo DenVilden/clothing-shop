@@ -7,11 +7,11 @@ import { signOutStartAction } from '../../actions/user.actions';
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
-  hidden: selectCartHidden
+  hidden: selectCartHidden,
 });
 
 const mapDispatchToProps = {
-  signOutStart: () => signOutStartAction()
+  signOutStart: () => signOutStartAction(),
 };
 
 export default connect(

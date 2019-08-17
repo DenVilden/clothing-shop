@@ -4,7 +4,7 @@ import {
   CartDropdownContainer,
   CartItemsContainer,
   EmptyMessageContainer,
-  CartDropdownButton
+  CartDropdownButton,
 } from './CartDropdown.styles';
 import CartItem from '../CartItem/CartItem';
 
@@ -37,11 +37,11 @@ CartDropdown.propTypes = {
       imageUrl: PropTypes.string,
       name: PropTypes.string,
       price: PropTypes.number,
-      quantity: PropTypes.number
+      quantity: PropTypes.number,
     })
   ).isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
-  toggleCartHidden: PropTypes.func.isRequired
+  toggleCartHidden: PropTypes.func.isRequired,
 };
 
 export default CartDropdown;

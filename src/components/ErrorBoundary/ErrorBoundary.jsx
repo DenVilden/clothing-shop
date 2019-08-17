@@ -3,14 +3,10 @@ import PropTypes from 'prop-types';
 import {
   ErrorImageOverlay,
   ErrorImageContainer,
-  ErrorImageText
+  ErrorImageText,
 } from './ErrorBoundary.styles';
 
 export default class ErrorBoundary extends Component {
-  static propTypes = {
-    children: PropTypes.objectOf(PropTypes.any).isRequired
-  };
-
   state = { hasError: false };
 
   static getDerivedStateFromError() {
@@ -33,3 +29,7 @@ export default class ErrorBoundary extends Component {
     return children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.objectOf(PropTypes.any).isRequired,
+};

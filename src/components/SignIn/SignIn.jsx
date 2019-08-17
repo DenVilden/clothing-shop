@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   SignInContainer,
   SignInTitle,
-  ButtonsBarContainer
+  ButtonsBarContainer,
 } from './SignIn.styles';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
@@ -11,7 +11,7 @@ import CustomButton from '../CustomButton/CustomButton';
 const SignIn = ({ googleSignInStart, emailSignInStart }) => {
   const [userCredentials, setCredentials] = useState({
     email: '',
-    password: ''
+    password: '',
   });
 
   const { email, password } = userCredentials;
@@ -70,7 +70,7 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
 
 SignIn.propTypes = {
   googleSignInStart: PropTypes.func.isRequired,
-  emailSignInStart: PropTypes.func.isRequired
+  emailSignInStart: PropTypes.func.isRequired,
 };
 
 export default SignIn;

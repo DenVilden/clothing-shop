@@ -6,7 +6,7 @@ import {
   BackgroundImageContainer,
   ContentContainer,
   ContentTitle,
-  ContentSubtitle
+  ContentSubtitle,
 } from './MenuItem.styles';
 
 const MenuItem = ({ title, imageUrl, linkUrl, size, history, match }) => {
@@ -35,7 +35,7 @@ const MenuItem = ({ title, imageUrl, linkUrl, size, history, match }) => {
 };
 
 MenuItem.defaultProps = {
-  size: undefined
+  size: undefined,
 };
 
 MenuItem.propTypes = {
@@ -44,7 +44,7 @@ MenuItem.propTypes = {
   title: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   linkUrl: PropTypes.string.isRequired,
-  size: PropTypes.string
+  size: PropTypes.string,
 };
 
 export default withRouter(MenuItem);

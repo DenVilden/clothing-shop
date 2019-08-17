@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   CartItemContainer,
   CartItemImage,
-  ItemDetailsContainer
+  ItemDetailsContainer,
 } from './CartItem.styles';
 
 const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
@@ -24,8 +24,8 @@ CartItem.propTypes = {
     imageUrl: PropTypes.string,
     name: PropTypes.string,
     price: PropTypes.number,
-    quantity: PropTypes.number
-  }).isRequired
+    quantity: PropTypes.number,
+  }).isRequired,
 };
 
 export default memo(CartItem);

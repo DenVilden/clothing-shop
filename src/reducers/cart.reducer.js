@@ -3,13 +3,13 @@ import {
   ADD_ITEM,
   CLEAR_ITEM_FROM_CART,
   REMOVE_ITEM,
-  CLEAR_CART
+  CLEAR_CART,
 } from '../constants/cart.types';
 import { addItemToCard, removeItemFromCard } from '../utils/cart.utils';
 
 const initialState = {
   hidden: true,
-  cartItems: []
+  cartItems: [],
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -23,7 +23,7 @@ export default (state = initialState, { type, payload }) => {
     case REMOVE_ITEM:
       return {
         ...state,
-        cartItems: removeItemFromCard(state.cartItems, payload)
+        cartItems: removeItemFromCard(state.cartItems, payload),
       };
 
     case CLEAR_ITEM_FROM_CART:
@@ -31,7 +31,7 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         cartItems: state.cartItems.filter(
           cartItem => cartItem.id !== payload.id
-        )
+        ),
       };
 
     case CLEAR_CART:

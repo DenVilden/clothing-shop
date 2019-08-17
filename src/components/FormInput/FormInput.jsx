@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   GroupContainer,
   FormInputContainer,
-  FormInputLabel
+  FormInputLabel,
 } from './FormInput.styles';
 
 const FormInput = ({ handleChange, label, value, ...props }) => (
@@ -19,13 +19,13 @@ const FormInput = ({ handleChange, label, value, ...props }) => (
 );
 
 FormInput.defaultProps = {
-  handleChange: undefined
+  handleChange: undefined,
 };
 
 FormInput.propTypes = {
   handleChange: PropTypes.func,
   label: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };
 
 export default FormInput;

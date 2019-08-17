@@ -3,7 +3,7 @@ import CollectionItem from './CollectionItem';
 import { addItemAction } from '../../actions/cart.actions';
 
 const mapDispatchToProps = {
-  addItem: item => addItemAction(item)
+  addItem: item => addItemAction(item),
 };
 
 export default connect(

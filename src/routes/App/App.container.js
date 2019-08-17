@@ -5,11 +5,11 @@ import { checkUserSessionAction } from '../../actions/user.actions';
 import App from './App';
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
 });
 
 const mapDispatchToProps = {
-  checkUserSession: () => checkUserSessionAction()
+  checkUserSession: () => checkUserSessionAction(),
 };
 
 export default connect(

@@ -14,7 +14,7 @@ const StripeButton = ({ price }) => {
       axios({
         url: 'payment',
         method: 'post',
-        data: { amount: priceForStripe, token }
+        data: { amount: priceForStripe, token },
       })
         .then(() => {
           alert('Payment successful');
@@ -45,7 +45,7 @@ const StripeButton = ({ price }) => {
 };
 
 StripeButton.propTypes = {
-  price: PropTypes.number.isRequired
+  price: PropTypes.number.isRequired,
 };
 
 export default StripeButton;

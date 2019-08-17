@@ -22,11 +22,11 @@ CollectionsPage.propTypes = {
           id: PropTypes.number,
           name: PropTypes.string,
           imageUrl: PropTypes.string,
-          price: PropTypes.number
+          price: PropTypes.number,
         })
-      )
+      ),
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default CollectionsPage;

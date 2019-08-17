@@ -2,14 +2,14 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import {
   selectIsCollectionsLoaded,
-  selectShopCollection
+  selectShopCollection,
 } from '../../selectors/shop.selector';
 import WithSpinner from '../../components/WithSpinner/WithSpinner';
 import CollectionPage from './CollectionPage';
 
 const mapStateToProps = (state, props) => ({
   loading: !selectIsCollectionsLoaded(state),
-  collection: selectShopCollection(props.match.params.collectionId)(state)
+  collection: selectShopCollection(props.match.params.collectionId)(state),
 });
 
 export default compose(

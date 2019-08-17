@@ -25,7 +25,7 @@ const Shop = ({ match, fetchCollectionStart }) => {
 
 Shop.propTypes = {
   match: PropTypes.objectOf(PropTypes.any).isRequired,
-  fetchCollectionStart: PropTypes.func.isRequired
+  fetchCollectionStart: PropTypes.func.isRequired,
 };
 
 export default Shop;

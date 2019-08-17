@@ -7,11 +7,11 @@ import CartDropdown from './CartDropdown';
 import { toggleCartHiddenAction } from '../../actions/cart.actions';
 
 const mapStateToProps = createStructuredSelector({
-  cartItems: selectCartItems
+  cartItems: selectCartItems,
 });
 
 const mapDispatchToProps = {
-  toggleCartHidden: () => toggleCartHiddenAction()
+  toggleCartHidden: () => toggleCartHiddenAction(),
 };
 
 export default compose(

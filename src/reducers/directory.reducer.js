@@ -10,35 +10,35 @@ const initialState = {
       title: 'hats',
       imageUrl: hats,
       id: 1,
-      linkUrl: 'shop/hats'
+      linkUrl: 'shop/hats',
     },
     {
       title: 'jackets',
       imageUrl: jackets,
       id: 2,
-      linkUrl: 'shop/jackets'
+      linkUrl: 'shop/jackets',
     },
     {
       title: 'sneakers',
       imageUrl: sneakers,
       id: 3,
-      linkUrl: 'shop/sneakers'
+      linkUrl: 'shop/sneakers',
     },
     {
       title: 'womens',
       imageUrl: womens,
       size: 'large',
       id: 4,
-      linkUrl: 'shop/womens'
+      linkUrl: 'shop/womens',
     },
     {
       title: 'mens',
       imageUrl: men,
       size: 'large',
       id: 5,
-      linkUrl: 'shop/mens'
-    }
-  ]
+      linkUrl: 'shop/mens',
+    },
+  ],
 };
 
 export default (state = initialState, { type }) => {

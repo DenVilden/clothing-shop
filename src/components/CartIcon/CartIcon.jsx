@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   CartContainer,
   ShoppingIcon,
-  ItemCountContainer
+  ItemCountContainer,
 } from './CartIcon.styles';
 
 const CartIcon = ({ toggleCartHidden, itemCount }) => (
@@ -20,7 +20,7 @@ const CartIcon = ({ toggleCartHidden, itemCount }) => (
 
 CartIcon.propTypes = {
   toggleCartHidden: PropTypes.func.isRequired,
-  itemCount: PropTypes.number.isRequired
+  itemCount: PropTypes.number.isRequired,
 };
 
 export default CartIcon;

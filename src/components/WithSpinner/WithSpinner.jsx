@@ -8,7 +8,7 @@ export default WrappedComponent => {
   };
 
   hocComponent.propTypes = {
-    loading: PropTypes.bool.isRequired
+    loading: PropTypes.bool.isRequired,
   };
 
   return hocComponent;

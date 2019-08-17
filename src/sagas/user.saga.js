@@ -4,13 +4,13 @@ import {
   EMAIL_SIGN_IN_START,
   CHECK_USER_SESSION,
   SIGN_OUT_START,
-  SIGN_UP_START
+  SIGN_UP_START,
 } from '../constants/user.types';
 import {
   auth,
   googleProvider,
   createUserProfileDocument,
-  getCurrentUser
+  getCurrentUser,
 } from '../api/firebase';
 import {
   signInSuccessAction,
@@ -18,7 +18,7 @@ import {
   signOutSuccessAction,
   signOutFailureAction,
   signUpSuccessAction,
-  signUpFailureAction
+  signUpFailureAction,
 } from '../actions/user.actions';
 
 function* getSnapshotFromUserAuth(userAuth, additionalData) {
@@ -110,6 +110,6 @@ export default function* userSaga() {
     call(onEmailSignInStart),
     call(onCheckUserSessions),
     call(onSignOutStart),
-    call(onSignUpStart)
+    call(onSignUpStart),
   ]);
 }

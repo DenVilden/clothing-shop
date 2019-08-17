@@ -3,8 +3,9 @@ import SignUp from './SignUp';
 import { signUpStartAction } from '../../actions/user.actions';
 
 const mapDispatchToProps = {
-  signUpStart: (email, password, displayName) =>
-    signUpStartAction({ email, password, displayName })
+  signUpStart: (email, password, displayName) => {
+    return signUpStartAction({ email, password, displayName });
+  },
 };
 
 export default connect(

@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 import GlobalStyle from './App.styles';
 import Header from '../../components/Header/Header.container';
@@ -54,20 +54,20 @@ const App = ({ currentUser, checkUserSession }) => {
 };
 
 App.defaultProps = {
-  currentUser: undefined
+  currentUser: undefined,
 };
 
 App.propTypes = {
   currentUser: PropTypes.shape({
     createdAt: PropTypes.shape({
       nanoseconds: PropTypes.number,
-      seconds: PropTypes.number
+      seconds: PropTypes.number,
     }),
     displayName: PropTypes.string,
     email: PropTypes.string,
-    id: PropTypes.string
+    id: PropTypes.string,
   }),
-  checkUserSession: PropTypes.func.isRequired
+  checkUserSession: PropTypes.func.isRequired,
 };
 
 export default App;

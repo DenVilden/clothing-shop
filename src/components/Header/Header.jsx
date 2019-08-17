@@ -4,7 +4,7 @@ import {
   HeaderContainer,
   LogoContainer,
   OptionsContainer,
-  OptionLink
+  OptionLink,
 } from './Header.styles';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import CartIcon from '../CartIcon/CartIcon.container';
@@ -37,21 +37,21 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
 );
 
 Header.defaultProps = {
-  currentUser: undefined
+  currentUser: undefined,
 };
 
 Header.propTypes = {
   currentUser: PropTypes.shape({
     createdAt: PropTypes.shape({
       nanoseconds: PropTypes.number,
-      seconds: PropTypes.number
+      seconds: PropTypes.number,
     }),
     displayName: PropTypes.string,
     email: PropTypes.string,
-    id: PropTypes.string
+    id: PropTypes.string,
   }),
   hidden: PropTypes.bool.isRequired,
-  signOutStart: PropTypes.func.isRequired
+  signOutStart: PropTypes.func.isRequired,
 };
 
 export default Header;

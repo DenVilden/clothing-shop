@@ -3,28 +3,28 @@ import {
   ADD_ITEM,
   CLEAR_ITEM_FROM_CART,
   REMOVE_ITEM,
-  CLEAR_CART
+  CLEAR_CART,
 } from '../constants/cart.types';
 
 export const toggleCartHiddenAction = () => ({
-  type: TOGGLE_CART_HIDDEN
+  type: TOGGLE_CART_HIDDEN,
 });
 
 export const addItemAction = item => ({
   type: ADD_ITEM,
-  payload: item
+  payload: item,
 });
 
 export const removeItemAction = item => ({
   type: REMOVE_ITEM,
-  payload: item
+  payload: item,
 });
 
 export const clearItemFromCartAction = item => ({
   type: CLEAR_ITEM_FROM_CART,
-  payload: item
+  payload: item,
 });
 
 export const clearCart = () => ({
-  type: CLEAR_CART
+  type: CLEAR_CART,
 });

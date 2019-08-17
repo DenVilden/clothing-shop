@@ -9,7 +9,7 @@ const firebaseConfig = {
   projectId: 'shop-7c08b',
   storageBucket: 'shop-7c08b.appspot.com',
   messagingSenderId: '83573685292',
-  appId: '1:83573685292:web:1293b680a9f7569b'
+  appId: '1:83573685292:web:1293b680a9f7569b',
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -56,7 +56,7 @@ export const convertCollectionsSnapshotToMap = collections => {
       routeName: encodeURI(title.toLowerCase()),
       id: doc.id,
       title,
-      items
+      items,
     };
   });
 

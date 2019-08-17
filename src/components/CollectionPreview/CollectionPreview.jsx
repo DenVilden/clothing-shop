@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import {
   CollectionPreviewContainer,
   TitleContainer,
-  PreviewContainer
+  PreviewContainer,
 } from './CollectionPreview.styles';
 import CollectionItem from '../CollectionItem/CollectionItem.container';
 
@@ -41,12 +41,12 @@ CollectionPreview.propTypes = {
       id: PropTypes.number,
       name: PropTypes.string,
       imageUrl: PropTypes.string,
-      price: PropTypes.number
+      price: PropTypes.number,
     })
   ).isRequired,
   routeName: PropTypes.string.isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
-  match: PropTypes.objectOf(PropTypes.any).isRequired
+  match: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default withRouter(CollectionPreview);

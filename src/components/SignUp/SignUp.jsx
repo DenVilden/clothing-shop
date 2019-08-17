@@ -9,7 +9,7 @@ const SignUp = ({ signUpStart }) => {
     displayName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
   });
 
   const { displayName, email, password, confirmPassword } = userCredentials;
@@ -79,7 +79,7 @@ const SignUp = ({ signUpStart }) => {
 };
 
 SignUp.propTypes = {
-  signUpStart: PropTypes.func.isRequired
+  signUpStart: PropTypes.func.isRequired,
 };
 
 export default SignUp;

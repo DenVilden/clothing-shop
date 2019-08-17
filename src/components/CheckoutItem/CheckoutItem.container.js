@@ -3,13 +3,13 @@ import CheckoutItem from './CheckoutItem';
 import {
   clearItemFromCartAction,
   addItemAction,
-  removeItemAction
+  removeItemAction,
 } from '../../actions/cart.actions';
 
 const mapDispatchToProps = {
   clearItemFromCart: item => clearItemFromCartAction(item),
   addItem: item => addItemAction(item),
-  removeItem: item => removeItemAction(item)
+  removeItem: item => removeItemAction(item),
 };
 
 export default connect(

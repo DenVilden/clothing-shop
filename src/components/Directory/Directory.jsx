@@ -17,9 +17,9 @@ Directory.propTypes = {
       title: PropTypes.string,
       imageUrl: PropTypes.string,
       id: PropTypes.number,
-      linkUrl: PropTypes.string
+      linkUrl: PropTypes.string,
     })
-  ).isRequired
+  ).isRequired,
 };
 
 export default Directory;

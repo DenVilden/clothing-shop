@@ -4,12 +4,12 @@ import {
   SIGN_OUT_SUCCESS,
   SIGN_OUT_FAILURE,
   SIGN_UP_FAILURE,
-  SIGN_UP_SUCCESS
+  SIGN_UP_SUCCESS,
 } from '../constants/user.types';
 
 const initialState = {
   currentUser: null,
-  error: null
+  error: null,
 };
 
 export default (state = initialState, { type, payload }) => {

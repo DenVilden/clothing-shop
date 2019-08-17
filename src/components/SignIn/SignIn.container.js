@@ -2,13 +2,14 @@ import { connect } from 'react-redux';
 import SignIn from './SignIn';
 import {
   googleSignInStartAction,
-  emailSignInStartAction
+  emailSignInStartAction,
 } from '../../actions/user.actions';
 
 const mapDispatchToProps = {
   googleSignInStart: () => googleSignInStartAction(),
-  emailSignInStart: (email, password) =>
-    emailSignInStartAction({ email, password })
+  emailSignInStart: (email, password) => {
+    return emailSignInStartAction({ email, password });
+  },
 };
 
 export default connect(

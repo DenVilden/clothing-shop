@@ -5,11 +5,11 @@ import { toggleCartHiddenAction } from '../../actions/cart.actions';
 import { selectCartItemsCount } from '../../selectors/cart.selectors';
 
 const mapStateToProps = createStructuredSelector({
-  itemCount: selectCartItemsCount
+  itemCount: selectCartItemsCount,
 });
 
 const mapDispatchToProps = {
-  toggleCartHidden: () => toggleCartHiddenAction()
+  toggleCartHidden: () => toggleCartHiddenAction(),
 };
 
 export default connect(

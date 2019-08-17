@@ -6,7 +6,7 @@ import {
   AddButton,
   BackgroundImage,
   NameContainer,
-  PriceContainer
+  PriceContainer,
 } from './CollectionItem.styles';
 
 const CollectionItem = ({ item, addItem }) => {
@@ -33,9 +33,9 @@ CollectionItem.propTypes = {
     id: PropTypes.number,
     name: PropTypes.string,
     imageUrl: PropTypes.string,
-    price: PropTypes.number
+    price: PropTypes.number,
   }).isRequired,
-  addItem: PropTypes.func.isRequired
+  addItem: PropTypes.func.isRequired,
 };
 
 export default CollectionItem;

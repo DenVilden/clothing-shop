@@ -3,7 +3,7 @@ import Shop from './Shop';
 import { fetchCollectionStartAction } from '../../actions/shop.actions';
 
 const mapDispatchToProps = {
-  fetchCollectionStart: () => fetchCollectionStartAction()
+  fetchCollectionStart: () => fetchCollectionStartAction(),
 };
 
 export default connect(

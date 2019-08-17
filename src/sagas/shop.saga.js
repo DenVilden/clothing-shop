@@ -3,7 +3,7 @@ import { FETCH_COLLECTIONS_START } from '../constants/shop.types';
 import { firestore, convertCollectionsSnapshotToMap } from '../api/firebase';
 import {
   fetchCollectionSuccessAction,
-  fetchCollectionFailureAction
+  fetchCollectionFailureAction,
 } from '../actions/shop.actions';
 
 function* fetchCollectionsAsync() {

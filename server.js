@@ -35,7 +35,7 @@ app.post('/payment', async (req, res) => {
     const data = await stripeApi.charges.create({
       source: req.body.token.id,
       amount: req.body.amount,
-      currency: 'usd'
+      currency: 'usd',
     });
     res.send({ data });
   } catch (error) {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   CollectionPageContainer,
   CollectionTitle,
-  CollectionItemsContainer
+  CollectionItemsContainer,
 } from './CollectionPage.styles';
 import CollectionItem from '../../components/CollectionItem/CollectionItem.container';
 
@@ -28,10 +28,10 @@ CollectionPage.propTypes = {
         id: PropTypes.number,
         name: PropTypes.string,
         imageUrl: PropTypes.string,
-        price: PropTypes.number
+        price: PropTypes.number,
       })
-    )
-  }).isRequired
+    ),
+  }).isRequired,
 };
 
 export default CollectionPage;

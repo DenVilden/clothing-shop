@@ -1,13 +1,13 @@
 import {
   FETCH_COLLECTIONS_START,
   FETCH_COLLECTIONS_SUCCESS,
-  FETCH_COLLECTIONS_FAILURE
+  FETCH_COLLECTIONS_FAILURE,
 } from '../constants/shop.types';
 
 const initialState = {
   collections: null,
   isFetching: false,
-  errorMessage: ''
+  errorMessage: '',
 };
 
 export default (state = initialState, { type, payload }) => {

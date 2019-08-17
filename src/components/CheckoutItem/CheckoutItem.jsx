@@ -5,7 +5,7 @@ import {
   ImageContainer,
   TextContainer,
   QuantityContainer,
-  RemoveButtonContainer
+  RemoveButtonContainer,
 } from './CheckoutItem.styles';
 
 const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
@@ -13,14 +13,14 @@ const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
 
   const onRemove = useCallback(() => removeItem(cartItem), [
     cartItem,
-    removeItem
+    removeItem,
   ]);
 
   const onAdd = useCallback(() => addItem(cartItem), [addItem, cartItem]);
 
   const onClearCart = useCallback(() => clearItemFromCart(cartItem), [
     cartItem,
-    clearItemFromCart
+    clearItemFromCart,
   ]);
 
   return (
@@ -62,11 +62,11 @@ CheckoutItem.propTypes = {
     imageUrl: PropTypes.string,
     name: PropTypes.string,
     price: PropTypes.number,
-    quantity: PropTypes.number
+    quantity: PropTypes.number,
   }).isRequired,
   clearItemFromCart: PropTypes.func.isRequired,
   addItem: PropTypes.func.isRequired,
-  removeItem: PropTypes.func.isRequired
+  removeItem: PropTypes.func.isRequired,
 };
 
 export default CheckoutItem;
