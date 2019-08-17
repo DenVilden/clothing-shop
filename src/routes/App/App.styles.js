@@ -6,6 +6,7 @@ export default createGlobalStyle`
     font-family: 'Open Sans Condensed';
     font-style: normal;
     font-weight: 300;
+    font-display: swap;
     src: local('Open Sans Condensed Light'), local('OpenSansCondensed-Light'),
       url('https://fonts.gstatic.com/s/opensanscondensed/v14/z7NFdQDnbTkabZAIOl9il_O6KJj73e7Ff1GhDuXMR7eS2Ao.woff2')
         format('woff2');
