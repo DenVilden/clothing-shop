@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
@@ -9,24 +9,21 @@ const StripeButton = ({ price }) => {
   const publishableKey = 'pk_test_Htdm0Mcd18IgI0qJfYco6stX00ZwuoWXfv';
 
   /* eslint-disable no-alert */
-  const onToken = useCallback(
-    token => {
-      axios({
-        url: 'payment',
-        method: 'post',
-        data: { amount: priceForStripe, token },
+  const onToken = token => {
+    axios({
+      url: 'payment',
+      method: 'post',
+      data: { amount: priceForStripe, token },
+    })
+      .then(() => {
+        alert('Payment successful');
       })
-        .then(() => {
-          alert('Payment successful');
-        })
-        .catch(error => {
-          // eslint-disable-next-line no-console
-          console.log('Payment error:', error.message);
-          alert('There was an issue with your payment');
-        });
-    },
-    [priceForStripe]
-  );
+      .catch(error => {
+        // eslint-disable-next-line no-console
+        console.log('Payment error:', error.message);
+        alert('There was an issue with your payment');
+      });
+  };
 
   return (
     <StripeCheckout

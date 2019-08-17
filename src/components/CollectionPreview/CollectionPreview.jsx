@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import {
@@ -8,10 +8,14 @@ import {
 } from './CollectionPreview.styles';
 import CollectionItem from '../CollectionItem/CollectionItem.container';
 
-const CollectionPreview = ({ title, items, routeName, history, match }) => {
-  const goTo = useCallback(() => {
+const CollectionPreview = ({
+  history,
+  match,
+  collection: { title, items, routeName },
+}) => {
+  const goTo = () => {
     history.push(`${match.url}/${routeName}`);
-  }, [history, match.url, routeName]);
+  };
 
   return (
     <CollectionPreviewContainer>
@@ -35,16 +39,18 @@ const CollectionPreview = ({ title, items, routeName, history, match }) => {
 };
 
 CollectionPreview.propTypes = {
-  title: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number,
-      name: PropTypes.string,
-      imageUrl: PropTypes.string,
-      price: PropTypes.number,
-    })
-  ).isRequired,
-  routeName: PropTypes.string.isRequired,
+  collection: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        imageUrl: PropTypes.string,
+        price: PropTypes.number,
+      })
+    ).isRequired,
+    routeName: PropTypes.string.isRequired,
+  }).isRequired,
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   match: PropTypes.objectOf(PropTypes.any).isRequired,
 };

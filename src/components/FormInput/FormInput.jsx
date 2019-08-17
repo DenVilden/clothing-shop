@@ -6,26 +6,27 @@ import {
   FormInputLabel,
 } from './FormInput.styles';
 
-const FormInput = ({ handleChange, label, value, ...props }) => (
+const FormInput = ({ handleChange, label, value, name, required, type }) => (
   <GroupContainer>
     <FormInputContainer
       id={label}
       onChange={handleChange}
       value={value}
-      {...props}
+      name={name}
+      require={required}
+      type={type}
     />
     <FormInputLabel htmlFor={label}>{label}</FormInputLabel>
   </GroupContainer>
 );
 
-FormInput.defaultProps = {
-  handleChange: undefined,
-};
-
 FormInput.propTypes = {
-  handleChange: PropTypes.func,
+  handleChange: PropTypes.func.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  required: PropTypes.bool.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default FormInput;

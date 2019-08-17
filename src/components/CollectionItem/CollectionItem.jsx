@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   CollectionItemContainer,
@@ -12,7 +12,9 @@ import {
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
 
-  const onAdd = useCallback(() => addItem(item), [addItem, item]);
+  const onAdd = () => {
+    addItem(item);
+  };
 
   return (
     <CollectionItemContainer>

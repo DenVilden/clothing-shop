@@ -56,8 +56,6 @@
       "prettier/react"
     ],
     "rules": {
-      "react/jsx-sort-props": 2,
-      "react/jsx-props-no-spreading": "off",
       "react/state-in-constructor": "off"
     }
   },

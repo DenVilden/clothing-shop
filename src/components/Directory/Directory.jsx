@@ -5,8 +5,8 @@ import MenuItem from '../MenuItem/MenuItem';
 
 const Directory = ({ sections }) => (
   <DirectoryMenuContainer>
-    {sections.map(({ id, ...section }) => (
-      <MenuItem key={id} {...section} />
+    {sections.map(section => (
+      <MenuItem key={section.id} section={section} />
     ))}
   </DirectoryMenuContainer>
 );

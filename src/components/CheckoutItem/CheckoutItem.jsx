@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   CheckoutItemContainer,
@@ -11,17 +11,17 @@ import {
 const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
 
-  const onRemove = useCallback(() => removeItem(cartItem), [
-    cartItem,
-    removeItem,
-  ]);
+  const onRemove = () => {
+    removeItem(cartItem);
+  };
 
-  const onAdd = useCallback(() => addItem(cartItem), [addItem, cartItem]);
+  const onAdd = () => {
+    addItem(cartItem);
+  };
 
-  const onClearCart = useCallback(() => clearItemFromCart(cartItem), [
-    cartItem,
-    clearItemFromCart,
-  ]);
+  const onClearCart = () => {
+    clearItemFromCart(cartItem);
+  };
 
   return (
     <CheckoutItemContainer>

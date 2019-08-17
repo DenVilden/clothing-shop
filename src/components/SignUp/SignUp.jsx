@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { SignUpContainer, SignUpTitle } from './SignUp.styles';
 import FormInput from '../FormInput/FormInput';
@@ -14,26 +14,20 @@ const SignUp = ({ signUpStart }) => {
 
   const { displayName, email, password, confirmPassword } = userCredentials;
 
-  const handleSubmit = useCallback(
-    evt => {
-      evt.preventDefault();
-      if (password !== confirmPassword) {
-        // eslint-disable-next-line no-alert
-        alert("passwords don't match");
-      } else {
-        signUpStart(email, password, displayName);
-      }
-    },
-    [confirmPassword, displayName, email, password, signUpStart]
-  );
+  const handleSubmit = evt => {
+    evt.preventDefault();
+    if (password !== confirmPassword) {
+      // eslint-disable-next-line no-alert
+      alert("passwords don't match");
+    } else {
+      signUpStart(email, password, displayName);
+    }
+  };
 
-  const handleChange = useCallback(
-    evt => {
-      const { name, value } = evt.target;
-      setCredentials(...userCredentials, { [name]: value });
-    },
-    [userCredentials]
-  );
+  const handleChange = evt => {
+    const { name, value } = evt.target;
+    setCredentials(...userCredentials, { [name]: value });
+  };
 
   return (
     <SignUpContainer>
@@ -43,7 +37,7 @@ const SignUp = ({ signUpStart }) => {
         <FormInput
           label="Display Name"
           name="displayName"
-          onChange={handleChange}
+          handleChange={handleChange}
           required
           type="text"
           value={displayName}
@@ -51,7 +45,7 @@ const SignUp = ({ signUpStart }) => {
         <FormInput
           label="Provide Email"
           name="email"
-          onChange={handleChange}
+          handleChange={handleChange}
           required
           type="email"
           value={email}
@@ -59,7 +53,7 @@ const SignUp = ({ signUpStart }) => {
         <FormInput
           label="Provide Password"
           name="password"
-          onChange={handleChange}
+          handleChange={handleChange}
           required
           type="password"
           value={password}
@@ -67,7 +61,7 @@ const SignUp = ({ signUpStart }) => {
         <FormInput
           label="Confirm Password"
           name="confirmPassword"
-          onChange={handleChange}
+          handleChange={handleChange}
           required
           type="password"
           value={confirmPassword}

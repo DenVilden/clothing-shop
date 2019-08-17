@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import {
@@ -9,10 +9,14 @@ import {
   ContentSubtitle,
 } from './MenuItem.styles';
 
-const MenuItem = ({ title, imageUrl, linkUrl, size, history, match }) => {
-  const goTo = useCallback(() => {
+const MenuItem = ({
+  history,
+  match,
+  section: { title, imageUrl, linkUrl, size },
+}) => {
+  const goTo = () => {
     history.push(`${match.url}${linkUrl}`);
-  }, [history, linkUrl, match.url]);
+  };
 
   return (
     <MenuItemContainer
@@ -34,17 +38,15 @@ const MenuItem = ({ title, imageUrl, linkUrl, size, history, match }) => {
   );
 };
 
-MenuItem.defaultProps = {
-  size: undefined,
-};
-
 MenuItem.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   match: PropTypes.objectOf(PropTypes.any).isRequired,
-  title: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
-  linkUrl: PropTypes.string.isRequired,
-  size: PropTypes.string,
+  section: PropTypes.shape({
+    title: PropTypes.string,
+    imageUrl: PropTypes.string,
+    linkUrl: PropTypes.string,
+    size: PropTypes.string,
+  }).isRequired,
 };
 
 export default withRouter(MenuItem);

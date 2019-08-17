@@ -29,9 +29,9 @@ const App = ({ currentUser, checkUserSession }) => {
     <Router>
       <GlobalStyle />
       <Header />
-      <Switch>
-        <ErrorBoundary>
-          <Suspense fallback={<Spinner />}>
+      <ErrorBoundary>
+        <Suspense fallback={<Spinner />}>
+          <Switch>
             <Route component={HomePage} exact path="/" />
             <Route component={Shop} path="/shop" />
             <Route component={CheckoutPage} exact path="/checkout" />
@@ -46,9 +46,9 @@ const App = ({ currentUser, checkUserSession }) => {
                 );
               }}
             />
-          </Suspense>
-        </ErrorBoundary>
-      </Switch>
+          </Switch>
+        </Suspense>
+      </ErrorBoundary>
     </Router>
   );
 };

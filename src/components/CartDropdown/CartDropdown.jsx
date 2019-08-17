@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   CartDropdownContainer,
@@ -8,11 +8,11 @@ import {
 } from './CartDropdown.styles';
 import CartItem from '../CartItem/CartItem';
 
-const CartDropdown = ({ cartItems, history, toggleCartHidden }) => {
-  const goTo = useCallback(() => {
-    toggleCartHidden();
+const CartDropdown = ({ cartItems, toggleCartHidden, history }) => {
+  const goTo = () => {
     history.push('/checkout');
-  }, [history, toggleCartHidden]);
+    toggleCartHidden();
+  };
 
   return (
     <CartDropdownContainer>
@@ -40,8 +40,8 @@ CartDropdown.propTypes = {
       quantity: PropTypes.number,
     })
   ).isRequired,
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
   toggleCartHidden: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default CartDropdown;

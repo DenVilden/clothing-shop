@@ -5,8 +5,8 @@ import CollectionPreview from '../../components/CollectionPreview/CollectionPrev
 
 const CollectionsPage = ({ collections }) => (
   <CollectionsPageContainer>
-    {collections.map(({ id, ...collection }) => (
-      <CollectionPreview key={id} {...collection} />
+    {collections.map(collection => (
+      <CollectionPreview key={collection.id} collection={collection} />
     ))}
   </CollectionsPageContainer>
 );
