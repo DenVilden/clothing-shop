@@ -6,7 +6,7 @@ import {
   OptionsContainer,
   OptionLink,
 } from './Header.styles';
-import { ReactComponent as Logo } from '../../assets/crown.svg';
+import { ReactComponent as Logo } from '../../logo.svg';
 import CartIcon from '../CartIcon/CartIcon.container';
 import CartDropdown from '../CartDropdown/CartDropdown.container';
 
