@@ -11,18 +11,6 @@ import {
 const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
 
-  const onRemove = () => {
-    removeItem(cartItem);
-  };
-
-  const onAdd = () => {
-    addItem(cartItem);
-  };
-
-  const onClearCart = () => {
-    clearItemFromCart(cartItem);
-  };
-
   return (
     <CheckoutItemContainer>
       <ImageContainer>
@@ -30,23 +18,17 @@ const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
       </ImageContainer>
       <TextContainer>{name}</TextContainer>
       <QuantityContainer>
-        <div
-          onClick={onRemove}
-          onKeyPress={onRemove}
-          role="button"
-          tabIndex="0"
-        >
+        <div onClick={() => removeItem(cartItem)} role="button" tabIndex="0">
           &#10094;
         </div>
         <span>{quantity}</span>
-        <div onClick={onAdd} onKeyPress={onAdd} role="button" tabIndex="0">
+        <div onClick={() => addItem(cartItem)} role="button" tabIndex="0">
           &#10095;
         </div>
       </QuantityContainer>
       <TextContainer>${price}</TextContainer>
       <RemoveButtonContainer
-        onClick={onClearCart}
-        onKeyPress={onClearCart}
+        onClick={() => clearItemFromCart(cartItem)}
         role="button"
         tabIndex="0"
       >

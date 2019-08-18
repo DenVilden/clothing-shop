@@ -12,31 +12,24 @@ const CollectionPreview = ({
   history,
   match,
   collection: { title, items, routeName },
-}) => {
-  const goTo = () => {
-    history.push(`${match.url}/${routeName}`);
-  };
-
-  return (
-    <CollectionPreviewContainer>
-      <TitleContainer
-        onClick={goTo}
-        onKeyPress={goTo}
-        role="button"
-        tabIndex="0"
-      >
-        {title}
-      </TitleContainer>
-      <PreviewContainer>
-        {items
-          .filter((item, index) => index < 4)
-          .map(item => (
-            <CollectionItem key={item.id} item={item} />
-          ))}
-      </PreviewContainer>
-    </CollectionPreviewContainer>
-  );
-};
+}) => (
+  <CollectionPreviewContainer>
+    <TitleContainer
+      onClick={() => history.push(`${match.url}/${routeName}`)}
+      role="button"
+      tabIndex="0"
+    >
+      {title}
+    </TitleContainer>
+    <PreviewContainer>
+      {items
+        .filter((item, index) => index < 4)
+        .map(item => (
+          <CollectionItem key={item.id} item={item} />
+        ))}
+    </PreviewContainer>
+  </CollectionPreviewContainer>
+);
 
 CollectionPreview.propTypes = {
   collection: PropTypes.shape({

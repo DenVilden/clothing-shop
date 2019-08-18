@@ -12,10 +12,6 @@ import {
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
 
-  const onAdd = () => {
-    addItem(item);
-  };
-
   return (
     <CollectionItemContainer>
       <BackgroundImage imageUrl={imageUrl} />
@@ -23,7 +19,7 @@ const CollectionItem = ({ item, addItem }) => {
         <NameContainer>{name}</NameContainer>
         <PriceContainer>${price}</PriceContainer>
       </CollectionFooterContainer>
-      <AddButton inverted onClick={onAdd}>
+      <AddButton inverted onClick={() => addItem(item)}>
         Add to cart
       </AddButton>
     </CollectionItemContainer>

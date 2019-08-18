@@ -26,6 +26,7 @@ CustomButton.defaultProps = {
   isGoogleSignIn: undefined,
   onClick: undefined,
   inverted: false,
+  className: undefined,
 };
 
 CustomButton.propTypes = {
@@ -33,7 +34,7 @@ CustomButton.propTypes = {
   isGoogleSignIn: PropTypes.bool,
   onClick: PropTypes.func,
   type: PropTypes.string,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   inverted: PropTypes.bool,
 };
 
