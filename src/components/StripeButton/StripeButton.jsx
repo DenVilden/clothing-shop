@@ -5,7 +5,6 @@ import axios from 'axios';
 
 const StripeButton = ({ price }) => {
   const priceForStripe = price * 100;
-  const publishableKey = 'pk_test_Htdm0Mcd18IgI0qJfYco6stX00ZwuoWXfv';
 
   /* eslint-disable no-alert */
   const onToken = token => {
@@ -33,7 +32,7 @@ const StripeButton = ({ price }) => {
       name="Clothing Shop"
       panelLabel="Pay Now"
       shippingAddress
-      stripeKey={publishableKey}
+      stripeKey={process.env.REACT_APP_STRIPE_PUBLIC_KEY}
       token={onToken}
     />
   );
