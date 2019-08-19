@@ -4,15 +4,15 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 
 const StripeButton = ({ price }) => {
-  const priceForStripe = price * 100;
+  const amount = price * 100;
 
   /* eslint-disable no-alert */
   const onToken = async token => {
     try {
-      axios({
+      await axios({
         url: 'payment',
         method: 'post',
-        data: { amount: priceForStripe, token },
+        data: { amount, token },
       });
       alert('Payment successful');
     } catch (error) {
@@ -22,7 +22,7 @@ const StripeButton = ({ price }) => {
 
   return (
     <StripeCheckout
-      amount={priceForStripe}
+      amount={amount}
       billingAddress
       description={`Your total is $${price}`}
       label="Pay Now"

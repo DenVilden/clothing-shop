@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const stripe = require('stripe');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const compression = require('compression');
 const enforce = require('express-sslify');
 
@@ -19,18 +19,16 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const stripeApi = stripe(process.env.STRIPE_SECRET_KEY);
-
-app.post('/payment', async (req, res) => {
+app.post('/payment', async (req, res, next) => {
   try {
-    const data = await stripeApi.charges.create({
+    const data = await stripe.charges.create({
       source: req.body.token.id,
       amount: req.body.amount,
       currency: 'usd',
     });
     res.send({ data });
   } catch (error) {
-    res.send({ error });
+    next(error);
   }
 });
 
