@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 import {
   HeaderContainer,
@@ -8,7 +8,10 @@ import {
 } from './Header.styles';
 import { ReactComponent as Logo } from '../../logo.svg';
 import CartIcon from '../CartIcon/CartIcon.container';
-import CartDropdown from '../CartDropdown/CartDropdown.container';
+
+const CartDropdown = lazy(() =>
+  import('../CartDropdown/CartDropdown.container')
+);
 
 const Header = ({ currentUser, hidden, signOutStart }) => (
   <HeaderContainer>
@@ -26,7 +29,7 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
       )}
       <CartIcon />
     </OptionsContainer>
-    {!hidden && <CartDropdown />}
+    <Suspense fallback={<></>}>{!hidden && <CartDropdown />}</Suspense>
   </HeaderContainer>
 );
 
