@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from '../reducers/root.reducer';
@@ -10,7 +10,7 @@ const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 
 if (process.env.NODE_ENV === 'development') {
-  middleware.push(logger);
+  middleware.push(createLogger());
 }
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

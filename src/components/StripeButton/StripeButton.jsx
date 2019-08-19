@@ -7,20 +7,17 @@ const StripeButton = ({ price }) => {
   const priceForStripe = price * 100;
 
   /* eslint-disable no-alert */
-  const onToken = token => {
-    axios({
-      url: 'payment',
-      method: 'post',
-      data: { amount: priceForStripe, token },
-    })
-      .then(() => {
-        alert('Payment successful');
-      })
-      .catch(error => {
-        // eslint-disable-next-line no-console
-        console.log('Payment error:', error.message);
-        alert('There was an issue with your payment');
+  const onToken = async token => {
+    try {
+      axios({
+        url: 'payment',
+        method: 'post',
+        data: { amount: priceForStripe, token },
       });
+      alert('Payment successful');
+    } catch (error) {
+      alert('There was an issue with your payment');
+    }
   };
 
   return (

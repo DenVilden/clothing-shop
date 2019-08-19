@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-const dotenv = require('dotenv');
 const stripe = require('stripe');
 const compression = require('compression');
 const enforce = require('express-sslify');
@@ -18,11 +17,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
-  app.get('/service-worker.js', (req, res) => {
-    res.send(path.resolve(__dirname, '..', 'build', 'service-worker.js'));
-  });
-} else {
-  dotenv.config();
 }
 
 const stripeApi = stripe(process.env.STRIPE_SECRET_KEY);
