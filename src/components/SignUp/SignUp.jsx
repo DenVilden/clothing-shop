@@ -26,7 +26,7 @@ const SignUp = ({ signUpStart }) => {
 
   const handleChange = evt => {
     const { name, value } = evt.target;
-    setCredentials(...userCredentials, { [name]: value });
+    setCredentials({ ...userCredentials, [name]: value });
   };
 
   return (
