@@ -18,6 +18,13 @@ const CollectionPage = ({ collection: { title, items } }) => (
   </CollectionPageContainer>
 );
 
+CollectionPage.defaultProps = {
+  collection: {
+    items: [],
+    title: '',
+  },
+};
+
 CollectionPage.propTypes = {
   collection: PropTypes.shape({
     id: PropTypes.string,
@@ -31,7 +38,7 @@ CollectionPage.propTypes = {
         price: PropTypes.number,
       })
     ),
-  }).isRequired,
+  }),
 };
 
 export default CollectionPage;
