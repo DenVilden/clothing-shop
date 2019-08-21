@@ -66,6 +66,10 @@ export const convertCollectionsSnapshotToMap = collections => {
   }, {});
 };
 
+export const convertDirectorySnapshotToMap = directory => {
+  return directory.docs.map(doc => doc.data());
+};
+
 export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
 

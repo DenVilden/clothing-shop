@@ -6,7 +6,7 @@ import {
   OptionsContainer,
   OptionLink,
 } from './Header.styles';
-import { ReactComponent as Logo } from '../../logo.svg';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 import CartIcon from '../CartIcon/CartIcon.container';
 
 const CartDropdown = lazy(() =>

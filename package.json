@@ -43,7 +43,8 @@
     "eject": "react-scripts eject",
     "server": "nodemon -r dotenv/config server/server.js",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "lint": "eslint . --ext .jsx --ext .js"
   },
   "eslintConfig": {
     "extends": [

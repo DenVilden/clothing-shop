@@ -11,7 +11,7 @@ import Header from '../../components/Header/Header.container';
 import Spinner from '../../components/Spinner/Spinner';
 import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 
-const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage.container'));
 const Shop = lazy(() => import('../Shop/Shop.container'));
 const CheckoutPage = lazy(() =>
   import('../../pages/CheckoutPage/CheckoutPage.container')

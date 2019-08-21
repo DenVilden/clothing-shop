@@ -1,48 +1,26 @@
-import hats from '../assets/img/hats.webp';
-import jackets from '../assets/img/jackets.webp';
-import sneakers from '../assets/img/sneakers.webp';
-import womens from '../assets/img/womens.webp';
-import men from '../assets/img/men.webp';
+import {
+  FETCH_DIRECTORY_START,
+  FETCH_DIRECTORY_SUCCESS,
+  FETCH_DIRECTORY_FAILURE,
+} from '../constants/directory.types';
 
 const initialState = {
-  sections: [
-    {
-      title: 'hats',
-      imageUrl: hats,
-      id: 1,
-      linkUrl: 'shop/hats',
-    },
-    {
-      title: 'jackets',
-      imageUrl: jackets,
-      id: 2,
-      linkUrl: 'shop/jackets',
-    },
-    {
-      title: 'sneakers',
-      imageUrl: sneakers,
-      id: 3,
-      linkUrl: 'shop/sneakers',
-    },
-    {
-      title: 'womens',
-      imageUrl: womens,
-      size: 'large',
-      id: 4,
-      linkUrl: 'shop/womens',
-    },
-    {
-      title: 'mens',
-      imageUrl: men,
-      size: 'large',
-      id: 5,
-      linkUrl: 'shop/mens',
-    },
-  ],
+  sections: [],
+  isFetching: false,
+  errorMessage: '',
 };
 
-export default (state = initialState, { type }) => {
+export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case FETCH_DIRECTORY_START:
+      return { ...state, isFetching: true };
+
+    case FETCH_DIRECTORY_SUCCESS:
+      return { ...state, isFetching: false, sections: payload };
+
+    case FETCH_DIRECTORY_FAILURE:
+      return { ...state, isFetching: false, errorMessage: payload };
+
     default:
       return state;
   }

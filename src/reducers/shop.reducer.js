@@ -5,7 +5,7 @@ import {
 } from '../constants/shop.types';
 
 const initialState = {
-  collections: null,
+  collections: [],
   isFetching: false,
   errorMessage: '',
 };

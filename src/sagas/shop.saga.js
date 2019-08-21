@@ -9,7 +9,7 @@ import {
 function* fetchCollectionsAsync() {
   try {
     const collectionRef = firestore.collection('collections');
-    const snapshot = yield collectionRef.get();
+    const snapshot = yield collectionRef.orderBy('items').get();
     const collectionsMap = yield call(
       convertCollectionsSnapshotToMap,
       snapshot

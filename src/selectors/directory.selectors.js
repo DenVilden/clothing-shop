@@ -7,3 +7,8 @@ export const selectDirectorySections = createSelector(
   selectDirectory,
   directory => directory.sections
 );
+
+export const selectIsDirectoryFetching = createSelector(
+  selectDirectory,
+  directory => directory.isFetching
+);

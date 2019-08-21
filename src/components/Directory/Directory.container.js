@@ -1,10 +1,19 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import Directory from './Directory';
-import { selectDirectorySections } from '../../selectors/directory.selectors';
+import {
+  selectDirectorySections,
+  selectIsDirectoryFetching,
+} from '../../selectors/directory.selectors';
+import WithSpinner from '../WithSpinner/WithSpinner';
 
 const mapStateToProps = createStructuredSelector({
+  loading: selectIsDirectoryFetching,
   sections: selectDirectorySections,
 });
 
-export default connect(mapStateToProps)(Directory);
+export default compose(
+  connect(mapStateToProps),
+  WithSpinner
+)(Directory);
