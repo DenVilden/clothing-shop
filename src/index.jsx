@@ -1,18 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store/store';
 import App from './routes/App/App.container';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
+const ReduxApp = AppComponent => (
   <Provider store={store}>
     <PersistGate persistor={persistor}>
-      <App />
+      <AppComponent />
     </PersistGate>
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );
+
+render(ReduxApp(App), document.getElementById('root'));
 
 serviceWorker.register();
