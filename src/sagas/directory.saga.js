@@ -1,25 +1,24 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
-import { FETCH_DIRECTORY_START } from '../constants/directory.types';
-import { firestore, convertDirectorySnapshotToMap } from '../api/firebase';
+import { FETCH_SECTIONS_START } from '../constants/directory.types';
+import { firestore, convertSectionsSnapshotToMap } from '../api/firebase';
 import {
-  fetchDirectorySuccessAction,
-  fetchDirectoryFailureAction,
+  fetchSectionsSuccessAction,
+  fetchSectionsFailureAction,
 } from '../actions/directory.actions';
 
 function* fetchDirectoryAsync() {
   try {
-    const directoryRef = firestore.collection('directory');
-    const snapshot = yield directoryRef.orderBy('id').get();
-
-    const directoryMap = yield call(convertDirectorySnapshotToMap, snapshot);
-    yield put(fetchDirectorySuccessAction(directoryMap));
+    const sectionsRef = firestore.collection('sections');
+    const snapshot = yield sectionsRef.orderBy('id').get();
+    const sectionsMap = yield call(convertSectionsSnapshotToMap, snapshot);
+    yield put(fetchSectionsSuccessAction(sectionsMap));
   } catch (error) {
-    yield put(fetchDirectoryFailureAction(error.message));
+    yield put(fetchSectionsFailureAction(error.message));
   }
 }
 
 function* fetchDirectoryStart() {
-  yield takeLatest(FETCH_DIRECTORY_START, fetchDirectoryAsync);
+  yield takeLatest(FETCH_SECTIONS_START, fetchDirectoryAsync);
 }
 
 export default function* directorySaga() {

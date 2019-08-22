@@ -4,16 +4,16 @@ import {
   FETCH_COLLECTIONS_FAILURE,
 } from '../constants/shop.types';
 
-export const fetchCollectionStartAction = () => ({
+export const fetchCollectionsStartAction = () => ({
   type: FETCH_COLLECTIONS_START,
 });
 
-export const fetchCollectionSuccessAction = collectionsMap => ({
+export const fetchCollectionsSuccessAction = collectionsMap => ({
   type: FETCH_COLLECTIONS_SUCCESS,
   payload: collectionsMap,
 });
 
-export const fetchCollectionFailureAction = errorMessage => ({
+export const fetchCollectionsFailureAction = errorMessage => ({
   type: FETCH_COLLECTIONS_FAILURE,
   payload: errorMessage,
 });

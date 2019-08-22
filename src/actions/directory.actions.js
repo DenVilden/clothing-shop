@@ -1,19 +1,19 @@
 import {
-  FETCH_DIRECTORY_START,
-  FETCH_DIRECTORY_SUCCESS,
-  FETCH_DIRECTORY_FAILURE,
+  FETCH_SECTIONS_START,
+  FETCH_SECTIONS_SUCCESS,
+  FETCH_SECTIONS_FAILURE,
 } from '../constants/directory.types';
 
-export const fetchDirectoryStartAction = () => ({
-  type: FETCH_DIRECTORY_START,
+export const fetchSectionsStartAction = () => ({
+  type: FETCH_SECTIONS_START,
 });
 
-export const fetchDirectorySuccessAction = directoryMap => ({
-  type: FETCH_DIRECTORY_SUCCESS,
-  payload: directoryMap,
+export const fetchSectionsSuccessAction = sectionsMap => ({
+  type: FETCH_SECTIONS_SUCCESS,
+  payload: sectionsMap,
 });
 
-export const fetchDirectoryFailureAction = errorMessage => ({
-  type: FETCH_DIRECTORY_FAILURE,
+export const fetchSectionsFailureAction = errorMessage => ({
+  type: FETCH_SECTIONS_FAILURE,
   payload: errorMessage,
 });

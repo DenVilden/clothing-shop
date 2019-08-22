@@ -26,9 +26,9 @@ export const signInSuccessAction = user => ({
   payload: user,
 });
 
-export const signInFailureAction = error => ({
+export const signInFailureAction = errorMessage => ({
   type: SIGN_IN_FAILURE,
-  payload: error,
+  payload: errorMessage,
 });
 
 export const checkUserSessionAction = () => ({
@@ -43,9 +43,9 @@ export const signOutSuccessAction = () => ({
   type: SIGN_OUT_SUCCESS,
 });
 
-export const signOutFailureAction = error => ({
+export const signOutFailureAction = errorMessage => ({
   type: SIGN_OUT_FAILURE,
-  payload: error,
+  payload: errorMessage,
 });
 
 export const signUpStartAction = userCredentials => ({
@@ -57,7 +57,7 @@ export const signUpSuccessAction = () => ({
   type: SIGN_UP_SUCCESS,
 });
 
-export const signUpFailureAction = error => ({
+export const signUpFailureAction = errorMessage => ({
   type: SIGN_UP_FAILURE,
-  payload: error,
+  payload: errorMessage,
 });

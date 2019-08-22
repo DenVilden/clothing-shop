@@ -1,7 +1,7 @@
 import {
-  FETCH_DIRECTORY_START,
-  FETCH_DIRECTORY_SUCCESS,
-  FETCH_DIRECTORY_FAILURE,
+  FETCH_SECTIONS_START,
+  FETCH_SECTIONS_SUCCESS,
+  FETCH_SECTIONS_FAILURE,
 } from '../constants/directory.types';
 
 const initialState = {
@@ -12,13 +12,13 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case FETCH_DIRECTORY_START:
+    case FETCH_SECTIONS_START:
       return { ...state, isFetching: true };
 
-    case FETCH_DIRECTORY_SUCCESS:
+    case FETCH_SECTIONS_SUCCESS:
       return { ...state, isFetching: false, sections: payload };
 
-    case FETCH_DIRECTORY_FAILURE:
+    case FETCH_SECTIONS_FAILURE:
       return { ...state, isFetching: false, errorMessage: payload };
 
     default:

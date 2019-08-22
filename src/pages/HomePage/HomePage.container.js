@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import HomePage from './HomePage';
-import { fetchDirectoryStartAction } from '../../actions/directory.actions';
+import { fetchSectionsStartAction } from '../../actions/directory.actions';
 
 const mapDispatchToProps = {
-  fetchDirectoryStart: () => fetchDirectoryStartAction(),
+  fetchDirectoryStart: () => fetchSectionsStartAction(),
 };
 
 export default connect(

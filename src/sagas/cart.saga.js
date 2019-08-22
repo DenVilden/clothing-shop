@@ -1,9 +1,9 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { SIGN_OUT_SUCCESS } from '../constants/user.types';
-import { clearCart } from '../actions/cart.actions';
+import { clearCartAction } from '../actions/cart.actions';
 
 function* clearCartOnSignOut() {
-  yield put(clearCart());
+  yield put(clearCartAction());
 }
 
 function* onSignOutSuccess() {

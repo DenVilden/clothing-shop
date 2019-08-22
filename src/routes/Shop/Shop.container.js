@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import Shop from './Shop';
-import { fetchCollectionStartAction } from '../../actions/shop.actions';
+import { fetchCollectionsStartAction } from '../../actions/shop.actions';
 
 const mapDispatchToProps = {
-  fetchCollectionStart: () => fetchCollectionStartAction(),
+  fetchCollectionStart: () => fetchCollectionsStartAction(),
 };
 
 export default connect(
