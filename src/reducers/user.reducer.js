@@ -9,22 +9,22 @@ import {
 
 const initialState = {
   currentUser: null,
-  error: null,
+  errorMessage: null,
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case SIGN_IN_SUCCESS:
-      return { ...state, currentUser: payload, error: null };
+      return { ...state, currentUser: payload, errorMessage: null };
 
     case SIGN_OUT_SUCCESS:
     case SIGN_UP_SUCCESS:
-      return { ...state, currentUser: null, error: null };
+      return { ...state, currentUser: null, errorMessage: null };
 
     case SIGN_IN_FAILURE:
     case SIGN_OUT_FAILURE:
     case SIGN_UP_FAILURE:
-      return { ...state, error: payload };
+      return { ...state, errorMessage: payload };
 
     default:
       return state;

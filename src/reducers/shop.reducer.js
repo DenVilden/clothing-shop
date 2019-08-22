@@ -7,16 +7,21 @@ import {
 const initialState = {
   collections: [],
   isFetching: false,
-  errorMessage: '',
+  errorMessage: null,
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_COLLECTIONS_START:
-      return { ...state, isFetching: true };
+      return { ...state, isFetching: true, errorMessage: null };
 
     case FETCH_COLLECTIONS_SUCCESS:
-      return { ...state, isFetching: false, collections: payload };
+      return {
+        ...state,
+        isFetching: false,
+        collections: payload,
+        errorMessage: null,
+      };
 
     case FETCH_COLLECTIONS_FAILURE:
       return { ...state, isFetching: false, errorMessage: payload };

@@ -7,16 +7,21 @@ import {
 const initialState = {
   sections: [],
   isFetching: false,
-  errorMessage: '',
+  errorMessage: null,
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_SECTIONS_START:
-      return { ...state, isFetching: true };
+      return { ...state, isFetching: true, errorMessage: null };
 
     case FETCH_SECTIONS_SUCCESS:
-      return { ...state, isFetching: false, sections: payload };
+      return {
+        ...state,
+        isFetching: false,
+        sections: payload,
+        errorMessage: null,
+      };
 
     case FETCH_SECTIONS_FAILURE:
       return { ...state, isFetching: false, errorMessage: payload };
