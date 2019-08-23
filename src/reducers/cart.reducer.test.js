@@ -18,12 +18,12 @@ describe('cart reducer', () => {
     expect(reducer).toEqual(initialState);
   });
 
-  it('should handle toggle cart hidden action', () => {
+  it('should handle toggleCartHidden action', () => {
     const reducer = cartReducer(initialState, { type: TOGGLE_CART_HIDDEN });
     expect(reducer).toEqual({ ...initialState, hidden: false });
   });
 
-  it('should handle add item action', () => {
+  it('should add new item to a cart', () => {
     const mockItem = { id: 1 };
 
     const reducer = cartReducer(initialState, {
@@ -56,7 +56,7 @@ describe('cart reducer', () => {
     });
   });
 
-  it('should decrease quantity of matching item by 1', () => {
+  it('should decrease quantity of matching item by 1 if quantity is > 1', () => {
     const mockItem = { id: 1, quantity: 3 };
 
     const mockState = {
@@ -75,7 +75,26 @@ describe('cart reducer', () => {
     });
   });
 
-  it('should handle clear item from cart action', () => {
+  it('should remove matching item if quantity is 1', () => {
+    const mockItem = { id: 1, quantity: 1 };
+
+    const mockState = {
+      ...initialState,
+      cartItems: [mockItem, { id: 2, quantity: 1 }],
+    };
+
+    const reducer = cartReducer(mockState, {
+      type: REMOVE_ITEM,
+      payload: mockItem,
+    });
+
+    expect(reducer).toEqual({
+      ...initialState,
+      cartItems: [{ id: 2, quantity: 1 }],
+    });
+  });
+
+  it('should remove requested item from a cart', () => {
     const mockItem = { id: 1, quantity: 3 };
 
     const mockState = {
@@ -94,7 +113,7 @@ describe('cart reducer', () => {
     });
   });
 
-  it('should handle clear cart action', () => {
+  it('should clear cart completely', () => {
     const mockState = {
       ...initialState,
       cartItems: [{ id: 1, quantity: 3 }, { id: 2, quantity: 1 }],

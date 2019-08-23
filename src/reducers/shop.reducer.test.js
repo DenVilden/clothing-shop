@@ -17,7 +17,7 @@ describe('shop reducer', () => {
     expect(reducer).toEqual(initialState);
   });
 
-  it('should set isFetching to true when fetch collections start fires', () => {
+  it('should set isFetching to true when fetchCollectionsStart fires', () => {
     const reducer = shopReducer(initialState, {
       type: FETCH_COLLECTIONS_START,
     });
@@ -27,7 +27,7 @@ describe('shop reducer', () => {
     });
   });
 
-  it('should set isFetching to false when fetch collections success fires', () => {
+  it('should set isFetching to false when fetchCollectionsSuccess fires', () => {
     const mockItems = { hats: { id: '34123' }, sneakers: { id: '4322' } };
 
     const reducer = shopReducer(initialState, {

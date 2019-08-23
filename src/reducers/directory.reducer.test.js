@@ -17,7 +17,7 @@ describe('directory reducer', () => {
     expect(reducer).toEqual(initialState);
   });
 
-  it('should set isFetching to true when fetch sections start fires', () => {
+  it('should set isFetching to true when fetchSectionsStart fires', () => {
     const reducer = directoryReducer(initialState, {
       type: FETCH_SECTIONS_START,
     });
@@ -27,7 +27,7 @@ describe('directory reducer', () => {
     });
   });
 
-  it('should set isFetching to false when fetch sections success fires', () => {
+  it('should set isFetching to false when fetchSectionsSuccess fires', () => {
     const mockItems = [{ id: 1 }, { id: 2 }];
 
     const reducer = directoryReducer(initialState, {

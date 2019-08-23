@@ -20,6 +20,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "react-stripe-checkout": "^2.6.3",
+    "react-test-renderer": "^16.9.0",
     "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.10.0",
@@ -45,6 +46,7 @@
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/server.js",
     "lint": "eslint . --ext .jsx --ext .js",
+    "lint:fix": "yarn lint --fix",
     "coverage": "yarn test --coverage --watchAll=false"
   },
   "eslintConfig": {

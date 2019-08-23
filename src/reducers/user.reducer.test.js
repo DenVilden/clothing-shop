@@ -18,7 +18,7 @@ describe('user reducer', () => {
     expect(reducer).toEqual(initialState);
   });
 
-  it('should handle sign in success action', () => {
+  it('should handle signInSuccess action', () => {
     const mockUser = {
       id: 'hfd234',
       email: '123@mail.com',
@@ -33,7 +33,7 @@ describe('user reducer', () => {
     expect(reducer).toEqual({ ...initialState, currentUser: mockUser });
   });
 
-  it('should handle sign out success action', () => {
+  it('should handle signOutSuccess action', () => {
     const reducer = userReducer(initialState, {
       type: SIGN_OUT_SUCCESS,
     });
