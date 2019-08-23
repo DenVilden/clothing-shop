@@ -2,20 +2,20 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Directory from '../../components/Directory/Directory.container';
 
-const HomePage = ({ fetchDirectoryStart }) => {
+const HomePage = ({ fetchSectionsStart }) => {
   useEffect(() => {
-    fetchDirectoryStart();
-  }, [fetchDirectoryStart]);
+    fetchSectionsStart();
+  }, [fetchSectionsStart]);
 
   return (
-    <main>
+    <>
       <Directory />
-    </main>
+    </>
   );
 };
 
 HomePage.propTypes = {
-  fetchDirectoryStart: PropTypes.func.isRequired,
+  fetchSectionsStart: PropTypes.func.isRequired,
 };
 
 export default HomePage;

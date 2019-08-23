@@ -9,22 +9,29 @@ import {
   fetchCollectionsFailureAction,
 } from './shop.actions';
 
-it('should setup fetch collections start action object', () => {
-  const action = fetchCollectionsStartAction();
-  expect(action).toEqual({ type: FETCH_COLLECTIONS_START });
-});
-
-it('should setup fetch collections success action object', () => {
-  const mockCollectionsMap = { hats: { id: 1 } };
-
-  const action = fetchCollectionsSuccessAction(mockCollectionsMap);
-  expect(action).toEqual({
-    type: FETCH_COLLECTIONS_SUCCESS,
-    payload: mockCollectionsMap,
+describe('fetch collections actions', () => {
+  it('should setup fetchCollectionsStart', () => {
+    const action = fetchCollectionsStartAction();
+    expect(action).toEqual({ type: FETCH_COLLECTIONS_START });
   });
-});
 
-it('should setup fetch collections failure action object', () => {
-  const action = fetchCollectionsFailureAction('error');
-  expect(action).toEqual({ type: FETCH_COLLECTIONS_FAILURE, payload: 'error' });
+  it('should setup fetchCollectionsSuccess', () => {
+    const mockCollectionsMap = { hats: { id: 1 } };
+
+    const action = fetchCollectionsSuccessAction(mockCollectionsMap);
+    expect(action).toEqual({
+      type: FETCH_COLLECTIONS_SUCCESS,
+      payload: mockCollectionsMap,
+    });
+  });
+
+  it('should setup fetchCollectionsFailure', () => {
+    const mockError = 'error';
+
+    const action = fetchCollectionsFailureAction(mockError);
+    expect(action).toEqual({
+      type: FETCH_COLLECTIONS_FAILURE,
+      payload: mockError,
+    });
+  });
 });

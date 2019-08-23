@@ -9,22 +9,29 @@ import {
   fetchSectionsFailureAction,
 } from './directory.actions';
 
-it('should setup fetch sections start action object', () => {
-  const action = fetchSectionsStartAction();
-  expect(action).toEqual({ type: FETCH_SECTIONS_START });
-});
-
-it('should setup fetch sections success action object', () => {
-  const mockSectionsMap = [{ id: 1, title: 'hats' }];
-
-  const action = fetchSectionsSuccessAction(mockSectionsMap);
-  expect(action).toEqual({
-    type: FETCH_SECTIONS_SUCCESS,
-    payload: mockSectionsMap,
+describe('fetch sections actions', () => {
+  it('should setup fetchSectionsStart', () => {
+    const action = fetchSectionsStartAction();
+    expect(action).toEqual({ type: FETCH_SECTIONS_START });
   });
-});
 
-it('should setup fetch sections failure action object', () => {
-  const action = fetchSectionsFailureAction('error');
-  expect(action).toEqual({ type: FETCH_SECTIONS_FAILURE, payload: 'error' });
+  it('should setup fetchSectionsSuccess', () => {
+    const mockSectionsMap = [{ id: 1, title: 'hats' }];
+
+    const action = fetchSectionsSuccessAction(mockSectionsMap);
+    expect(action).toEqual({
+      type: FETCH_SECTIONS_SUCCESS,
+      payload: mockSectionsMap,
+    });
+  });
+
+  it('should setup fetchSectionsFailure', () => {
+    const mockError = 'error';
+
+    const action = fetchSectionsFailureAction(mockError);
+    expect(action).toEqual({
+      type: FETCH_SECTIONS_FAILURE,
+      payload: mockError,
+    });
+  });
 });

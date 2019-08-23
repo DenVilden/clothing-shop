@@ -5,11 +5,11 @@ import {
   REMOVE_ITEM,
   CLEAR_CART,
 } from '../constants/cart.types';
-import { addItemToCard, removeItemFromCard } from '../utils/cart.utils';
+import { addItemToCard, removeItemFromCard } from './cart.reducer.utils';
 
 const initialState = {
-  hidden: true,
   cartItems: [],
+  hidden: true,
 };
 
 export default (state = initialState, { type, payload }) => {

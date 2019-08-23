@@ -13,33 +13,35 @@ import {
   clearCartAction,
 } from './cart.actions';
 
-it('should setup toggle hidden action object', () => {
-  const action = toggleCartHiddenAction();
-  expect(action).toEqual({ type: TOGGLE_CART_HIDDEN });
-});
+describe('cart actions', () => {
+  it('should setup toggleCartHidden', () => {
+    const action = toggleCartHiddenAction();
+    expect(action).toEqual({ type: TOGGLE_CART_HIDDEN });
+  });
 
-it('should setup add item action object', () => {
-  const mockItem = { id: 1 };
+  it('should setup addItem', () => {
+    const mockItem = { id: 1 };
 
-  const action = addItemAction(mockItem);
-  expect(action).toEqual({ type: ADD_ITEM, payload: mockItem });
-});
+    const action = addItemAction(mockItem);
+    expect(action).toEqual({ type: ADD_ITEM, payload: mockItem });
+  });
 
-it('should setup remove item action object', () => {
-  const mockItem = { id: 1 };
+  it('should setup removeItem', () => {
+    const mockItem = { id: 1 };
 
-  const action = removeItemAction(mockItem);
-  expect(action).toEqual({ type: REMOVE_ITEM, payload: mockItem });
-});
+    const action = removeItemAction(mockItem);
+    expect(action).toEqual({ type: REMOVE_ITEM, payload: mockItem });
+  });
 
-it('should setup clear item from cart action object', () => {
-  const mockItem = { id: 1 };
+  it('should setup clearItemFromCart', () => {
+    const mockItem = { id: 1 };
 
-  const action = clearItemFromCartAction(mockItem);
-  expect(action).toEqual({ type: CLEAR_ITEM_FROM_CART, payload: mockItem });
-});
+    const action = clearItemFromCartAction(mockItem);
+    expect(action).toEqual({ type: CLEAR_ITEM_FROM_CART, payload: mockItem });
+  });
 
-it('should setup clear cart action object', () => {
-  const action = clearCartAction();
-  expect(action).toEqual({ type: CLEAR_CART });
+  it('should setup clearCart', () => {
+    const action = clearCartAction();
+    expect(action).toEqual({ type: CLEAR_CART });
+  });
 });

@@ -3,7 +3,7 @@ import HomePage from './HomePage';
 import { fetchSectionsStartAction } from '../../actions/directory.actions';
 
 const mapDispatchToProps = {
-  fetchDirectoryStart: () => fetchSectionsStartAction(),
+  fetchSectionsStart: () => fetchSectionsStartAction(),
 };
 
 export default connect(

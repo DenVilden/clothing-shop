@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import {
   selectIsCollectionsLoaded,
   selectShopCollection,
-} from '../../selectors/shop.selector';
+} from '../../selectors/shop.selectors';
 import WithSpinner from '../../components/WithSpinner/WithSpinner';
 import CollectionPage from './CollectionPage';
 
