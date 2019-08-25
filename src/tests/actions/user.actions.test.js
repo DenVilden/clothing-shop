@@ -67,7 +67,7 @@ describe('sign in actions', () => {
   });
 
   it('should setup setupEmailSignInStart', () => {
-    const mockUserCredentials = { email: '123@mail.com', password: 123 };
+    const mockUserCredentials = { email: '123@mail.com', password: '123' };
 
     const action = emailSignInStartAction(mockUserCredentials);
     expect(action).toEqual({

@@ -2,6 +2,7 @@ import {
   selectShopCollectionsForPreview,
   selectShopCollection,
   selectIsCollectionsLoaded,
+  selectIsCollectionFetching,
 } from '../../selectors/shop.selectors';
 
 describe('selectShopCollectionsForPreview selector', () => {
@@ -56,6 +57,16 @@ describe('selectIsCollectionsLoaded selector', () => {
     };
 
     const selector = selectIsCollectionsLoaded(mockState);
+    expect(selector).toBe(false);
+  });
+});
+
+describe('selectIsCollectionFetching selector', () => {
+  it('should return isFetching boolean', () => {
+    const mockState = { shop: { isFetching: false } };
+
+    const selector = selectIsCollectionFetching(mockState);
+
     expect(selector).toBe(false);
   });
 });

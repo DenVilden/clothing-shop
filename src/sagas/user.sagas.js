@@ -21,51 +21,51 @@ import {
   signUpFailureAction,
 } from '../actions/user.actions';
 
-function* getSnapshotFromUserAuth(userAuth, additionalData) {
+export function* getSnapshotFromUserAuthSaga(userAuth, additionalData) {
   try {
     const userRef = yield call(
       createUserProfileDocument,
       userAuth,
       additionalData
     );
-    const userSnapshot = yield userRef.get();
-    yield put(
-      signInSuccessAction({ id: userSnapshot.id, ...userSnapshot.data() })
-    );
+
+    yield put(signInSuccessAction(userRef));
   } catch (error) {
     yield put(signInFailureAction(error.message));
   }
 }
 
-function* signInWithGoogleSaga() {
+export function* signInWithGoogleSaga() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
-    yield getSnapshotFromUserAuth(user);
+
+    yield getSnapshotFromUserAuthSaga(user);
   } catch (error) {
     yield put(signInFailureAction(error.message));
   }
 }
 
-function* signInWithEmailSaga({ payload: { email, password } }) {
+export function* signInWithEmailSaga({ payload: { email, password } }) {
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
-    yield getSnapshotFromUserAuth(user);
+
+    yield getSnapshotFromUserAuthSaga(user);
   } catch (error) {
     yield put(signInFailureAction(error.message));
   }
 }
 
-function* isUserAuthenticatedSaga() {
+export function* isUserAuthenticatedSaga() {
   try {
     const user = yield getCurrentUser();
-    if (!user) return;
-    yield getSnapshotFromUserAuth(user);
+
+    yield getSnapshotFromUserAuthSaga(user);
   } catch (error) {
     yield put(signInFailureAction(error.message));
   }
 }
 
-function* signOutSaga() {
+export function* signOutSaga() {
   try {
     yield auth.signOut();
     yield put(signOutSuccessAction());
@@ -74,11 +74,12 @@ function* signOutSaga() {
   }
 }
 
-function* signUpSaga({ payload: { email, password, displayName } }) {
+export function* signUpSaga({ payload: { email, password, displayName } }) {
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+
     yield put(signUpSuccessAction());
-    yield getSnapshotFromUserAuth(user, { displayName });
+    yield getSnapshotFromUserAuthSaga(user, { displayName });
   } catch (error) {
     yield put(signUpFailureAction(error.message));
   }

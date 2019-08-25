@@ -18,10 +18,10 @@ describe('shopSagas', () => {
   });
 });
 
-describe('fetchCollections saga', () => {
+describe('fetchCollectionsSaga', () => {
   const gen = fetchCollectionsSaga();
 
-  it('should return firestore collection', () => {
+  it('should call firestore collection', () => {
     const getCollection = jest.spyOn(firestore, 'collection');
 
     gen.next();

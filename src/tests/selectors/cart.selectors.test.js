@@ -1,7 +1,18 @@
 import {
+  selectCartHidden,
   selectCartItemsCount,
   selectCartTotal,
 } from '../../selectors/cart.selectors';
+
+describe('selectCartHidden selector', () => {
+  it('should return hidden boolean', () => {
+    const mockState = { cart: { hidden: true } };
+
+    const selector = selectCartHidden(mockState);
+
+    expect(selector).toBe(true);
+  });
+});
 
 describe('selectCartItemsCount selector', () => {
   it('should return total number of items in cart', () => {
