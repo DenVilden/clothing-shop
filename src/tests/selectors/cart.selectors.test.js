@@ -1,16 +1,19 @@
-import { selectCartItemsCount, selectCartTotal } from './cart.selectors';
+import {
+  selectCartItemsCount,
+  selectCartTotal,
+} from '../../selectors/cart.selectors';
 
 describe('selectCartItemsCount selector', () => {
-  it('should calculate total items in a cart', () => {
+  it('should return total number of items in cart', () => {
     const mockState = {
-      cart: { cartItems: [{ id: 1, quantity: 4 }, { id: 2, quantity: 5 }] },
+      cart: { cartItems: [{ quantity: 4 }, { quantity: 5 }] },
     };
 
     const selector = selectCartItemsCount(mockState);
     expect(selector).toBe(9);
   });
 
-  it('should return 0 if there is no items in a cart', () => {
+  it('should return 0 if there is no items in cart', () => {
     const mockState = { cart: { cartItems: [] } };
 
     const selector = selectCartItemsCount(mockState);
@@ -19,13 +22,10 @@ describe('selectCartItemsCount selector', () => {
 });
 
 describe('selectCartTotal selector', () => {
-  it('should calculate total price of items in a cart', () => {
+  it('should return total price of all items in cart', () => {
     const mockState = {
       cart: {
-        cartItems: [
-          { id: 1, quantity: 4, price: 100 },
-          { id: 2, quantity: 5, price: 50 },
-        ],
+        cartItems: [{ quantity: 4, price: 100 }, { quantity: 5, price: 50 }],
       },
     };
 
@@ -33,7 +33,7 @@ describe('selectCartTotal selector', () => {
     expect(selector).toBe(650);
   });
 
-  it('should return 0 if there is no items in a cart', () => {
+  it('should return 0 if there is no items in cart', () => {
     const mockState = { cart: { cartItems: [] } };
 
     const selector = selectCartTotal(mockState);

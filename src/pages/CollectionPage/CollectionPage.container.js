@@ -8,7 +8,7 @@ import WithSpinner from '../../components/WithSpinner/WithSpinner';
 import CollectionPage from './CollectionPage';
 
 const mapStateToProps = (state, props) => ({
-  loading: !selectIsCollectionsLoaded(state),
+  loading: selectIsCollectionsLoaded(state),
   collection: selectShopCollection(props.match.params.collectionId)(state),
 });
 

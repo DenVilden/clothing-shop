@@ -2,10 +2,10 @@ import {
   FETCH_SECTIONS_START,
   FETCH_SECTIONS_SUCCESS,
   FETCH_SECTIONS_FAILURE,
-} from '../constants/directory.types';
-import directoryReducer from './directory.reducer';
+} from '../../constants/directory.types';
+import directoryReducer from '../../reducers/directory.reducer';
 
-describe('directory reducer', () => {
+describe('directoryReducer', () => {
   const initialState = {
     sections: [],
     isFetching: false,
@@ -28,7 +28,7 @@ describe('directory reducer', () => {
   });
 
   it('should set isFetching to false when fetchSectionsSuccess fires', () => {
-    const mockItems = [{ id: 1 }, { id: 2 }];
+    const mockItems = [{ title: 'hats' }, { title: 'jackets' }];
 
     const reducer = directoryReducer(initialState, {
       type: FETCH_SECTIONS_SUCCESS,
@@ -42,7 +42,7 @@ describe('directory reducer', () => {
     });
   });
 
-  it('should set isFetching to false if error happens', () => {
+  it('should set error and isFetching to false if error happens', () => {
     const mockError = 'error';
 
     const reducer = directoryReducer(initialState, {

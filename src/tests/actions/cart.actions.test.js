@@ -4,14 +4,14 @@ import {
   REMOVE_ITEM,
   CLEAR_ITEM_FROM_CART,
   CLEAR_CART,
-} from '../constants/cart.types';
+} from '../../constants/cart.types';
 import {
   toggleCartHiddenAction,
   addItemAction,
   removeItemAction,
   clearItemFromCartAction,
   clearCartAction,
-} from './cart.actions';
+} from '../../actions/cart.actions';
 
 describe('cart actions', () => {
   it('should setup toggleCartHidden', () => {

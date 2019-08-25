@@ -2,10 +2,10 @@ import {
   FETCH_COLLECTIONS_START,
   FETCH_COLLECTIONS_SUCCESS,
   FETCH_COLLECTIONS_FAILURE,
-} from '../constants/shop.types';
-import shopReducer from './shop.reducer';
+} from '../../constants/shop.types';
+import shopReducer from '../../reducers/shop.reducer';
 
-describe('shop reducer', () => {
+describe('shopReducer', () => {
   const initialState = {
     collections: {},
     isFetching: false,
@@ -28,7 +28,7 @@ describe('shop reducer', () => {
   });
 
   it('should set isFetching to false when fetchCollectionsSuccess fires', () => {
-    const mockItems = { hats: { id: '34123' }, sneakers: { id: '4322' } };
+    const mockItems = { hats: { id: 34123 }, sneakers: { id: 4322 } };
 
     const reducer = shopReducer(initialState, {
       type: FETCH_COLLECTIONS_SUCCESS,
@@ -42,7 +42,7 @@ describe('shop reducer', () => {
     });
   });
 
-  it('should set isFetching to false if error happens', () => {
+  it('should set error and isFetching to false if error happens', () => {
     const mockError = 'error';
 
     const reducer = shopReducer(initialState, {

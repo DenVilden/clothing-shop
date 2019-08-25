@@ -14,7 +14,11 @@ const CollectionPreview = ({
   collection: { title, items, routeName },
 }) => (
   <CollectionPreviewContainer>
-    <TitleContainer onClick={() => history.push(`${match.url}/${routeName}`)}>
+    <TitleContainer
+      onClick={() => history.push(`${match.url}/${routeName}`)}
+      role="button"
+      tabIndex="0"
+    >
       {title}
     </TitleContainer>
     <PreviewContainer>

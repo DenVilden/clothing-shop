@@ -37,7 +37,7 @@ function* getSnapshotFromUserAuth(userAuth, additionalData) {
   }
 }
 
-function* signInWithGoogle() {
+function* signInWithGoogleSaga() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
     yield getSnapshotFromUserAuth(user);
@@ -46,7 +46,7 @@ function* signInWithGoogle() {
   }
 }
 
-function* signInWithEmail({ payload: { email, password } }) {
+function* signInWithEmailSaga({ payload: { email, password } }) {
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserAuth(user);
@@ -55,7 +55,7 @@ function* signInWithEmail({ payload: { email, password } }) {
   }
 }
 
-function* isUserAuthenticated() {
+function* isUserAuthenticatedSaga() {
   try {
     const user = yield getCurrentUser();
     if (!user) return;
@@ -65,7 +65,7 @@ function* isUserAuthenticated() {
   }
 }
 
-function* signOut() {
+function* signOutSaga() {
   try {
     yield auth.signOut();
     yield put(signOutSuccessAction());
@@ -74,7 +74,7 @@ function* signOut() {
   }
 }
 
-function* signUp({ payload: { email, password, displayName } }) {
+function* signUpSaga({ payload: { email, password, displayName } }) {
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     yield put(signUpSuccessAction());
@@ -84,32 +84,12 @@ function* signUp({ payload: { email, password, displayName } }) {
   }
 }
 
-function* onGoogleSignInStart() {
-  yield takeLatest(GOOGLE_SIGN_IN_START, signInWithGoogle);
-}
-
-function* onEmailSignInStart() {
-  yield takeLatest(EMAIL_SIGN_IN_START, signInWithEmail);
-}
-
-function* onCheckUserSessions() {
-  yield takeLatest(CHECK_USER_SESSION, isUserAuthenticated);
-}
-
-function* onSignOutStart() {
-  yield takeLatest(SIGN_OUT_START, signOut);
-}
-
-function* onSignUpStart() {
-  yield takeLatest(SIGN_UP_START, signUp);
-}
-
-export default function* userSaga() {
+export default function*() {
   yield all([
-    call(onGoogleSignInStart),
-    call(onEmailSignInStart),
-    call(onCheckUserSessions),
-    call(onSignOutStart),
-    call(onSignUpStart),
+    takeLatest(GOOGLE_SIGN_IN_START, signInWithGoogleSaga),
+    takeLatest(EMAIL_SIGN_IN_START, signInWithEmailSaga),
+    takeLatest(CHECK_USER_SESSION, isUserAuthenticatedSaga),
+    takeLatest(SIGN_OUT_START, signOutSaga),
+    takeLatest(SIGN_UP_START, signUpSaga),
   ]);
 }

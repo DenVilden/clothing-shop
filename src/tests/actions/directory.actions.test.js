@@ -2,12 +2,12 @@ import {
   FETCH_SECTIONS_START,
   FETCH_SECTIONS_SUCCESS,
   FETCH_SECTIONS_FAILURE,
-} from '../constants/directory.types';
+} from '../../constants/directory.types';
 import {
   fetchSectionsStartAction,
   fetchSectionsSuccessAction,
   fetchSectionsFailureAction,
-} from './directory.actions';
+} from '../../actions/directory.actions';
 
 describe('fetch sections actions', () => {
   it('should setup fetchSectionsStart', () => {
@@ -16,7 +16,7 @@ describe('fetch sections actions', () => {
   });
 
   it('should setup fetchSectionsSuccess', () => {
-    const mockSectionsMap = [{ id: 1, title: 'hats' }];
+    const mockSectionsMap = [{ title: 'hats' }];
 
     const action = fetchSectionsSuccessAction(mockSectionsMap);
     expect(action).toEqual({

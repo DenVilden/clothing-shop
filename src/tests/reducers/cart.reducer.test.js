@@ -4,10 +4,10 @@ import {
   REMOVE_ITEM,
   CLEAR_ITEM_FROM_CART,
   CLEAR_CART,
-} from '../constants/cart.types';
-import cartReducer from './cart.reducer';
+} from '../../constants/cart.types';
+import cartReducer from '../../reducers/cart.reducer';
 
-describe('cart reducer', () => {
+describe('cartReducer', () => {
   const initialState = {
     cartItems: [],
     hidden: true,
@@ -18,7 +18,7 @@ describe('cart reducer', () => {
     expect(reducer).toEqual(initialState);
   });
 
-  it('should handle toggleCartHidden action', () => {
+  it('should toggle hidden when toggleCartHidden fires', () => {
     const reducer = cartReducer(initialState, { type: TOGGLE_CART_HIDDEN });
     expect(reducer).toEqual({ ...initialState, hidden: false });
   });

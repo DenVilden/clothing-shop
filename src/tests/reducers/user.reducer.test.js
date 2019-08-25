@@ -4,10 +4,10 @@ import {
   SIGN_IN_FAILURE,
   SIGN_UP_FAILURE,
   SIGN_OUT_FAILURE,
-} from '../constants/user.types';
-import userReducer from './user.reducer';
+} from '../../constants/user.types';
+import userReducer from '../../reducers/user.reducer';
 
-describe('user reducer', () => {
+describe('userReducer', () => {
   const initialState = {
     currentUser: null,
     errorMessage: null,
@@ -18,7 +18,7 @@ describe('user reducer', () => {
     expect(reducer).toEqual(initialState);
   });
 
-  it('should handle signInSuccess action', () => {
+  it('should set user data when signInSuccess fires', () => {
     const mockUser = {
       id: 'hfd234',
       email: '123@mail.com',
@@ -33,36 +33,31 @@ describe('user reducer', () => {
     expect(reducer).toEqual({ ...initialState, currentUser: mockUser });
   });
 
-  it('should handle signOutSuccess action', () => {
-    const reducer = userReducer(initialState, {
-      type: SIGN_OUT_SUCCESS,
-    });
+  it('should clear user data when signOutSuccess fires', () => {
+    const reducer = userReducer(initialState, { type: SIGN_OUT_SUCCESS });
     expect(reducer).toEqual(initialState);
   });
 
-  it('should set error message if error happens', () => {
+  it('should set error if error happens', () => {
     const mockError = 'error';
 
-    const signInReducer = userReducer(initialState, {
+    const signIn = userReducer(initialState, {
       type: SIGN_IN_FAILURE,
       payload: mockError,
     });
 
-    const signUpReducer = userReducer(initialState, {
+    const signUp = userReducer(initialState, {
       type: SIGN_UP_FAILURE,
       payload: mockError,
     });
 
-    const signOutReducer = userReducer(initialState, {
+    const signOut = userReducer(initialState, {
       type: SIGN_OUT_FAILURE,
       payload: mockError,
     });
 
-    expect(signInReducer).toEqual({ ...initialState, errorMessage: mockError });
-    expect(signUpReducer).toEqual({ ...initialState, errorMessage: mockError });
-    expect(signOutReducer).toEqual({
-      ...initialState,
-      errorMessage: mockError,
-    });
+    expect(signIn).toEqual({ ...initialState, errorMessage: mockError });
+    expect(signUp).toEqual({ ...initialState, errorMessage: mockError });
+    expect(signOut).toEqual({ ...initialState, errorMessage: mockError });
   });
 });

@@ -6,7 +6,7 @@ import {
   fetchCollectionsFailureAction,
 } from '../actions/shop.actions';
 
-function* fetchCollectionsAsync() {
+export function* fetchCollectionsSaga() {
   try {
     const collectionsRef = firestore.collection('collections');
     const snapshot = yield collectionsRef.orderBy('items').get();
@@ -14,16 +14,13 @@ function* fetchCollectionsAsync() {
       convertCollectionsSnapshotToMap,
       snapshot
     );
+
     yield put(fetchCollectionsSuccessAction(collectionsMap));
   } catch (error) {
     yield put(fetchCollectionsFailureAction(error.message));
   }
 }
 
-function* fetchCollectionsStartAction() {
-  yield takeLatest(FETCH_COLLECTIONS_START, fetchCollectionsAsync);
-}
-
-export default function* shopSaga() {
-  yield all([call(fetchCollectionsStartAction)]);
+export default function*() {
+  yield all([takeLatest(FETCH_COLLECTIONS_START, fetchCollectionsSaga)]);
 }

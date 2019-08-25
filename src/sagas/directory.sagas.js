@@ -6,7 +6,7 @@ import {
   fetchSectionsFailureAction,
 } from '../actions/directory.actions';
 
-function* fetchDirectoryAsync() {
+function* fetchSectionsSaga() {
   try {
     const sectionsRef = firestore.collection('sections');
     const snapshot = yield sectionsRef.orderBy('id').get();
@@ -17,10 +17,6 @@ function* fetchDirectoryAsync() {
   }
 }
 
-function* fetchDirectoryStart() {
-  yield takeLatest(FETCH_SECTIONS_START, fetchDirectoryAsync);
-}
-
-export default function* directorySaga() {
-  yield all([call(fetchDirectoryStart)]);
+export default function*() {
+  yield all([takeLatest(FETCH_SECTIONS_START, fetchSectionsSaga)]);
 }

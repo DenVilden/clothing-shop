@@ -10,7 +10,7 @@ import {
   SIGN_UP_START,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
-} from '../constants/user.types';
+} from '../../constants/user.types';
 import {
   googleSignInStartAction,
   emailSignInStartAction,
@@ -23,11 +23,13 @@ import {
   signUpStartAction,
   signUpSuccessAction,
   signUpFailureAction,
-} from './user.actions';
+} from '../../actions/user.actions';
 
-it('should setup checkUserSession', () => {
-  const action = checkUserSessionAction();
-  expect(action).toEqual({ type: CHECK_USER_SESSION });
+describe('user actions', () => {
+  it('should setup checkUserSession', () => {
+    const action = checkUserSessionAction();
+    expect(action).toEqual({ type: CHECK_USER_SESSION });
+  });
 });
 
 describe('sign up actions', () => {

@@ -2,12 +2,12 @@ import {
   FETCH_COLLECTIONS_START,
   FETCH_COLLECTIONS_SUCCESS,
   FETCH_COLLECTIONS_FAILURE,
-} from '../constants/shop.types';
+} from '../../constants/shop.types';
 import {
   fetchCollectionsStartAction,
   fetchCollectionsSuccessAction,
   fetchCollectionsFailureAction,
-} from './shop.actions';
+} from '../../actions/shop.actions';
 
 describe('fetch collections actions', () => {
   it('should setup fetchCollectionsStart', () => {
