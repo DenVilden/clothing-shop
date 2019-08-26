@@ -69,6 +69,16 @@ describe('getSnapshotFromUserAuthSaga', () => {
     expect(eff).toEqual(put(action));
   });
 
+  it('should return undefined if no userData', () => {
+    const newGen = getSnapshotFromUserAuthSaga(
+      mockUserAuth,
+      mockAdditionalData
+    );
+    newGen.next();
+    const eff = newGen.next().value;
+    expect(eff).toBe(undefined);
+  });
+
   it('should call signInFailureAction if error happens', () => {
     const newGen = getSnapshotFromUserAuthSaga(
       mockUserAuth,

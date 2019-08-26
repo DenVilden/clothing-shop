@@ -28,6 +28,7 @@ export function* getSnapshotFromUserAuthSaga(userAuth, additionalData) {
       userAuth,
       additionalData
     );
+    if (!userData) return;
     yield put(signInSuccessAction(userData));
   } catch (error) {
     yield put(signInFailureAction(error.message));
