@@ -7,11 +7,8 @@ describe('selectCurrentUser selector', () => {
       email: '123@mail.com',
       displayName: 'ivan',
     };
-
     const mockState = { user: { currentUser: mockUser } };
-
     const selector = selectCurrentUser(mockState);
-
     expect(selector).toEqual(mockUser);
   });
 });

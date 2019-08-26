@@ -29,12 +29,10 @@ describe('directoryReducer', () => {
 
   it('should set isFetching to false when fetchSectionsSuccess fires', () => {
     const mockItems = [{ title: 'hats' }, { title: 'jackets' }];
-
     const reducer = directoryReducer(initialState, {
       type: FETCH_SECTIONS_SUCCESS,
       payload: mockItems,
     });
-
     expect(reducer).toEqual({
       ...initialState,
       sections: mockItems,
@@ -44,12 +42,10 @@ describe('directoryReducer', () => {
 
   it('should set error and isFetching to false if error happens', () => {
     const mockError = 'error';
-
     const reducer = directoryReducer(initialState, {
       type: FETCH_SECTIONS_FAILURE,
       payload: mockError,
     });
-
     expect(reducer).toEqual({
       ...initialState,
       isFetching: false,

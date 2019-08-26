@@ -21,21 +21,18 @@ describe('cart actions', () => {
 
   it('should setup addItem', () => {
     const mockItem = { id: 1 };
-
     const action = addItemAction(mockItem);
     expect(action).toEqual({ type: ADD_ITEM, payload: mockItem });
   });
 
   it('should setup removeItem', () => {
     const mockItem = { id: 1 };
-
     const action = removeItemAction(mockItem);
     expect(action).toEqual({ type: REMOVE_ITEM, payload: mockItem });
   });
 
   it('should setup clearItemFromCart', () => {
     const mockItem = { id: 1 };
-
     const action = clearItemFromCartAction(mockItem);
     expect(action).toEqual({ type: CLEAR_ITEM_FROM_CART, payload: mockItem });
   });

@@ -8,7 +8,7 @@ import {
   WarningContainer,
 } from './CheckoutPage.styles';
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem.container';
-import StripeButton from '../../components/StripeButton/StripeButton';
+import StripeButton from '../../components/StripeButton/StripeButton.container';
 
 const CheckoutPage = ({ cartInfo, cartItems, total }) => (
   <CheckoutPageContainer>

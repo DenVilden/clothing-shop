@@ -14,7 +14,6 @@ export function* fetchCollectionsSaga() {
       convertCollectionsSnapshotToMap,
       snapshot
     );
-
     yield put(fetchCollectionsSuccessAction(collectionsMap));
   } catch (error) {
     yield put(fetchCollectionsFailureAction(error.message));

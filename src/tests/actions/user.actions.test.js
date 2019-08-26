@@ -39,7 +39,6 @@ describe('sign up actions', () => {
       password: 123,
       displayName: 'ivan',
     };
-
     const action = signUpStartAction(mockUserCredentials);
     expect(action).toEqual({
       type: SIGN_UP_START,
@@ -54,7 +53,6 @@ describe('sign up actions', () => {
 
   it('should setup signUpFailure', () => {
     const mockError = 'error';
-
     const action = signUpFailureAction(mockError);
     expect(action).toEqual({ type: SIGN_UP_FAILURE, payload: mockError });
   });
@@ -68,7 +66,6 @@ describe('sign in actions', () => {
 
   it('should setup setupEmailSignInStart', () => {
     const mockUserCredentials = { email: '123@mail.com', password: '123' };
-
     const action = emailSignInStartAction(mockUserCredentials);
     expect(action).toEqual({
       type: EMAIL_SIGN_IN_START,
@@ -82,14 +79,12 @@ describe('sign in actions', () => {
       email: '123@mail.com',
       displayName: 'ivan',
     };
-
     const action = signInSuccessAction(mockUser);
     expect(action).toEqual({ type: SIGN_IN_SUCCESS, payload: mockUser });
   });
 
   it('should setup signInFailure', () => {
     const mockError = 'error';
-
     const action = signInFailureAction(mockError);
     expect(action).toEqual({ type: SIGN_IN_FAILURE, payload: mockError });
   });
@@ -108,7 +103,6 @@ describe('sign out actions', () => {
 
   it('should setup signOutFailure', () => {
     const mockError = 'error';
-
     const action = signOutFailureAction(mockError);
     expect(action).toEqual({ type: SIGN_OUT_FAILURE, payload: mockError });
   });

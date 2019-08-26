@@ -7,7 +7,6 @@ describe('cartSagas', () => {
   it('should listen to all sagas', () => {
     const gen = cartSagas();
     const eff = gen.next().value;
-
     expect(eff).toEqual(
       all([takeLatest(SIGN_OUT_SUCCESS, clearCartOnSignOutSaga)])
     );
@@ -19,7 +18,6 @@ describe('clearCartOnSignOut saga', () => {
     const gen = clearCartOnSignOutSaga();
     const eff = gen.next().value;
     const action = clearCartAction();
-
     expect(eff).toEqual(put(action));
   });
 });

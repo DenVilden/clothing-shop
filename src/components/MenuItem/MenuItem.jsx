@@ -13,23 +13,28 @@ const MenuItem = ({
   history,
   match,
   section: { title, imageUrl, linkUrl, size },
-}) => (
-  <MenuItemContainer
-    onClick={() => history.push(`${match.url}${linkUrl}`)}
-    role="button"
-    size={size}
-    tabIndex="0"
-  >
-    <BackgroundImageContainer
-      className="background-image"
-      imageUrl={imageUrl}
-    />
-    <ContentContainer className="content">
-      <ContentTitle>{title}</ContentTitle>
-      <ContentSubtitle>SHOP NOW</ContentSubtitle>
-    </ContentContainer>
-  </MenuItemContainer>
-);
+}) => {
+  const goTo = () => history.push(`${match.url}${linkUrl}`);
+
+  return (
+    <MenuItemContainer
+      onClick={goTo}
+      onKeyPress={goTo}
+      role="button"
+      size={size}
+      tabIndex="0"
+    >
+      <BackgroundImageContainer
+        className="background-image"
+        imageUrl={imageUrl}
+      />
+      <ContentContainer className="content">
+        <ContentTitle>{title}</ContentTitle>
+        <ContentSubtitle>SHOP NOW</ContentSubtitle>
+      </ContentContainer>
+    </MenuItemContainer>
+  );
+};
 
 MenuItem.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,

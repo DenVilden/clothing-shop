@@ -3,17 +3,13 @@ import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 
-const StripeButton = ({ price }) => {
+const StripeButton = ({ price, currentUser: { email } }) => {
   const amount = price * 100;
 
   /* eslint-disable no-alert */
   const onToken = async token => {
     try {
-      await axios({
-        url: 'payment',
-        method: 'post',
-        data: { amount, token },
-      });
+      await axios({ url: 'payment', method: 'post', data: { amount, token } });
       alert('Payment successful');
     } catch (error) {
       alert('There was an issue with your payment');
@@ -22,9 +18,11 @@ const StripeButton = ({ price }) => {
 
   return (
     <StripeCheckout
+      allowRememberMe={false}
       amount={amount}
       billingAddress
       description={`Your total is $${price}`}
+      email={email}
       label="Pay Now"
       name="Clothing Shop"
       panelLabel="Pay Now"
@@ -37,6 +35,15 @@ const StripeButton = ({ price }) => {
 
 StripeButton.propTypes = {
   price: PropTypes.number.isRequired,
+  currentUser: PropTypes.shape({
+    createdAt: PropTypes.shape({
+      nanoseconds: PropTypes.number,
+      seconds: PropTypes.number,
+    }),
+    displayName: PropTypes.string,
+    email: PropTypes.string,
+    id: PropTypes.string,
+  }).isRequired,
 };
 
 export default StripeButton;

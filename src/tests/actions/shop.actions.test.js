@@ -17,7 +17,6 @@ describe('fetch collections actions', () => {
 
   it('should setup fetchCollectionsSuccess', () => {
     const mockCollectionsMap = { hats: { id: 1 } };
-
     const action = fetchCollectionsSuccessAction(mockCollectionsMap);
     expect(action).toEqual({
       type: FETCH_COLLECTIONS_SUCCESS,
@@ -27,7 +26,6 @@ describe('fetch collections actions', () => {
 
   it('should setup fetchCollectionsFailure', () => {
     const mockError = 'error';
-
     const action = fetchCollectionsFailureAction(mockError);
     expect(action).toEqual({
       type: FETCH_COLLECTIONS_FAILURE,

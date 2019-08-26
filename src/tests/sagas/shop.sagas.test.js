@@ -11,7 +11,6 @@ describe('shopSagas', () => {
   it('should listen to all sagas', () => {
     const gen = shopSagas();
     const eff = gen.next().value;
-
     expect(eff).toEqual(
       all([takeLatest(FETCH_COLLECTIONS_START, fetchCollectionsSaga)])
     );
@@ -23,7 +22,6 @@ describe('fetchCollectionsSaga', () => {
 
   it('should call firestore collection', () => {
     const getCollection = jest.spyOn(firestore, 'collection');
-
     gen.next();
     expect(getCollection).toHaveBeenCalled();
   });
@@ -31,7 +29,6 @@ describe('fetchCollectionsSaga', () => {
   it('should convert collections snapshot to map', () => {
     const mockSnapshot = {};
     const eff = gen.next(mockSnapshot).value;
-
     expect(eff).toEqual(call(convertCollectionsSnapshotToMap, mockSnapshot));
   });
 
@@ -39,18 +36,14 @@ describe('fetchCollectionsSaga', () => {
     const mockCollectionsMap = { hats: { id: 1 } };
     const eff = gen.next(mockCollectionsMap).value;
     const action = fetchCollectionsSuccessAction(mockCollectionsMap);
-
     expect(eff).toEqual(put(action));
   });
 
   it('should dispatch error to the store if error happens', () => {
     const newGen = fetchCollectionsSaga();
-
     newGen.next();
-
     const eff = newGen.throw({ message: 'error' }).value;
     const action = fetchCollectionsFailureAction('error');
-
     expect(eff).toEqual(put(action));
   });
 });

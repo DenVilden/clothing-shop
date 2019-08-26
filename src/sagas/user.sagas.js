@@ -23,13 +23,12 @@ import {
 
 export function* getSnapshotFromUserAuthSaga(userAuth, additionalData) {
   try {
-    const userRef = yield call(
+    const userData = yield call(
       createUserProfileDocument,
       userAuth,
       additionalData
     );
-
-    yield put(signInSuccessAction(userRef));
+    yield put(signInSuccessAction(userData));
   } catch (error) {
     yield put(signInFailureAction(error.message));
   }
@@ -38,7 +37,6 @@ export function* getSnapshotFromUserAuthSaga(userAuth, additionalData) {
 export function* signInWithGoogleSaga() {
   try {
     const { user } = yield auth.signInWithPopup(googleProvider);
-
     yield getSnapshotFromUserAuthSaga(user);
   } catch (error) {
     yield put(signInFailureAction(error.message));
@@ -48,7 +46,6 @@ export function* signInWithGoogleSaga() {
 export function* signInWithEmailSaga({ payload: { email, password } }) {
   try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
-
     yield getSnapshotFromUserAuthSaga(user);
   } catch (error) {
     yield put(signInFailureAction(error.message));
@@ -58,7 +55,6 @@ export function* signInWithEmailSaga({ payload: { email, password } }) {
 export function* isUserAuthenticatedSaga() {
   try {
     const user = yield getCurrentUser();
-
     yield getSnapshotFromUserAuthSaga(user);
   } catch (error) {
     yield put(signInFailureAction(error.message));
@@ -77,7 +73,6 @@ export function* signOutSaga() {
 export function* signUpSaga({ payload: { email, password, displayName } }) {
   try {
     const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-
     yield put(signUpSuccessAction());
     yield getSnapshotFromUserAuthSaga(user, { displayName });
   } catch (error) {

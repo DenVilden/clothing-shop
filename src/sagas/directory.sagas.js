@@ -11,7 +11,6 @@ export function* fetchSectionsSaga() {
     const sectionsRef = firestore.collection('sections');
     const snapshot = yield sectionsRef.orderBy('id').get();
     const sectionsMap = yield call(convertSectionsSnapshotToMap, snapshot);
-
     yield put(fetchSectionsSuccessAction(sectionsMap));
   } catch (error) {
     yield put(fetchSectionsFailureAction(error.message));

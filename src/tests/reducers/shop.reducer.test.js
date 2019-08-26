@@ -29,12 +29,10 @@ describe('shopReducer', () => {
 
   it('should set isFetching to false when fetchCollectionsSuccess fires', () => {
     const mockItems = { hats: { id: 34123 }, sneakers: { id: 4322 } };
-
     const reducer = shopReducer(initialState, {
       type: FETCH_COLLECTIONS_SUCCESS,
       payload: mockItems,
     });
-
     expect(reducer).toEqual({
       ...initialState,
       collections: mockItems,
@@ -44,12 +42,10 @@ describe('shopReducer', () => {
 
   it('should set error and isFetching to false if error happens', () => {
     const mockError = 'error';
-
     const reducer = shopReducer(initialState, {
       type: FETCH_COLLECTIONS_FAILURE,
       payload: mockError,
     });
-
     expect(reducer).toEqual({
       ...initialState,
       isFetching: false,

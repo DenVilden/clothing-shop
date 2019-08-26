@@ -17,7 +17,6 @@ describe('fetch sections actions', () => {
 
   it('should setup fetchSectionsSuccess', () => {
     const mockSectionsMap = [{ title: 'hats' }];
-
     const action = fetchSectionsSuccessAction(mockSectionsMap);
     expect(action).toEqual({
       type: FETCH_SECTIONS_SUCCESS,
@@ -27,7 +26,6 @@ describe('fetch sections actions', () => {
 
   it('should setup fetchSectionsFailure', () => {
     const mockError = 'error';
-
     const action = fetchSectionsFailureAction(mockError);
     expect(action).toEqual({
       type: FETCH_SECTIONS_FAILURE,

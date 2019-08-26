@@ -24,12 +24,10 @@ describe('userReducer', () => {
       email: '123@mail.com',
       displayName: 'ivan',
     };
-
     const reducer = userReducer(initialState, {
       type: SIGN_IN_SUCCESS,
       payload: mockUser,
     });
-
     expect(reducer).toEqual({ ...initialState, currentUser: mockUser });
   });
 
@@ -40,22 +38,18 @@ describe('userReducer', () => {
 
   it('should set error if error happens', () => {
     const mockError = 'error';
-
     const signIn = userReducer(initialState, {
       type: SIGN_IN_FAILURE,
       payload: mockError,
     });
-
     const signUp = userReducer(initialState, {
       type: SIGN_UP_FAILURE,
       payload: mockError,
     });
-
     const signOut = userReducer(initialState, {
       type: SIGN_OUT_FAILURE,
       payload: mockError,
     });
-
     expect(signIn).toEqual({ ...initialState, errorMessage: mockError });
     expect(signUp).toEqual({ ...initialState, errorMessage: mockError });
     expect(signOut).toEqual({ ...initialState, errorMessage: mockError });

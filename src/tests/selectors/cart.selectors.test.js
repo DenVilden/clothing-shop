@@ -7,9 +7,7 @@ import {
 describe('selectCartHidden selector', () => {
   it('should return hidden boolean', () => {
     const mockState = { cart: { hidden: true } };
-
     const selector = selectCartHidden(mockState);
-
     expect(selector).toBe(true);
   });
 });
@@ -19,14 +17,12 @@ describe('selectCartItemsCount selector', () => {
     const mockState = {
       cart: { cartItems: [{ quantity: 4 }, { quantity: 5 }] },
     };
-
     const selector = selectCartItemsCount(mockState);
     expect(selector).toBe(9);
   });
 
   it('should return 0 if there is no items in cart', () => {
     const mockState = { cart: { cartItems: [] } };
-
     const selector = selectCartItemsCount(mockState);
     expect(selector).toBe(0);
   });
@@ -39,14 +35,12 @@ describe('selectCartTotal selector', () => {
         cartItems: [{ quantity: 4, price: 100 }, { quantity: 5, price: 50 }],
       },
     };
-
     const selector = selectCartTotal(mockState);
     expect(selector).toBe(650);
   });
 
   it('should return 0 if there is no items in cart', () => {
     const mockState = { cart: { cartItems: [] } };
-
     const selector = selectCartTotal(mockState);
     expect(selector).toBe(0);
   });

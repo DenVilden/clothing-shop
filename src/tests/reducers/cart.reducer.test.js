@@ -25,12 +25,10 @@ describe('cartReducer', () => {
 
   it('should add new item to a cart', () => {
     const mockItem = { id: 1 };
-
     const reducer = cartReducer(initialState, {
       type: ADD_ITEM,
       payload: mockItem,
     });
-
     expect(reducer).toEqual({
       ...initialState,
       cartItems: [{ id: 1, quantity: 1 }],
@@ -39,17 +37,14 @@ describe('cartReducer', () => {
 
   it('should increase quantity of matching item by 1', () => {
     const mockItem = { id: 1, quantity: 3 };
-
     const mockState = {
       ...initialState,
       cartItems: [mockItem, { id: 2, quantity: 1 }],
     };
-
     const reducer = cartReducer(mockState, {
       type: ADD_ITEM,
       payload: mockItem,
     });
-
     expect(reducer).toEqual({
       ...initialState,
       cartItems: [{ id: 1, quantity: 4 }, { id: 2, quantity: 1 }],
@@ -58,17 +53,14 @@ describe('cartReducer', () => {
 
   it('should decrease quantity of matching item by 1 if quantity is > 1', () => {
     const mockItem = { id: 1, quantity: 3 };
-
     const mockState = {
       ...initialState,
       cartItems: [mockItem, { id: 2, quantity: 1 }],
     };
-
     const reducer = cartReducer(mockState, {
       type: REMOVE_ITEM,
       payload: mockItem,
     });
-
     expect(reducer).toEqual({
       ...initialState,
       cartItems: [{ id: 1, quantity: 2 }, { id: 2, quantity: 1 }],
@@ -77,17 +69,14 @@ describe('cartReducer', () => {
 
   it('should remove matching item if quantity is 1', () => {
     const mockItem = { id: 1, quantity: 1 };
-
     const mockState = {
       ...initialState,
       cartItems: [mockItem, { id: 2, quantity: 1 }],
     };
-
     const reducer = cartReducer(mockState, {
       type: REMOVE_ITEM,
       payload: mockItem,
     });
-
     expect(reducer).toEqual({
       ...initialState,
       cartItems: [{ id: 2, quantity: 1 }],
@@ -96,17 +85,14 @@ describe('cartReducer', () => {
 
   it('should remove requested item from a cart', () => {
     const mockItem = { id: 1, quantity: 3 };
-
     const mockState = {
       ...initialState,
       cartItems: [mockItem, { id: 2, quantity: 1 }],
     };
-
     const reducer = cartReducer(mockState, {
       type: CLEAR_ITEM_FROM_CART,
       payload: mockItem,
     });
-
     expect(reducer).toEqual({
       ...initialState,
       cartItems: [{ id: 2, quantity: 1 }],
@@ -118,9 +104,7 @@ describe('cartReducer', () => {
       ...initialState,
       cartItems: [{ id: 1, quantity: 3 }, { id: 2, quantity: 1 }],
     };
-
     const reducer = cartReducer(mockState, { type: CLEAR_CART });
-
     expect(reducer).toEqual(initialState);
   });
 });

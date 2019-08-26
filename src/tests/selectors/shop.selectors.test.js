@@ -8,18 +8,15 @@ import {
 describe('selectShopCollectionsForPreview selector', () => {
   it('should convert collections to an array', () => {
     const mockData = [{ id: 1 }, { id: 2 }];
-
     const mockState = {
       shop: { collections: { hats: mockData[0], jackets: mockData[1] } },
     };
-
     const selector = selectShopCollectionsForPreview(mockState);
     expect(selector).toEqual(mockData);
   });
 
   it('should return empty array if there is no data', () => {
     const mockState = { shop: { collections: {} } };
-
     const selector = selectShopCollectionsForPreview(mockState);
     expect(selector).toEqual([]);
   });
@@ -27,7 +24,6 @@ describe('selectShopCollectionsForPreview selector', () => {
 
 describe('selectShopCollection selector', () => {
   const mockData = [{ id: 1 }, { id: 2 }];
-
   const mockState = {
     shop: { collections: { hats: mockData[0], jackets: mockData[1] } },
   };
@@ -46,7 +42,6 @@ describe('selectShopCollection selector', () => {
 describe('selectIsCollectionsLoaded selector', () => {
   it('should return true if data is loading', () => {
     const mockState = { shop: { collections: {} } };
-
     const selector = selectIsCollectionsLoaded(mockState);
     expect(selector).toBe(true);
   });
@@ -55,7 +50,6 @@ describe('selectIsCollectionsLoaded selector', () => {
     const mockState = {
       shop: { collections: { hats: { id: 1 }, jackets: { id: 2 } } },
     };
-
     const selector = selectIsCollectionsLoaded(mockState);
     expect(selector).toBe(false);
   });
@@ -64,9 +58,7 @@ describe('selectIsCollectionsLoaded selector', () => {
 describe('selectIsCollectionFetching selector', () => {
   it('should return isFetching boolean', () => {
     const mockState = { shop: { isFetching: false } };
-
     const selector = selectIsCollectionFetching(mockState);
-
     expect(selector).toBe(false);
   });
 });
