@@ -33,7 +33,6 @@ describe('userSagas', () => {
   it('should listen to all sagas', () => {
     const gen = userSagas();
     const eff = gen.next().value;
-
     expect(eff).toEqual(
       all([
         takeLatest(GOOGLE_SIGN_IN_START, signInWithGoogleSaga),
@@ -76,7 +75,7 @@ describe('getSnapshotFromUserAuthSaga', () => {
     );
     newGen.next();
     const eff = newGen.next().value;
-    expect(eff).toBe(undefined);
+    expect(eff).toBeUndefined();
   });
 
   it('should call signInFailureAction if error happens', () => {
@@ -118,12 +117,11 @@ describe('signInWithGoogleSaga', () => {
 describe('signInWithEmailSaga', () => {
   const mockEmail = '123@mail.com';
   const mockPassword = '123';
-  const mockName = 'ivan';
   const mockAction = {
     payload: {
       email: mockEmail,
       password: mockPassword,
-      displayName: mockName,
+      displayName: 'ivan',
     },
   };
 
@@ -200,12 +198,11 @@ describe('signOutSaga', () => {
 describe('signUpSaga', () => {
   const mockEmail = '123@mail.com';
   const mockPassword = '123';
-  const mockDisplayName = 'ivan';
   const mockAction = {
     payload: {
       email: mockEmail,
       password: mockPassword,
-      displayName: mockDisplayName,
+      displayName: 'ivan',
     },
   };
 

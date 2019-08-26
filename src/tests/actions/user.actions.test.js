@@ -32,11 +32,11 @@ describe('user actions', () => {
   });
 });
 
-describe('sign up actions', () => {
+describe('signUp actions', () => {
   it('should setup signUpStart', () => {
     const mockUserCredentials = {
       email: '123@mail.com',
-      password: 123,
+      password: '123',
       displayName: 'ivan',
     };
     const action = signUpStartAction(mockUserCredentials);
@@ -58,27 +58,27 @@ describe('sign up actions', () => {
   });
 });
 
-describe('sign in actions', () => {
+describe('signIn actions', () => {
+  const mockUser = {
+    id: 'hfd234',
+    email: '123@mail.com',
+    displayName: 'ivan',
+  };
+
   it('should setup googleSignInStart', () => {
     const action = googleSignInStartAction();
     expect(action).toEqual({ type: GOOGLE_SIGN_IN_START });
   });
 
   it('should setup setupEmailSignInStart', () => {
-    const mockUserCredentials = { email: '123@mail.com', password: '123' };
-    const action = emailSignInStartAction(mockUserCredentials);
+    const action = emailSignInStartAction(mockUser);
     expect(action).toEqual({
       type: EMAIL_SIGN_IN_START,
-      payload: mockUserCredentials,
+      payload: mockUser,
     });
   });
 
   it('should setup signInSuccess', () => {
-    const mockUser = {
-      id: 'hfd234',
-      email: '123@mail.com',
-      displayName: 'ivan',
-    };
     const action = signInSuccessAction(mockUser);
     expect(action).toEqual({ type: SIGN_IN_SUCCESS, payload: mockUser });
   });
@@ -90,7 +90,7 @@ describe('sign in actions', () => {
   });
 });
 
-describe('sign out actions', () => {
+describe('signOut actions', () => {
   it('should setup signOutStart', () => {
     const action = signOutStartAction();
     expect(action).toEqual({ type: SIGN_OUT_START });

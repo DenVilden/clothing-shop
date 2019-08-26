@@ -4,12 +4,16 @@ import {
   CLEAR_ITEM_FROM_CART,
   REMOVE_ITEM,
   CLEAR_CART,
+  FETCH_CART_ITEMS,
+  FETCH_CART_ITEMS_ERROR,
+  UPDATE_CART_ITEMS,
 } from '../constants/cart.types';
 import { addItemToCard, removeItemFromCard } from './cart.reducer.utils';
 
 const initialState = {
   cartItems: [],
   hidden: true,
+  error: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -36,6 +40,16 @@ export default (state = initialState, { type, payload }) => {
 
     case CLEAR_CART:
       return { ...state, cartItems: [] };
+
+    case FETCH_CART_ITEMS:
+      return { ...state, cartItems: payload };
+
+    case FETCH_CART_ITEMS_ERROR:
+      return { ...state, error: payload };
+
+    case UPDATE_CART_ITEMS: {
+      return { ...state };
+    }
 
     default:
       return state;

@@ -4,6 +4,9 @@ import {
   REMOVE_ITEM,
   CLEAR_ITEM_FROM_CART,
   CLEAR_CART,
+  FETCH_CART_ITEMS,
+  FETCH_CART_ITEMS_ERROR,
+  UPDATE_CART_ITEMS,
 } from '../../constants/cart.types';
 import cartReducer from '../../reducers/cart.reducer';
 
@@ -11,6 +14,7 @@ describe('cartReducer', () => {
   const initialState = {
     cartItems: [],
     hidden: true,
+    error: null,
   };
 
   it('should return initial state', () => {
@@ -105,6 +109,31 @@ describe('cartReducer', () => {
       cartItems: [{ id: 1, quantity: 3 }, { id: 2, quantity: 1 }],
     };
     const reducer = cartReducer(mockState, { type: CLEAR_CART });
+    expect(reducer).toEqual(initialState);
+  });
+
+  it('should return cart data from firestore', () => {
+    const mockCartItems = [{ id: 1, quantity: 3 }, { id: 2, quantity: 1 }];
+    const reducer = cartReducer(initialState, {
+      type: FETCH_CART_ITEMS,
+      payload: mockCartItems,
+    });
+    expect(reducer).toEqual({ ...initialState, cartItems: mockCartItems });
+  });
+
+  it('should setup error if error happens', () => {
+    const mockError = 'error';
+    const reducer = cartReducer(initialState, {
+      type: FETCH_CART_ITEMS_ERROR,
+      payload: mockError,
+    });
+    expect(reducer).toEqual({ ...initialState, error: mockError });
+  });
+
+  it('should push update cart items to firestore', () => {
+    const reducer = cartReducer(initialState, {
+      type: UPDATE_CART_ITEMS,
+    });
     expect(reducer).toEqual(initialState);
   });
 });

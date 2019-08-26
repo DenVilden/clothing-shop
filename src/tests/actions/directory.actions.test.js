@@ -9,7 +9,7 @@ import {
   fetchSectionsFailureAction,
 } from '../../actions/directory.actions';
 
-describe('fetch sections actions', () => {
+describe('fetchSections actions', () => {
   it('should setup fetchSectionsStart', () => {
     const action = fetchSectionsStartAction();
     expect(action).toEqual({ type: FETCH_SECTIONS_START });

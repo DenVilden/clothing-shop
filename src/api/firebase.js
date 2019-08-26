@@ -36,9 +36,16 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!snapshot.exists) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
+    const cartItems = [];
 
     try {
-      await userRef.set({ displayName, email, createdAt, ...additionalData });
+      await userRef.set({
+        displayName,
+        email,
+        createdAt,
+        cartItems,
+        ...additionalData,
+      });
     } catch (error) {
       throw new Error(error.message);
     }
@@ -46,6 +53,30 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
   // eslint-disable-next-line consistent-return
   return { id: snapshot.id, ...snapshot.data() };
+};
+
+export const updateFirebaseCart = async cartItems => {
+  if (!auth.currentUser) return;
+
+  const { uid } = auth.currentUser;
+
+  const userRef = firestore.doc(`users/${uid}`);
+
+  try {
+    await userRef.update({ cartItems });
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
+export const getFirebaseCart = async () => {
+  const { uid } = auth.currentUser;
+
+  const userRef = firestore.doc(`users/${uid}`);
+
+  const snapshot = await userRef.get();
+
+  return snapshot.data().cartItems;
 };
 
 export const convertCollectionsSnapshotToMap = collections => {

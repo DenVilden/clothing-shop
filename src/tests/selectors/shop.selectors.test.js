@@ -35,7 +35,7 @@ describe('selectShopCollection selector', () => {
 
   it('should return undefined if requested collection not found', () => {
     const selector = selectShopCollection('boots')(mockState);
-    expect(selector).toBe(undefined);
+    expect(selector).toBeUndefined();
   });
 });
 

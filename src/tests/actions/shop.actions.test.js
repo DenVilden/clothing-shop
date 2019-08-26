@@ -9,7 +9,7 @@ import {
   fetchCollectionsFailureAction,
 } from '../../actions/shop.actions';
 
-describe('fetch collections actions', () => {
+describe('fetchCollections actions', () => {
   it('should setup fetchCollectionsStart', () => {
     const action = fetchCollectionsStartAction();
     expect(action).toEqual({ type: FETCH_COLLECTIONS_START });
