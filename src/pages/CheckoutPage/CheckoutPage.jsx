@@ -8,9 +8,9 @@ import {
   WarningContainer,
 } from './CheckoutPage.styles';
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem.container';
-import StripeButton from '../../components/StripeButton/StripeButton.container';
+import StripeButton from '../../components/StripeButton/StripeButton';
 
-const CheckoutPage = ({ cartInfo, cartItems, total }) => (
+const CheckoutPage = ({ cartInfo, cartItems, total, currentUser }) => (
   <CheckoutPageContainer>
     <CheckoutHeaderContainer>
       {cartInfo.map(info => (
@@ -29,7 +29,7 @@ const CheckoutPage = ({ cartInfo, cartItems, total }) => (
           *Please use the following test credit card for payments*
           <br /> 4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
         </WarningContainer>
-        <StripeButton price={total} />
+        <StripeButton email={currentUser.email} price={total} />
       </>
     ) : null}
   </CheckoutPageContainer>
@@ -37,6 +37,7 @@ const CheckoutPage = ({ cartInfo, cartItems, total }) => (
 
 CheckoutPage.defaultProps = {
   cartInfo: ['Product', 'Description', 'Quantity', 'Price', 'Remove'],
+  currentUser: null,
 };
 
 CheckoutPage.propTypes = {
@@ -50,6 +51,15 @@ CheckoutPage.propTypes = {
     })
   ).isRequired,
   total: PropTypes.number.isRequired,
+  currentUser: PropTypes.shape({
+    createdAt: PropTypes.shape({
+      nanoseconds: PropTypes.number,
+      seconds: PropTypes.number,
+    }),
+    displayName: PropTypes.string,
+    email: PropTypes.string,
+    id: PropTypes.string,
+  }),
 };
 
 export default CheckoutPage;

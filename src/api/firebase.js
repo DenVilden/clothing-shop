@@ -69,16 +69,6 @@ export const updateFirebaseCart = async cartItems => {
   }
 };
 
-export const getFirebaseCart = async () => {
-  const { uid } = auth.currentUser;
-
-  const userRef = firestore.doc(`users/${uid}`);
-
-  const snapshot = await userRef.get();
-
-  return snapshot.data().cartItems;
-};
-
 export const convertCollectionsSnapshotToMap = collections => {
   const transformedCollection = collections.docs.map(doc => {
     const { title, items } = doc.data();

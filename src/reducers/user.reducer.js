@@ -15,7 +15,11 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case SIGN_IN_SUCCESS:
-      return { ...state, currentUser: payload, errorMessage: null };
+      return {
+        ...state,
+        currentUser: { displayName: payload.displayName, email: payload.email },
+        errorMessage: null,
+      };
 
     case SIGN_OUT_SUCCESS:
     case SIGN_UP_SUCCESS:

@@ -9,18 +9,16 @@ import {
   clearCartAction,
   fetchCartItemsAction,
   fetchCartItemsErrorAction,
-  updateCartItemsAction,
 } from '../actions/cart.actions';
 import { selectCartItems } from '../selectors/cart.selectors';
-import { updateFirebaseCart, getFirebaseCart } from '../api/firebase';
+import { updateFirebaseCart } from '../api/firebase';
 
 export function* clearCartOnSignOutSaga() {
   yield put(clearCartAction());
 }
 
-export function* fetchCartItemsOnSignInSaga() {
+export function* fetchCartItemsOnSignInSaga({ payload: { cartItems } }) {
   try {
-    const cartItems = yield call(getFirebaseCart);
     yield put(fetchCartItemsAction(cartItems));
   } catch (error) {
     yield put(fetchCartItemsErrorAction(error.message));
@@ -28,10 +26,9 @@ export function* fetchCartItemsOnSignInSaga() {
 }
 
 export function* updateCartSaga() {
-  const cartItems = yield select(selectCartItems);
   try {
+    const cartItems = yield select(selectCartItems);
     yield call(updateFirebaseCart, cartItems);
-    yield put(updateCartItemsAction());
   } catch (error) {
     yield put(fetchCartItemsErrorAction(error.message));
   }

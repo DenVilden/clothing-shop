@@ -4,9 +4,8 @@ import {
   REMOVE_ITEM,
   CLEAR_ITEM_FROM_CART,
   CLEAR_CART,
-  FETCH_CART_ITEMS,
+  FETCH_CART_ITEMS_SUCCESS,
   FETCH_CART_ITEMS_ERROR,
-  UPDATE_CART_ITEMS,
 } from '../../constants/cart.types';
 import {
   toggleCartHiddenAction,
@@ -15,7 +14,6 @@ import {
   clearItemFromCartAction,
   clearCartAction,
   fetchCartItemsAction,
-  updateCartItemsAction,
   fetchCartItemsErrorAction,
 } from '../../actions/cart.actions';
 
@@ -51,12 +49,10 @@ describe('cart actions', () => {
   it('should setup fetchCartItems', () => {
     const mockCartItems = [{ id: 1 }];
     const action = fetchCartItemsAction(mockCartItems);
-    expect(action).toEqual({ type: FETCH_CART_ITEMS, payload: mockCartItems });
-  });
-
-  it('should setup updateCartItems', () => {
-    const action = updateCartItemsAction();
-    expect(action).toEqual({ type: UPDATE_CART_ITEMS });
+    expect(action).toEqual({
+      type: FETCH_CART_ITEMS_SUCCESS,
+      payload: mockCartItems,
+    });
   });
 
   it('should setup fetchCartItemsError', () => {

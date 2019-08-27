@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 
-const StripeButton = ({ price, currentUser }) => {
-  if (!currentUser) return null;
-
+const StripeButton = ({ price, email }) => {
   const amount = price * 100;
 
   /* eslint-disable no-alert */
@@ -24,7 +22,7 @@ const StripeButton = ({ price, currentUser }) => {
       amount={amount}
       billingAddress
       description={`Your total is $${price}`}
-      email={currentUser.email}
+      email={email}
       label="Pay Now"
       name="Clothing Shop"
       panelLabel="Pay Now"
@@ -35,17 +33,13 @@ const StripeButton = ({ price, currentUser }) => {
   );
 };
 
+StripeButton.defaultProps = {
+  email: null,
+};
+
 StripeButton.propTypes = {
   price: PropTypes.number.isRequired,
-  currentUser: PropTypes.shape({
-    createdAt: PropTypes.shape({
-      nanoseconds: PropTypes.number,
-      seconds: PropTypes.number,
-    }),
-    displayName: PropTypes.string,
-    email: PropTypes.string,
-    id: PropTypes.string,
-  }).isRequired,
+  email: PropTypes.string,
 };
 
 export default StripeButton;

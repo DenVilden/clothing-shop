@@ -9,7 +9,6 @@ import {
   clearCartAction,
   fetchCartItemsAction,
   fetchCartItemsErrorAction,
-  updateCartItemsAction,
 } from '../../actions/cart.actions';
 import cartSagas, {
   clearCartOnSignOutSaga,
@@ -45,22 +44,19 @@ describe('clearCartOnSignOutSaga', () => {
 });
 
 describe('fetchCartItemsOnSignInSaga', () => {
-  const gen = fetchCartItemsOnSignInSaga();
+  const mockCartItems = [{ id: 1 }];
+  const mockAction = { payload: { cartItems: mockCartItems } };
 
-  it('should call firestore cart items', () => {
-    const eff = gen.next().value;
-    expect(eff).toEqual(call(getFirebaseCart));
-  });
+  const gen = fetchCartItemsOnSignInSaga(mockAction);
 
   it('should dispatch data to the store', () => {
-    const mockCartItems = [{ id: 1 }];
-    const eff = gen.next(mockCartItems).value;
+    const eff = gen.next().value;
     const action = fetchCartItemsAction(mockCartItems);
     expect(eff).toEqual(put(action));
   });
 
   it('should dispatch error to the store if error happens', () => {
-    const newGen = fetchCartItemsOnSignInSaga();
+    const newGen = fetchCartItemsOnSignInSaga(mockAction);
     newGen.next();
     const eff = newGen.throw({ message: 'error' }).value;
     const action = fetchCartItemsErrorAction('error');
@@ -82,14 +78,8 @@ describe('updateCartSaga', () => {
     expect(eff).toEqual(call(updateFirebaseCart, mockCartItems));
   });
 
-  it('should dispatch updateCartItemsAction to the store', () => {
-    const eff = gen.next().value;
-    expect(eff).toEqual(put(updateCartItemsAction()));
-  });
-
   it('should dispatch error to the store if error happens', () => {
     const newGen = updateCartSaga();
-    newGen.next();
     newGen.next();
     const eff = newGen.throw({ message: 'error' }).value;
     const action = fetchCartItemsErrorAction('error');

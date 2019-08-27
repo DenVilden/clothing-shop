@@ -4,9 +4,8 @@ import {
   CLEAR_ITEM_FROM_CART,
   REMOVE_ITEM,
   CLEAR_CART,
-  FETCH_CART_ITEMS,
+  FETCH_CART_ITEMS_SUCCESS,
   FETCH_CART_ITEMS_ERROR,
-  UPDATE_CART_ITEMS,
 } from '../constants/cart.types';
 
 export const toggleCartHiddenAction = () => ({
@@ -33,12 +32,8 @@ export const clearCartAction = () => ({
 });
 
 export const fetchCartItemsAction = cartItems => ({
-  type: FETCH_CART_ITEMS,
+  type: FETCH_CART_ITEMS_SUCCESS,
   payload: cartItems,
-});
-
-export const updateCartItemsAction = () => ({
-  type: UPDATE_CART_ITEMS,
 });
 
 export const fetchCartItemsErrorAction = errorMessage => ({

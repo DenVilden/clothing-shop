@@ -19,16 +19,21 @@ describe('userReducer', () => {
   });
 
   it('should set user data when signInSuccess fires', () => {
+    const mockEmail = '123@mail.com';
+    const mockName = 'ivan';
     const mockUser = {
       id: 'hfd234',
-      email: '123@mail.com',
-      displayName: 'ivan',
+      email: mockEmail,
+      displayName: mockName,
     };
     const reducer = userReducer(initialState, {
       type: SIGN_IN_SUCCESS,
       payload: mockUser,
     });
-    expect(reducer).toEqual({ ...initialState, currentUser: mockUser });
+    expect(reducer).toEqual({
+      ...initialState,
+      currentUser: { email: mockEmail, displayName: mockName },
+    });
   });
 
   it('should clear user data when signOutSuccess fires', () => {
