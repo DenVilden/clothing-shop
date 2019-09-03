@@ -4,11 +4,7 @@ import {
   FETCH_SECTIONS_FAILURE,
 } from '../constants/directory.types';
 
-const initialState = {
-  sections: [],
-  isFetching: false,
-  errorMessage: null,
-};
+const initialState = { sections: [], isFetching: false, errorMessage: null };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {

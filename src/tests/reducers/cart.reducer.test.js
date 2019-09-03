@@ -10,18 +10,14 @@ import {
 import cartReducer from '../../reducers/cart.reducer';
 
 describe('cartReducer', () => {
-  const initialState = {
-    cartItems: [],
-    hidden: true,
-    errorMessage: null,
-  };
+  const initialState = { cartItems: [], hidden: true, errorMessage: null };
 
   it('should return initial state', () => {
     const reducer = cartReducer(undefined, {});
     expect(reducer).toEqual(initialState);
   });
 
-  it('should toggle hidden when toggleCartHidden fires', () => {
+  it('should toggle cart hidden', () => {
     const reducer = cartReducer(initialState, { type: TOGGLE_CART_HIDDEN });
     expect(reducer).toEqual({ ...initialState, hidden: false });
   });
@@ -86,7 +82,7 @@ describe('cartReducer', () => {
     });
   });
 
-  it('should remove requested item from a cart', () => {
+  it('should remove matched item from a cart', () => {
     const mockItem = { id: 1, quantity: 3 };
     const mockState = {
       ...initialState,
@@ -128,7 +124,7 @@ describe('cartReducer', () => {
     expect(reducer).toEqual({ ...initialState, cartItems: [] });
   });
 
-  it('should setup error if error happens', () => {
+  it('should set error if error happens', () => {
     const mockError = 'error';
     const reducer = cartReducer(initialState, {
       type: FETCH_CART_ITEMS_ERROR,

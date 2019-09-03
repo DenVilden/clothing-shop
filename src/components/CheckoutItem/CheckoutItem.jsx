@@ -8,43 +8,41 @@ import {
   RemoveButtonContainer,
 } from './CheckoutItem.styles';
 
-const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => {
-  const { name, imageUrl, price, quantity } = cartItem;
-
-  const onRemove = () => removeItem(cartItem);
-  const onAdd = () => addItem(cartItem);
-
-  return (
-    <CheckoutItemContainer>
-      <ImageContainer>
-        <img alt="item" src={imageUrl} />
-      </ImageContainer>
-      <TextContainer>{name}</TextContainer>
-      <QuantityContainer>
-        <div
-          onClick={onRemove}
-          onKeyPress={onRemove}
-          role="button"
-          tabIndex="0"
-        >
-          &#10094;
-        </div>
-        <span>{quantity}</span>
-        <div onClick={onAdd} onKeyPress={onAdd} role="button" tabIndex="0">
-          &#10095;
-        </div>
-      </QuantityContainer>
-      <TextContainer>${price}</TextContainer>
-      <RemoveButtonContainer
-        onClick={() => clearItemFromCart(cartItem)}
+const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => (
+  <CheckoutItemContainer>
+    <ImageContainer>
+      <img alt="item" src={cartItem.imageUrl} />
+    </ImageContainer>
+    <TextContainer>{cartItem.name}</TextContainer>
+    <QuantityContainer>
+      <div
+        onClick={() => removeItem(cartItem)}
+        onKeyPress={() => removeItem(cartItem)}
         role="button"
         tabIndex="0"
       >
-        &#10005;
-      </RemoveButtonContainer>
-    </CheckoutItemContainer>
-  );
-};
+        &#10094;
+      </div>
+      <span>{cartItem.quantity}</span>
+      <div
+        onClick={() => addItem(cartItem)}
+        onKeyPress={() => addItem(cartItem)}
+        role="button"
+        tabIndex="0"
+      >
+        &#10095;
+      </div>
+    </QuantityContainer>
+    <TextContainer>${cartItem.price}</TextContainer>
+    <RemoveButtonContainer
+      onClick={() => clearItemFromCart(cartItem)}
+      role="button"
+      tabIndex="0"
+    >
+      &#10005;
+    </RemoveButtonContainer>
+  </CheckoutItemContainer>
+);
 
 CheckoutItem.propTypes = {
   cartItem: PropTypes.shape({

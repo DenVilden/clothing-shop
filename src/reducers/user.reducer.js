@@ -7,10 +7,7 @@ import {
   SIGN_UP_SUCCESS,
 } from '../constants/user.types';
 
-const initialState = {
-  currentUser: null,
-  errorMessage: null,
-};
+const initialState = { currentUser: null, errorMessage: null };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {

@@ -8,7 +8,7 @@ import { FETCH_SECTIONS_START } from '../../constants/directory.types';
 import directorySagas, { fetchSectionsSaga } from '../../sagas/directory.sagas';
 
 describe('directorySagas', () => {
-  it('should listen to all sagas', () => {
+  it('should watch all sagas', () => {
     const gen = directorySagas();
     const eff = gen.next().value;
     expect(eff).toEqual(
@@ -20,26 +20,26 @@ describe('directorySagas', () => {
 describe('fetchSectionsSaga', () => {
   const gen = fetchSectionsSaga();
 
-  it('should return firestore collection', () => {
+  it('should call firestore collection', () => {
     const getCollection = jest.spyOn(firestore, 'collection');
     gen.next();
     expect(getCollection).toHaveBeenCalled();
   });
 
-  it('should convert sections snapshot to map', () => {
+  it('should call convertSectionsSnapshotToMap', () => {
     const mockSnapshot = {};
     const eff = gen.next(mockSnapshot).value;
     expect(eff).toEqual(call(convertSectionsSnapshotToMap, mockSnapshot));
   });
 
-  it('should dispatch data to the store', () => {
+  it('should call fetchSectionsSuccessAction', () => {
     const mockSectionsMap = [{ title: 'hats' }];
     const eff = gen.next(mockSectionsMap).value;
     const action = fetchSectionsSuccessAction(mockSectionsMap);
     expect(eff).toEqual(put(action));
   });
 
-  it('should dispatch error to the store if error happens', () => {
+  it('should call fetchSectionsFailureAction if error happens', () => {
     const newGen = fetchSectionsSaga();
     newGen.next();
     const eff = newGen.throw({ message: 'error' }).value;

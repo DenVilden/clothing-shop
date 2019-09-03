@@ -30,7 +30,7 @@ import userSagas, {
 } from '../../sagas/user.sagas';
 
 describe('userSagas', () => {
-  it('should listen to all sagas', () => {
+  it('should watch all sagas', () => {
     const gen = userSagas();
     const eff = gen.next().value;
     expect(eff).toEqual(
@@ -58,17 +58,13 @@ describe('getSnapshotFromUserAuthSaga', () => {
   });
 
   it('should call signInSuccessAction', () => {
-    const mockUserData = {
-      id: '123',
-      displayName: 'ivan',
-      email: '123@mail.com',
-    };
+    const mockUserData = { displayName: 'ivan', email: '123@mail.com' };
     const eff = gen.next(mockUserData).value;
     const action = signInSuccessAction(mockUserData);
     expect(eff).toEqual(put(action));
   });
 
-  it('should return undefined if no userData', () => {
+  it('should not call signInSuccessAction if no userData', () => {
     const newGen = getSnapshotFromUserAuthSaga(
       mockUserAuth,
       mockAdditionalData
@@ -118,13 +114,8 @@ describe('signInWithEmailSaga', () => {
   const mockEmail = '123@mail.com';
   const mockPassword = '123';
   const mockAction = {
-    payload: {
-      email: mockEmail,
-      password: mockPassword,
-      displayName: 'ivan',
-    },
+    payload: { email: mockEmail, password: mockPassword, displayName: 'ivan' },
   };
-
   const gen = signInWithEmailSaga(mockAction);
 
   it('should call auth signInWithEmailSaga', () => {
@@ -199,13 +190,8 @@ describe('signUpSaga', () => {
   const mockEmail = '123@mail.com';
   const mockPassword = '123';
   const mockAction = {
-    payload: {
-      email: mockEmail,
-      password: mockPassword,
-      displayName: 'ivan',
-    },
+    payload: { email: mockEmail, password: mockPassword, displayName: 'ivan' },
   };
-
   const gen = signUpSaga(mockAction);
 
   it('should call auth createUserWithEmailAndPassword', () => {

@@ -6,11 +6,7 @@ import {
 import directoryReducer from '../../reducers/directory.reducer';
 
 describe('directoryReducer', () => {
-  const initialState = {
-    sections: [],
-    isFetching: false,
-    errorMessage: null,
-  };
+  const initialState = { sections: [], isFetching: false, errorMessage: null };
 
   it('should return initial state', () => {
     const reducer = directoryReducer(undefined, {});

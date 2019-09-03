@@ -9,11 +9,7 @@ import {
 } from '../constants/cart.types';
 import { addItemToCard, removeItemFromCard } from './cart.reducer.utils';
 
-const initialState = {
-  cartItems: [],
-  hidden: true,
-  errorMessage: null,
-};
+const initialState = { cartItems: [], hidden: true, errorMessage: null };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {

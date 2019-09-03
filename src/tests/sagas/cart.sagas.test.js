@@ -15,11 +15,11 @@ import cartSagas, {
   fetchCartItemsOnSignInSaga,
   updateCartSaga,
 } from '../../sagas/cart.sagas';
-import { getFirebaseCart, updateFirebaseCart } from '../../api/firebase';
+import { updateFirebaseCart } from '../../api/firebase';
 import { selectCartItems } from '../../selectors/cart.selectors';
 
 describe('cartSagas', () => {
-  it('should listen to all sagas', () => {
+  it('should watch all sagas', () => {
     const gen = cartSagas();
     const eff = gen.next().value;
     expect(eff).toEqual(
@@ -35,7 +35,7 @@ describe('cartSagas', () => {
 });
 
 describe('clearCartOnSignOutSaga', () => {
-  it('should clearCart on signOut', () => {
+  it('should call clearCartAction', () => {
     const gen = clearCartOnSignOutSaga();
     const eff = gen.next().value;
     const action = clearCartAction();
@@ -49,13 +49,13 @@ describe('fetchCartItemsOnSignInSaga', () => {
 
   const gen = fetchCartItemsOnSignInSaga(mockAction);
 
-  it('should dispatch data to the store', () => {
+  it('should call fetchCartItemsAction', () => {
     const eff = gen.next().value;
     const action = fetchCartItemsAction(mockCartItems);
     expect(eff).toEqual(put(action));
   });
 
-  it('should dispatch error to the store if error happens', () => {
+  it('should call fetchCartItemsErrorAction if error happens', () => {
     const newGen = fetchCartItemsOnSignInSaga(mockAction);
     newGen.next();
     const eff = newGen.throw({ message: 'error' }).value;
@@ -67,18 +67,18 @@ describe('fetchCartItemsOnSignInSaga', () => {
 describe('updateCartSaga', () => {
   const gen = updateCartSaga();
 
-  it('should select store cart items', () => {
+  it('should call selectCartItems', () => {
     const eff = gen.next().value;
     expect(eff).toEqual(select(selectCartItems));
   });
 
-  it('should call firestore cart items', () => {
+  it('should call updateFirebaseCart', () => {
     const mockCartItems = [{ id: 1 }];
     const eff = gen.next(mockCartItems).value;
     expect(eff).toEqual(call(updateFirebaseCart, mockCartItems));
   });
 
-  it('should dispatch error to the store if error happens', () => {
+  it('should call fetchCartItemsErrorAction if error happens', () => {
     const newGen = updateCartSaga();
     newGen.next();
     const eff = newGen.throw({ message: 'error' }).value;

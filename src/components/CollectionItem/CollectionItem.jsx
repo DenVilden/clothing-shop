@@ -9,22 +9,18 @@ import {
   PriceContainer,
 } from './CollectionItem.styles';
 
-const CollectionItem = ({ item, addItem }) => {
-  const { name, price, imageUrl } = item;
-
-  return (
-    <CollectionItemContainer>
-      <BackgroundImage imageUrl={imageUrl} />
-      <CollectionFooterContainer>
-        <NameContainer>{name}</NameContainer>
-        <PriceContainer>${price}</PriceContainer>
-      </CollectionFooterContainer>
-      <AddButton inverted onClick={() => addItem(item)}>
-        Add to cart
-      </AddButton>
-    </CollectionItemContainer>
-  );
-};
+const CollectionItem = ({ item, addItem }) => (
+  <CollectionItemContainer>
+    <BackgroundImage imageUrl={item.imageUrl} />
+    <CollectionFooterContainer>
+      <NameContainer>{item.name}</NameContainer>
+      <PriceContainer>${item.price}</PriceContainer>
+    </CollectionFooterContainer>
+    <AddButton inverted onClick={() => addItem(item)}>
+      Add to cart
+    </AddButton>
+  </CollectionItemContainer>
+);
 
 CollectionItem.propTypes = {
   item: PropTypes.shape({

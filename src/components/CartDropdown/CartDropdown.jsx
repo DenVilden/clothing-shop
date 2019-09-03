@@ -8,27 +8,27 @@ import {
 } from './CartDropdown.styles';
 import CartItem from '../CartItem/CartItem';
 
-const CartDropdown = ({ cartItems, toggleCartHidden, history }) => {
-  const goTo = () => {
-    history.push('/checkout');
-    toggleCartHidden();
-  };
-
-  return (
-    <CartDropdownContainer>
-      <CartItemsContainer>
-        {cartItems.length ? (
-          cartItems.map(cartItem => (
-            <CartItem key={cartItem.id} item={cartItem} />
-          ))
-        ) : (
-          <EmptyMessageContainer>Your cart is empty</EmptyMessageContainer>
-        )}
-      </CartItemsContainer>
-      <CartDropdownButton onClick={goTo}>GO TO CHECKOUT</CartDropdownButton>
-    </CartDropdownContainer>
-  );
-};
+const CartDropdown = ({ cartItems, toggleCartHidden, history }) => (
+  <CartDropdownContainer>
+    <CartItemsContainer>
+      {cartItems.length ? (
+        cartItems.map(cartItem => (
+          <CartItem key={cartItem.id} item={cartItem} />
+        ))
+      ) : (
+        <EmptyMessageContainer>Your cart is empty</EmptyMessageContainer>
+      )}
+    </CartItemsContainer>
+    <CartDropdownButton
+      onClick={() => {
+        history.push('/checkout');
+        toggleCartHidden();
+      }}
+    >
+      GO TO CHECKOUT
+    </CartDropdownButton>
+  </CartDropdownContainer>
+);
 
 CartDropdown.propTypes = {
   cartItems: PropTypes.arrayOf(
