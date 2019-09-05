@@ -9,7 +9,7 @@ const Spinner = () => (
 
 export default Spinner;
 
-// STYLES
+/* STYLES */
 const SpinnerOverlay = styled.div`
   align-items: center;
   display: flex;

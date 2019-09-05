@@ -52,7 +52,7 @@ Header.propTypes = {
 
 export default Header;
 
-// STYLES
+/* STYLES */
 const HeaderContainer = styled.header`
   display: flex;
   height: 70px;

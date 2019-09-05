@@ -28,7 +28,7 @@ CollectionItem.propTypes = {
 
 export default CollectionItem;
 
-// STYLES
+/* STYLES */
 const CollectionItemContainer = styled.div`
   align-items: center;
   display: flex;

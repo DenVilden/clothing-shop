@@ -57,12 +57,15 @@
     "rules": {
       "react/state-in-constructor": "off",
       "react/jsx-props-no-spreading": "off",
-      "react/jsx-sort-props": 2
+      "react/jsx-sort-props": 2,
+      "prettier/prettier": [
+        "error",
+        {
+          "trailingComma": "es5",
+          "singleQuote": true
+        }
+      ]
     }
-  },
-  "prettier": {
-    "trailingComma": "es5",
-    "singleQuote": true
   },
   "browserslist": {
     "production": [

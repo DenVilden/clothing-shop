@@ -53,7 +53,7 @@ CheckoutItem.propTypes = {
 
 export default CheckoutItem;
 
-// STYLES
+/* STYLES */
 const CheckoutItemContainer = styled.div`
   align-items: center;
   border-bottom: 1px solid darkgrey;

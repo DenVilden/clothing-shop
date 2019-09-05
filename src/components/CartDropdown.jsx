@@ -42,7 +42,7 @@ CartDropdown.propTypes = {
 
 export default CartDropdown;
 
-// STYLES
+/* STYLES */
 const CartDropdownContainer = styled.div`
   background-color: white;
   border: 1px solid black;

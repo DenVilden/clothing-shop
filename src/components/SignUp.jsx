@@ -78,7 +78,7 @@ SignUp.propTypes = {
 
 export default SignUp;
 
-// STYLES
+/* STYLES */
 const SignUpContainer = styled.div`
   display: flex;
   flex-direction: column;

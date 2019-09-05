@@ -54,7 +54,7 @@ export default compose(
   WithSpinner
 )(CollectionPage);
 
-// STYLES
+/* STYLES */
 const CollectionPageContainer = styled.div`
   display: flex;
   flex-direction: column;

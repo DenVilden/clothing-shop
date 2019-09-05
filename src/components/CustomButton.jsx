@@ -17,7 +17,7 @@ CustomButton.propTypes = {
 
 export default CustomButton;
 
-// STYLES
+/* STYLES */
 const buttonStyles = css`
   background-color: black;
   border: none;

@@ -61,7 +61,7 @@ SignIn.propTypes = {
 
 export default SignIn;
 
-// STYLES
+/* STYLES */
 const SignInContainer = styled.div`
   display: flex;
   flex-direction: column;

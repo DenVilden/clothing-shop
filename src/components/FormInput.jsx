@@ -15,7 +15,7 @@ FormInput.propTypes = {
 
 export default FormInput;
 
-// STYLES
+/* STYLES */
 const subColor = 'grey';
 const mainColor = 'black';
 

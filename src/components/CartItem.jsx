@@ -26,7 +26,7 @@ CartItem.propTypes = {
 
 export default CartItem;
 
-// STYLES
+/* STYLES */
 const CartItemContainer = styled.div`
   display: flex;
   height: 80px;

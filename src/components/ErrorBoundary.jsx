@@ -30,7 +30,7 @@ ErrorBoundary.propTypes = {
   children: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
-// STYLES
+/* STYLES */
 const ErrorImageOverlay = styled.div`
   align-items: center;
   display: flex;

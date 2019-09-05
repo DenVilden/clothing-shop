@@ -12,7 +12,7 @@ const SignInAndSignUpPage = () => (
 
 export default SignInAndSignUpPage;
 
-// STYLES
+/* STYLES */
 const SignInAndSignUpContainer = styled.div`
   display: flex;
   justify-content: space-between;

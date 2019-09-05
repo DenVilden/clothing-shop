@@ -22,7 +22,7 @@ CartIcon.propTypes = {
 
 export default CartIcon;
 
-// STYLES
+/* STYLES */
 const CartContainer = styled.div`
   align-items: center;
   cursor: pointer;

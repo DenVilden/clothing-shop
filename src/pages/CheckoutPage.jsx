@@ -68,7 +68,7 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(mapStateToProps)(CheckoutPage);
 
-// STYLES
+/* STYLES */
 const CheckoutPageContainer = styled.div`
   align-items: center;
   display: flex;

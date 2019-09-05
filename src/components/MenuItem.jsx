@@ -39,7 +39,7 @@ MenuItem.propTypes = {
 
 export default withRouter(MenuItem);
 
-// STYLES
+/* STYLES */
 const MenuItemContainer = styled.div`
 	align-items: center;
 	border: 1px solid black;

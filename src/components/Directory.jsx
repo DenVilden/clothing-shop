@@ -24,7 +24,7 @@ Directory.propTypes = {
 
 export default Directory;
 
-// STYLES
+/* STYLES */
 const DirectoryMenuContainer = styled.main`
   display: flex;
   flex-wrap: wrap;

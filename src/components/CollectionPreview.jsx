@@ -47,7 +47,7 @@ CollectionPreview.propTypes = {
 
 export default withRouter(CollectionPreview);
 
-// STYLES
+/* STYLES */
 const CollectionPreviewContainer = styled.div`
   display: flex;
   flex-direction: column;
