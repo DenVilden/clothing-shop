@@ -5,8 +5,9 @@ const compression = require('compression');
 const enforce = require('express-sslify');
 
 const app = express();
-const buildPath = path.resolve(__dirname, '..', 'build');
 const port = process.env.PORT || 5000;
+
+const buildPath = path.join(__dirname, '../build');
 
 app.use(compression());
 app.use(express.json());
@@ -14,13 +15,13 @@ app.use(express.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
-  app.use(express.static(path.resolve(buildPath)));
+  app.use(express.static(buildPath));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(buildPath, 'index.html'));
+    res.sendFile(`${buildPath}/index.html`);
   });
 }
 
-app.post('/payment', async (req, res, next) => {
+app.post('/payment', async (req, res) => {
   try {
     const data = await stripe.charges.create({
       source: req.body.token.id,
@@ -29,7 +30,7 @@ app.post('/payment', async (req, res, next) => {
     });
     res.send({ data });
   } catch (error) {
-    next(error);
+    res.status(400).send();
   }
 });
 

@@ -27,7 +27,10 @@ const CheckoutPage = ({ cartInfo, cartItems, total, currentUser }) => (
           *Please use the following test credit card for payments*
           <br /> 4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
         </WarningContainer>
-        <StripeButton email={currentUser.email} price={total} />
+        <StripeButton
+          email={currentUser ? currentUser.email : null}
+          price={total}
+        />
       </>
     ) : null}
   </CheckoutPageContainer>
