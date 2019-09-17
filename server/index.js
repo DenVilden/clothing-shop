@@ -14,16 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
-  app.use(
-    '/',
-    expressStaticGzip(buildPath, {
-      enableBrotli: true,
-      orderPreference: ['br'],
-    })
-  );
-  app.get('*', (req, res) => {
-    res.sendFile(`${buildPath}/index.html`);
-  });
+  app.use('/', expressStaticGzip(buildPath, { enableBrotli: true }));
 }
 
 app.post('/payment', async (req, res) => {

@@ -44,9 +44,9 @@
     "server": "nodemon -r dotenv/config server/index",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/index",
-    "lint": "eslint . --ext .jsx --ext .js",
+    "lint": "eslint . --ext jsx --ext js",
     "coverage": "yarn test --coverage --watchAll=false",
-    "postbuild": "precompress build"
+    "postbuild": "precompress build/static -t br -i js"
   },
   "eslintConfig": {
     "extends": [
