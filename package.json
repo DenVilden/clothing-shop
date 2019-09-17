@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "compression": "^1.7.4",
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
+    "express-static-gzip": "^2.0.5",
     "firebase": "^6.6.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
@@ -33,6 +33,7 @@
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.0",
     "nodemon": "^1.19.2",
+    "precompress": "^5.1.0",
     "prettier": "^1.18.2"
   },
   "scripts": {
@@ -44,7 +45,8 @@
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/index",
     "lint": "eslint . --ext .jsx --ext .js",
-    "coverage": "yarn test --coverage --watchAll=false"
+    "coverage": "yarn test --coverage --watchAll=false",
+    "postbuild": "precompress build"
   },
   "eslintConfig": {
     "extends": [
