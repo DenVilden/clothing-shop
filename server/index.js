@@ -15,6 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use('/', expressStaticGzip(buildPath, { enableBrotli: true }));
+  app.get('*', (req, res) => {
+    res.sendFile(`${buildPath}/index.html`);
+  });
 }
 
 app.post('/payment', async (req, res) => {
@@ -26,7 +29,7 @@ app.post('/payment', async (req, res) => {
     });
     res.send({ data });
   } catch (error) {
-    res.status(400).send();
+    res.status(500).send();
   }
 });
 
