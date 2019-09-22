@@ -1,16 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import configureStore from './store/store';
 import App from './routes/App';
 import * as serviceWorker from './serviceWorker';
 
-const ReduxApp = AppComponent => (
-  <Provider store={store}>
-    <AppComponent />
-  </Provider>
+configureStore().then(store =>
+  render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+  )
 );
-
-render(ReduxApp(App), document.getElementById('root'));
 
 serviceWorker.register();
