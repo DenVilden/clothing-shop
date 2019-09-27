@@ -16,12 +16,10 @@ const Header = ({ currentUser, hidden, signOutStart }) => (
       <OptionLink to="/shop">SHOP</OptionLink>
       {currentUser ? (
         <>
-          <OptionLink as="div" onClick={signOutStart}>
+          <OptionLink onClick={signOutStart} to="#">
             SIGN OUT
           </OptionLink>
-          <OptionLink as="div">
-            {currentUser.displayName.toUpperCase()}
-          </OptionLink>
+          <OptionLink to="#">{currentUser.displayName}</OptionLink>
         </>
       ) : (
         <OptionLink to="/signin">SIGN IN</OptionLink>
@@ -93,4 +91,5 @@ const OptionsContainer = styled.div`
 const OptionLink = styled(Link)`
   cursor: pointer;
   padding: 10px 15px;
+  text-transform: uppercase;
 `;
