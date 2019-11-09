@@ -32,7 +32,10 @@ describe('selectCartTotal selector', () => {
   it('should return total price of all items in cart', () => {
     const mockState = {
       cart: {
-        cartItems: [{ quantity: 4, price: 100 }, { quantity: 5, price: 50 }],
+        cartItems: [
+          { quantity: 4, price: 100 },
+          { quantity: 5, price: 50 },
+        ],
       },
     };
     const selector = selectCartTotal(mockState);

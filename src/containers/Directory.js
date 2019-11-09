@@ -13,7 +13,4 @@ const mapStateToProps = createStructuredSelector({
   sections: selectDirectorySections,
 });
 
-export default compose(
-  connect(mapStateToProps),
-  WithSpinner
-)(Directory);
+export default compose(connect(mapStateToProps), WithSpinner)(Directory);

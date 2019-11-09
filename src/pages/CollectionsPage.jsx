@@ -42,10 +42,7 @@ const mapStateToProps = createStructuredSelector({
   collections: selectShopCollectionsForPreview,
 });
 
-export default compose(
-  connect(mapStateToProps),
-  WithSpinner
-)(CollectionsPage);
+export default compose(connect(mapStateToProps), WithSpinner)(CollectionsPage);
 
 /* STYLES */
 const CollectionsPageContainer = styled.div`

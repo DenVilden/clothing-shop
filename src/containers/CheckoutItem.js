@@ -12,7 +12,4 @@ const mapDispatchToProps = {
   removeItem: item => removeItemAction(item),
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CheckoutItem);
+export default connect(null, mapDispatchToProps)(CheckoutItem);

@@ -12,7 +12,4 @@ const mapDispatchToProps = {
   toggleCartHidden: () => toggleCartHiddenAction(),
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CartIcon);
+export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);

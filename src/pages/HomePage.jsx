@@ -24,7 +24,4 @@ const mapDispatchToProps = {
   fetchSectionsStart: () => fetchSectionsStartAction(),
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(HomePage);
+export default connect(null, mapDispatchToProps)(HomePage);

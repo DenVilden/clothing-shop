@@ -6,7 +6,4 @@ const mapDispatchToProps = {
   addItem: item => addItemAction(item),
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CollectionItem);
+export default connect(null, mapDispatchToProps)(CollectionItem);

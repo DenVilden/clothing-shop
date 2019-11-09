@@ -46,7 +46,10 @@ describe('cartReducer', () => {
     });
     expect(reducer).toEqual({
       ...initialState,
-      cartItems: [{ id: 1, quantity: 4 }, { id: 2, quantity: 1 }],
+      cartItems: [
+        { id: 1, quantity: 4 },
+        { id: 2, quantity: 1 },
+      ],
     });
   });
 
@@ -62,7 +65,10 @@ describe('cartReducer', () => {
     });
     expect(reducer).toEqual({
       ...initialState,
-      cartItems: [{ id: 1, quantity: 2 }, { id: 2, quantity: 1 }],
+      cartItems: [
+        { id: 1, quantity: 2 },
+        { id: 2, quantity: 1 },
+      ],
     });
   });
 
@@ -101,14 +107,20 @@ describe('cartReducer', () => {
   it('should clear cart completely', () => {
     const mockState = {
       ...initialState,
-      cartItems: [{ id: 1, quantity: 3 }, { id: 2, quantity: 1 }],
+      cartItems: [
+        { id: 1, quantity: 3 },
+        { id: 2, quantity: 1 },
+      ],
     };
     const reducer = cartReducer(mockState, { type: CLEAR_CART });
     expect(reducer).toEqual(initialState);
   });
 
   it('should return cart data from firestore', () => {
-    const mockCartItems = [{ id: 1, quantity: 3 }, { id: 2, quantity: 1 }];
+    const mockCartItems = [
+      { id: 1, quantity: 3 },
+      { id: 2, quantity: 1 },
+    ];
     const reducer = cartReducer(initialState, {
       type: FETCH_CART_ITEMS_SUCCESS,
       payload: mockCartItems,

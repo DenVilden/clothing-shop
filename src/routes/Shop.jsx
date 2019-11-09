@@ -30,7 +30,4 @@ const mapDispatchToProps = {
   fetchCollectionStart: () => fetchCollectionsStartAction(),
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Shop);
+export default connect(null, mapDispatchToProps)(Shop);
