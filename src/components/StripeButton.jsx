@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import logo from '../assets/logo.svg';
 
 const StripeButton = ({ price, email }) => {
   const amount = price * 100;
@@ -23,6 +24,7 @@ const StripeButton = ({ price, email }) => {
       billingAddress
       description={`Your total is $${price}`}
       email={email}
+      image={logo}
       label="Pay Now"
       name="Clothing Shop"
       panelLabel="Pay Now"

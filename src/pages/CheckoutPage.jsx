@@ -21,7 +21,7 @@ const CheckoutPage = ({ cartInfo, cartItems, total, currentUser }) => (
       <CheckoutItem key={cartItem.id} cartItem={cartItem} />
     ))}
     <TotalContainer>TOTAL: ${total}</TotalContainer>
-    {total ? (
+    {total && currentUser ? (
       <>
         <WarningContainer>
           *Please use the following test credit card for payments*
@@ -32,6 +32,9 @@ const CheckoutPage = ({ cartInfo, cartItems, total, currentUser }) => (
           price={total}
         />
       </>
+    ) : null}
+    {total && !currentUser ? (
+      <WarningContainer>Please sign in to proceed</WarningContainer>
     ) : null}
   </CheckoutPageContainer>
 );

@@ -10,8 +10,8 @@ const middlewares = [sagaMiddleware];
 
 if (process.env.NODE_ENV === 'development') {
   // eslint-disable-next-line global-require
-  const logger = require('redux-logger');
-  middlewares.push(logger.default);
+  const logger = require('redux-logger').default;
+  middlewares.push(logger);
 }
 
 const enhancer = composeWithDevTools(applyMiddleware(...middlewares));
