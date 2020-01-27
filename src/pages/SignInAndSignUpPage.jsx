@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import SignIn from '../containers/SignIn';
-import SignUp from '../containers/SignUp';
+import SignIn from '../components/SignIn/SignIn.container';
+import SignUp from '../components/SignUp/SignUp.container';
 
 const SignInAndSignUpPage = () => (
   <SignInAndSignUpContainer>

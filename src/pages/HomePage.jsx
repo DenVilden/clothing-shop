@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Directory from '../containers/Directory';
+import Directory from '../components/Directory/Directory.container';
 import { fetchSectionsStartAction } from '../actions/directory.actions';
 
 const HomePage = ({ fetchSectionsStart }) => {

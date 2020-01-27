@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import CollectionPreview from '../components/CollectionPreview';
+import CollectionPreview from '../components/CollectionPreview/CollectionPreview';
 import {
   selectIsCollectionFetching,
   selectShopCollectionsForPreview,
 } from '../selectors/shop.selectors';
-import WithSpinner from '../components/WithSpinner';
+import WithSpinner from '../containers/WithSpinner';
 
 const CollectionsPage = ({ collections }) => (
   <CollectionsPageContainer>

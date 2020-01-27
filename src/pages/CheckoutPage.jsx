@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import CheckoutItem from '../containers/CheckoutItem';
+import CheckoutItem from '../components/CheckoutItem/CheckoutItem.container';
 import StripeButton from '../components/StripeButton';
 import { selectCartItems, selectCartTotal } from '../selectors/cart.selectors';
 import { selectCurrentUser } from '../selectors/user.selectors';

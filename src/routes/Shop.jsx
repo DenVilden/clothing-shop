@@ -2,7 +2,7 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Spinner from '../components/Spinner';
+import Spinner from '../components/Spinner/Spinner';
 import { fetchCollectionsStartAction } from '../actions/shop.actions';
 
 const CollectionsPage = lazy(() => import('../pages/CollectionsPage'));

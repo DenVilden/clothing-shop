@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import CollectionItem from '../containers/CollectionItem';
+import CollectionItem from '../components/CollectionItem/CollectionItem.container';
 import {
   selectIsCollectionsLoaded,
   selectShopCollection,
 } from '../selectors/shop.selectors';
-import WithSpinner from '../components/WithSpinner';
+import WithSpinner from '../containers/WithSpinner';
 
 const CollectionPage = ({ collection: { title, items } }) => (
   <CollectionPageContainer>

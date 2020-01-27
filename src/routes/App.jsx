@@ -9,9 +9,9 @@ import {
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import GlobalStyle from '../styles';
-import Header from '../containers/Header';
-import Spinner from '../components/Spinner';
-import ErrorBoundary from '../components/ErrorBoundary';
+import Header from '../components/Header/Header.container';
+import Spinner from '../components/Spinner/Spinner';
+import ErrorBoundary from '../containers/ErrorBoundary/ErrorBoundary';
 import { selectCurrentUser } from '../selectors/user.selectors';
 import { checkUserSessionAction } from '../actions/user.actions';
 
