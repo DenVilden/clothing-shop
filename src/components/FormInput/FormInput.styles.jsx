@@ -6,6 +6,7 @@ const mainColor = 'black';
 export const GroupContainer = styled.div`
   margin: 45px 0;
   position: relative;
+
   input[type='password'] {
     letter-spacing: 0.3em;
   }
@@ -19,8 +20,8 @@ const shrinkLabelStyles = css`
 
 export const FormInputContainer = styled.input`
   background: none;
-  background-color: white;
-  border: none;
+  background-color: #fff;
+  border: 0;
   border-bottom: 1px solid ${subColor};
   border-radius: 0;
   color: ${subColor};

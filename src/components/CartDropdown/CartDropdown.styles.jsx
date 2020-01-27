@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import CustomButton from '../CustomButton/CustomButton';
 
 export const CartDropdownContainer = styled.div`
-  background-color: white;
-  border: 1px solid black;
+  background-color: #fff;
+  border: 1px solid #000;
   display: flex;
   flex-direction: column;
   height: 340px;

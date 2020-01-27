@@ -35,7 +35,9 @@
     "eslint-plugin-prettier": "^3.1.2",
     "nodemon": "^2.0.2",
     "precompress": "^5.1.2",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "stylelint": "12.0.1",
+    "stylelint-config-sass-guidelines": "^6.2.0"
   },
   "scripts": {
     "client": "react-scripts start",
@@ -45,8 +47,7 @@
     "server": "nodemon -r dotenv/config server/index.js",
     "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node server/index.js",
-    "lint": "eslint src --ext js,jsx && eslint server",
-    "lint:fix": "yarn lint --fix",
+    "lint": "eslint src --ext js,jsx && eslint server && stylelint './src/**/*.jsx'",
     "coverage": "yarn test --coverage --watchAll=false",
     "postbuild": "precompress build/static -t br -i js"
   },
@@ -72,6 +73,9 @@
       "react/state-in-constructor": "off",
       "react/jsx-props-no-spreading": "off"
     }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-sass-guidelines"
   },
   "browserslist": {
     "production": [

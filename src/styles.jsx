@@ -7,10 +7,10 @@ export default createGlobalStyle`
 
   body {
     font-family: 'Open Sans Condensed', sans-serif;
-    margin: 0;
-    padding: 20px 40px;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 20px 40px;
 
     @media (max-width: 800px) {
       padding: 10px;

@@ -15,10 +15,14 @@ import ErrorBoundary from '../containers/ErrorBoundary/ErrorBoundary';
 import { selectCurrentUser } from '../selectors/user.selectors';
 import { checkUserSessionAction } from '../actions/user.actions';
 
-const HomePage = lazy(() => import('../pages/HomePage'));
+const HomePage = lazy(() => import('../pages/HomePage/HomePage.container'));
 const Shop = lazy(() => import('./Shop'));
-const CheckoutPage = lazy(() => import('../pages/CheckoutPage'));
-const SignInAndSignUpPage = lazy(() => import('../pages/SignInAndSignUpPage'));
+const CheckoutPage = lazy(() =>
+  import('../pages/CheckoutPage/CheckoutPage.container')
+);
+const SignInAndSignUpPage = lazy(() =>
+  import('../pages/SignInAndSignUpPage/SignInAndSignUpPage')
+);
 
 const App = ({ currentUser, checkUserSession }) => {
   useEffect(() => {

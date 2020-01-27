@@ -17,7 +17,7 @@ export const TitleContainer = styled.h1`
   text-transform: uppercase;
 
   &:hover {
-    color: grey;
+    color: #808080;
   }
 `;
 
@@ -27,7 +27,7 @@ export const PreviewContainer = styled.div`
 
   @media (max-width: 800px) {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     grid-gap: 15px;
+    grid-template-columns: 1fr 1fr;
   }
 `;

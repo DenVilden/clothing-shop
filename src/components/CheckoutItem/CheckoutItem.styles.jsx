@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CheckoutItemContainer = styled.div`
   align-items: center;
-  border-bottom: 1px solid darkgrey;
+  border-bottom: 1px solid #a9a9a9;
   display: flex;
   font-size: 20px;
   min-height: 100px;
@@ -13,6 +13,7 @@ export const CheckoutItemContainer = styled.div`
 export const ImageContainer = styled.div`
   padding-right: 15px;
   width: 23%;
+
   img {
     height: 100%;
     width: 100%;
@@ -25,9 +26,11 @@ export const TextContainer = styled.span`
 
 export const QuantityContainer = styled(TextContainer)`
   display: flex;
+
   span {
     margin: 0 10px;
   }
+
   div {
     cursor: pointer;
   }

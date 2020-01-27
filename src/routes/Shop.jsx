@@ -5,8 +5,12 @@ import { connect } from 'react-redux';
 import Spinner from '../components/Spinner/Spinner';
 import { fetchCollectionsStartAction } from '../actions/shop.actions';
 
-const CollectionsPage = lazy(() => import('../pages/CollectionsPage'));
-const CollectionPage = lazy(() => import('../pages/CollectionPage'));
+const CollectionsPage = lazy(() =>
+  import('../pages/CollectionsPage/CollectionsPage.container')
+);
+const CollectionPage = lazy(() =>
+  import('../pages/CollectionPage/CollectionPage.container')
+);
 
 const Shop = ({ match, fetchCollectionStart }) => {
   useEffect(() => {
