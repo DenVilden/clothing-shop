@@ -2,7 +2,7 @@ import {
   FETCH_COLLECTIONS_START,
   FETCH_COLLECTIONS_SUCCESS,
   FETCH_COLLECTIONS_FAILURE,
-} from '../../../constants/shop.types';
+} from '../../types/shop.types';
 import {
   fetchCollectionsStartAction,
   fetchCollectionsSuccessAction,

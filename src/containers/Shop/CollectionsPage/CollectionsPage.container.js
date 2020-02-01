@@ -4,8 +4,8 @@ import { compose } from 'redux';
 import {
   selectIsCollectionFetching,
   selectShopCollectionsForPreview,
-} from '../../store/selectors/shop.selectors';
-import WithSpinner from '../WithSpinner';
+} from '../../../store/selectors/shop.selectors';
+import WithSpinner from '../../WithSpinner';
 import CollectionsPage from './CollectionsPage';
 
 const mapStateToProps = createStructuredSelector({

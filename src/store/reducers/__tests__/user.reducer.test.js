@@ -4,7 +4,7 @@ import {
   SIGN_IN_FAILURE,
   SIGN_UP_FAILURE,
   SIGN_OUT_FAILURE,
-} from '../../../constants/user.types';
+} from '../../types/user.types';
 import userReducer from '../user.reducer';
 
 describe('userReducer', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CollectionsPageContainer } from './CollectionsPage.styles';
-import CollectionPreview from '../../components/CollectionPreview/CollectionPreview';
+import CollectionPreview from '../../../components/CollectionPreview/CollectionPreview';
 
 const CollectionsPage = ({ collections }) => (
   <CollectionsPageContainer>

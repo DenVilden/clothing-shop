@@ -8,22 +8,20 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import GlobalStyle from '../styles';
-import Header from '../components/Header/Header.container';
-import Spinner from '../components/Spinner/Spinner';
-import ErrorBoundary from '../containers/ErrorBoundary/ErrorBoundary';
-import { selectCurrentUser } from '../store/selectors/user.selectors';
-import { checkUserSessionAction } from '../store/actions/user.actions';
+import GlobalStyle from './styles';
+import Header from './components/Header/Header.container';
+import Spinner from './components/Spinner/Spinner';
+import ErrorBoundary from './containers/ErrorBoundary/ErrorBoundary';
+import { selectCurrentUser } from './store/selectors/user.selectors';
+import { checkUserSessionAction } from './store/actions/user.actions';
 
-const HomePage = lazy(() =>
-  import('../containers/HomePage/HomePage.container')
-);
-const Shop = lazy(() => import('./Shop'));
+const HomePage = lazy(() => import('./containers/HomePage/HomePage.container'));
+const Shop = lazy(() => import('./containers/Shop/Shop'));
 const CheckoutPage = lazy(() =>
-  import('../containers/CheckoutPage/CheckoutPage.container')
+  import('./containers/CheckoutPage/CheckoutPage.container')
 );
 const SignInAndSignUpPage = lazy(() =>
-  import('../containers/SignInAndSignUpPage/SignInAndSignUpPage')
+  import('./containers/SignInAndSignUpPage/SignInAndSignUpPage')
 );
 
 const App = ({ currentUser, checkUserSession }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DirectoryMenuContainer } from './Directory.styles';
-import MenuItem from '../MenuItem/MenuItem';
+import MenuItem from './MenuItem/MenuItem';
 
 const Directory = ({ sections }) => (
   <DirectoryMenuContainer>

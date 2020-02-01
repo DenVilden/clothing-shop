@@ -1,5 +1,5 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
-import { FETCH_SECTIONS_START } from '../../constants/directory.types';
+import { FETCH_SECTIONS_START } from '../types/directory.types';
 import { firestore, convertSectionsSnapshotToMap } from '../../api/firebase';
 import {
   fetchSectionsSuccessAction,

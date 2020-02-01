@@ -5,7 +5,7 @@ import {
   SIGN_OUT_FAILURE,
   SIGN_UP_FAILURE,
   SIGN_UP_SUCCESS,
-} from '../../constants/user.types';
+} from '../types/user.types';
 
 const initialState = { currentUser: null, errorMessage: null };
 

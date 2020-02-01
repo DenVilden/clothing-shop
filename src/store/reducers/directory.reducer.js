@@ -2,7 +2,7 @@ import {
   FETCH_SECTIONS_START,
   FETCH_SECTIONS_SUCCESS,
   FETCH_SECTIONS_FAILURE,
-} from '../../constants/directory.types';
+} from '../types/directory.types';
 
 const initialState = { sections: [], isFetching: false, errorMessage: null };
 

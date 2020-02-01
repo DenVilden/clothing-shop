@@ -1,13 +1,10 @@
 import { takeLatest, put, all, call, select } from 'redux-saga/effects';
-import {
-  SIGN_OUT_SUCCESS,
-  SIGN_IN_SUCCESS,
-} from '../../../constants/user.types';
+import { SIGN_OUT_SUCCESS, SIGN_IN_SUCCESS } from '../../types/user.types';
 import {
   ADD_ITEM,
   REMOVE_ITEM,
   CLEAR_ITEM_FROM_CART,
-} from '../../../constants/cart.types';
+} from '../../types/cart.types';
 import {
   clearCartAction,
   fetchCartItemsAction,

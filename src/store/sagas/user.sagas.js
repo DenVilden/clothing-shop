@@ -5,7 +5,7 @@ import {
   CHECK_USER_SESSION,
   SIGN_OUT_START,
   SIGN_UP_START,
-} from '../../constants/user.types';
+} from '../types/user.types';
 import {
   auth,
   googleProvider,

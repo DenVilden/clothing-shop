@@ -7,7 +7,7 @@ import {
   fetchCollectionsSuccessAction,
   fetchCollectionsFailureAction,
 } from '../../actions/shop.actions';
-import { FETCH_COLLECTIONS_START } from '../../../constants/shop.types';
+import { FETCH_COLLECTIONS_START } from '../../types/shop.types';
 import shopSagas, { fetchCollectionsSaga } from '../shop.sagas';
 
 describe('shopSagas', () => {

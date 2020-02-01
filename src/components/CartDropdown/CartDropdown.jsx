@@ -6,7 +6,7 @@ import {
   EmptyMessageContainer,
   CartDropdownButton,
 } from './CartDropdown.styles';
-import CartItem from '../CartItem/CartItem';
+import CartItem from './CartItem/CartItem';
 
 const CartDropdown = ({ cartItems, toggleCartHidden, history }) => (
   <CartDropdownContainer>

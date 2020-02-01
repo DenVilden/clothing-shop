@@ -4,7 +4,7 @@ import {
   fetchSectionsSuccessAction,
   fetchSectionsFailureAction,
 } from '../../actions/directory.actions';
-import { FETCH_SECTIONS_START } from '../../../constants/directory.types';
+import { FETCH_SECTIONS_START } from '../../types/directory.types';
 import directorySagas, { fetchSectionsSaga } from '../directory.sagas';
 
 describe('directorySagas', () => {

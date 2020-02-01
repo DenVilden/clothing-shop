@@ -10,7 +10,7 @@ import {
   SIGN_UP_START,
   SIGN_UP_SUCCESS,
   SIGN_UP_FAILURE,
-} from '../../../constants/user.types';
+} from '../../types/user.types';
 import {
   googleSignInStartAction,
   emailSignInStartAction,

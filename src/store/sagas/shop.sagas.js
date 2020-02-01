@@ -1,5 +1,5 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
-import { FETCH_COLLECTIONS_START } from '../../constants/shop.types';
+import { FETCH_COLLECTIONS_START } from '../types/shop.types';
 import { firestore, convertCollectionsSnapshotToMap } from '../../api/firebase';
 import {
   fetchCollectionsSuccessAction,

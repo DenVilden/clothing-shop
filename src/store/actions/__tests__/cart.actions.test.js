@@ -6,7 +6,7 @@ import {
   CLEAR_CART,
   FETCH_CART_ITEMS_SUCCESS,
   FETCH_CART_ITEMS_ERROR,
-} from '../../../constants/cart.types';
+} from '../../types/cart.types';
 import {
   toggleCartHiddenAction,
   addItemAction,

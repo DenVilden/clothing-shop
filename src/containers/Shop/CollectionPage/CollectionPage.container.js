@@ -3,8 +3,8 @@ import { compose } from 'redux';
 import {
   selectIsCollectionsLoaded,
   selectShopCollection,
-} from '../../store/selectors/shop.selectors';
-import WithSpinner from '../WithSpinner';
+} from '../../../store/selectors/shop.selectors';
+import WithSpinner from '../../WithSpinner';
 import CollectionPage from './CollectionPage';
 
 const mapStateToProps = (state, props) => ({
