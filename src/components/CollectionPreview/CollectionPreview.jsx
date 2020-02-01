@@ -45,8 +45,8 @@ CollectionPreview.propTypes = {
     ).isRequired,
     routeName: PropTypes.string.isRequired,
   }).isRequired,
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
+  match: PropTypes.shape({ url: PropTypes.string }).isRequired,
 };
 
 export default withRouter(CollectionPreview);

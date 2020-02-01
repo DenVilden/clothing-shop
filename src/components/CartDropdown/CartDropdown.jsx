@@ -41,7 +41,7 @@ CartDropdown.propTypes = {
     })
   ).isRequired,
   toggleCartHidden: PropTypes.func.isRequired,
-  history: PropTypes.objectOf(PropTypes.any).isRequired,
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
 };
 
 export default CartDropdown;

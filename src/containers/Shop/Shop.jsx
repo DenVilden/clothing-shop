@@ -26,7 +26,7 @@ const Shop = ({ match, fetchCollectionStart }) => {
 };
 
 Shop.propTypes = {
-  match: PropTypes.objectOf(PropTypes.any).isRequired,
+  match: PropTypes.shape({ path: PropTypes.string }).isRequired,
   fetchCollectionStart: PropTypes.func.isRequired,
 };
 
