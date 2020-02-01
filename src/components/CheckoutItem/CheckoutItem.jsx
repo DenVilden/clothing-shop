@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import {
   CheckoutItemContainer,
   ImageContainer,
@@ -7,42 +8,52 @@ import {
   QuantityContainer,
   RemoveButtonContainer,
 } from './CheckoutItem.styles';
+import {
+  clearItemFromCartAction,
+  addItemAction,
+  removeItemAction,
+} from '../../store/actions/cart.actions';
 
-const CheckoutItem = ({ cartItem, clearItemFromCart, addItem, removeItem }) => (
-  <CheckoutItemContainer>
-    <ImageContainer>
-      <img alt="item" src={cartItem.imageUrl} />
-    </ImageContainer>
-    <TextContainer>{cartItem.name}</TextContainer>
-    <QuantityContainer>
-      <div
-        onClick={() => removeItem(cartItem)}
-        onKeyPress={() => removeItem(cartItem)}
+const CheckoutItem = ({ cartItem }) => {
+  const dispatch = useDispatch();
+
+  return (
+    <CheckoutItemContainer>
+      <ImageContainer>
+        <img alt="item" src={cartItem.imageUrl} />
+      </ImageContainer>
+      <TextContainer>{cartItem.name}</TextContainer>
+      <QuantityContainer>
+        <div
+          onClick={() => dispatch(removeItemAction(cartItem))}
+          onKeyPress={() => dispatch(removeItemAction(cartItem))}
+          role="button"
+          tabIndex="0"
+        >
+          &#10094;
+        </div>
+        <span>{cartItem.quantity}</span>
+        <div
+          onClick={() => dispatch(addItemAction(cartItem))}
+          onKeyPress={() => dispatch(addItemAction(cartItem))}
+          role="button"
+          tabIndex="0"
+        >
+          &#10095;
+        </div>
+      </QuantityContainer>
+      <TextContainer>${cartItem.price}</TextContainer>
+      <RemoveButtonContainer
+        onClick={() => dispatch(clearItemFromCartAction(cartItem))}
+        onKeyPress={() => dispatch(clearItemFromCartAction(cartItem))}
         role="button"
         tabIndex="0"
       >
-        &#10094;
-      </div>
-      <span>{cartItem.quantity}</span>
-      <div
-        onClick={() => addItem(cartItem)}
-        onKeyPress={() => addItem(cartItem)}
-        role="button"
-        tabIndex="0"
-      >
-        &#10095;
-      </div>
-    </QuantityContainer>
-    <TextContainer>${cartItem.price}</TextContainer>
-    <RemoveButtonContainer
-      onClick={() => clearItemFromCart(cartItem)}
-      role="button"
-      tabIndex="0"
-    >
-      &#10005;
-    </RemoveButtonContainer>
-  </CheckoutItemContainer>
-);
+        &#10005;
+      </RemoveButtonContainer>
+    </CheckoutItemContainer>
+  );
+};
 
 CheckoutItem.propTypes = {
   cartItem: PropTypes.shape({
@@ -52,9 +63,6 @@ CheckoutItem.propTypes = {
     price: PropTypes.number,
     quantity: PropTypes.number,
   }).isRequired,
-  clearItemFromCart: PropTypes.func.isRequired,
-  addItem: PropTypes.func.isRequired,
-  removeItem: PropTypes.func.isRequired,
 };
 
 export default CheckoutItem;

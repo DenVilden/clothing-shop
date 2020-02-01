@@ -6,7 +6,7 @@ import {
   TitleContainer,
   PreviewContainer,
 } from './CollectionPreview.styles';
-import CollectionItem from '../CollectionItem/CollectionItem.container';
+import CollectionItem from '../CollectionItem/CollectionItem';
 
 const CollectionPreview = ({
   history,

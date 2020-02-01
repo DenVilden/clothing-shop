@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import {
   SignInContainer,
   SignInTitle,
@@ -7,8 +7,13 @@ import {
 } from './SignIn.styles';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
+import {
+  googleSignInStartAction,
+  emailSignInStartAction,
+} from '../../store/actions/user.actions';
 
-const SignIn = ({ googleSignInStart, emailSignInStart }) => {
+const SignIn = () => {
+  const dispatch = useDispatch();
   const [userCredentials, setCredentials] = useState({
     email: '',
     password: '',
@@ -18,7 +23,7 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    emailSignInStart(email, password);
+    dispatch(emailSignInStartAction({ email, password }));
   };
 
   const handleChange = evt => {
@@ -49,18 +54,16 @@ const SignIn = ({ googleSignInStart, emailSignInStart }) => {
         />
         <ButtonsBarContainer>
           <CustomButton type="submit">Sign in</CustomButton>
-          <CustomButton isGoogleSignIn onClick={googleSignInStart}>
+          <CustomButton
+            isGoogleSignIn
+            onClick={() => dispatch(googleSignInStartAction())}
+          >
             Sign in with Google
           </CustomButton>
         </ButtonsBarContainer>
       </form>
     </SignInContainer>
   );
-};
-
-SignIn.propTypes = {
-  googleSignInStart: PropTypes.func.isRequired,
-  emailSignInStart: PropTypes.func.isRequired,
 };
 
 export default SignIn;

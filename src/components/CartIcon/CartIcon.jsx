@@ -1,26 +1,28 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   CartContainer,
   ShoppingIcon,
   ItemCountContainer,
 } from './CartIcon.styles';
+import { toggleCartHiddenAction } from '../../store/actions/cart.actions';
+import { selectCartItemsCount } from '../../store/selectors/cart.selectors';
 
-const CartIcon = ({ toggleCartHidden, itemCount }) => (
-  <CartContainer
-    onClick={toggleCartHidden}
-    onKeyPress={toggleCartHidden}
-    role="button"
-    tabIndex="0"
-  >
-    <ShoppingIcon />
-    <ItemCountContainer>{itemCount}</ItemCountContainer>
-  </CartContainer>
-);
+const CartIcon = () => {
+  const dispatch = useDispatch();
+  const itemCount = useSelector(selectCartItemsCount);
 
-CartIcon.propTypes = {
-  toggleCartHidden: PropTypes.func.isRequired,
-  itemCount: PropTypes.number.isRequired,
+  return (
+    <CartContainer
+      onClick={() => dispatch(toggleCartHiddenAction())}
+      onKeyPress={() => dispatch(toggleCartHiddenAction())}
+      role="button"
+      tabIndex="0"
+    >
+      <ShoppingIcon />
+      <ItemCountContainer>{itemCount}</ItemCountContainer>
+    </CartContainer>
+  );
 };
 
 export default CartIcon;

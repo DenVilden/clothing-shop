@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { SignUpContainer, SignUpTitle } from './SignUp.styles';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
+import { signUpStartAction } from '../../store/actions/user.actions';
 
-const SignUp = ({ signUpStart }) => {
+const SignUp = () => {
+  const dispatch = useDispatch();
   const [userCredentials, setCredentials] = useState({
     displayName: '',
     email: '',
@@ -20,7 +22,7 @@ const SignUp = ({ signUpStart }) => {
       // eslint-disable-next-line no-alert
       alert("passwords don't match");
     } else {
-      signUpStart(email, password, displayName);
+      dispatch(signUpStartAction({ email, password, displayName }));
     }
   };
 
@@ -70,10 +72,6 @@ const SignUp = ({ signUpStart }) => {
       </form>
     </SignUpContainer>
   );
-};
-
-SignUp.propTypes = {
-  signUpStart: PropTypes.func.isRequired,
 };
 
 export default SignUp;
