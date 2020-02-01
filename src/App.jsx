@@ -14,6 +14,7 @@ import Spinner from './components/Spinner/Spinner';
 import ErrorBoundary from './containers/ErrorBoundary/ErrorBoundary';
 import { selectCurrentUser } from './store/selectors/user.selectors';
 import { checkUserSessionAction } from './store/actions/user.actions';
+import { fetchSectionsStartAction } from './store/actions/directory.actions';
 
 const HomePage = lazy(() => import('./containers/HomePage/HomePage.container'));
 const Shop = lazy(() => import('./containers/Shop/Shop'));
@@ -24,10 +25,11 @@ const SignInAndSignUpPage = lazy(() =>
   import('./containers/SignInAndSignUpPage/SignInAndSignUpPage')
 );
 
-const App = ({ currentUser, checkUserSession }) => {
+const App = ({ currentUser, checkUserSession, fetchSectionsStart }) => {
   useEffect(() => {
+    fetchSectionsStart();
     checkUserSession();
-  }, [checkUserSession]);
+  }, [checkUserSession, fetchSectionsStart]);
 
   return (
     <Router>
@@ -42,14 +44,11 @@ const App = ({ currentUser, checkUserSession }) => {
             <Route
               exact
               path="/signin"
-              render={() => {
-                return currentUser ? (
-                  <Redirect to="/" />
-                ) : (
-                  <SignInAndSignUpPage />
-                );
-              }}
+              render={() =>
+                currentUser ? <Redirect to="/" /> : <SignInAndSignUpPage />
+              }
             />
+            <Redirect to="/" />
           </Switch>
         </Suspense>
       </ErrorBoundary>
@@ -72,6 +71,7 @@ App.propTypes = {
     id: PropTypes.string,
   }),
   checkUserSession: PropTypes.func.isRequired,
+  fetchSectionsStart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -80,6 +80,7 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = {
   checkUserSession: () => checkUserSessionAction(),
+  fetchSectionsStart: () => fetchSectionsStartAction(),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

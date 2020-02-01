@@ -1,9 +1,16 @@
 import { connect } from 'react-redux';
-import { fetchSectionsStartAction } from '../../store/actions/directory.actions';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
 import HomePage from './HomePage';
+import {
+  selectDirectorySections,
+  selectIsDirectoryFetching,
+} from '../../store/selectors/directory.selectors';
+import WithSpinner from '../WithSpinner';
 
-const mapDispatchToProps = {
-  fetchSectionsStart: () => fetchSectionsStartAction(),
-};
+const mapStateToProps = createStructuredSelector({
+  loading: selectIsDirectoryFetching,
+  sections: selectDirectorySections,
+});
 
-export default connect(null, mapDispatchToProps)(HomePage);
+export default compose(connect(mapStateToProps), WithSpinner)(HomePage);

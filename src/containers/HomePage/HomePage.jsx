@@ -1,17 +1,25 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Directory from '../../components/Directory/Directory.container';
+import { MenuContainer } from './HomePage.styles';
+import MenuItem from '../../components/MenuItem/MenuItem';
 
-const HomePage = ({ fetchSectionsStart }) => {
-  useEffect(() => {
-    fetchSectionsStart();
-  }, [fetchSectionsStart]);
-
-  return <Directory />;
-};
+const HomePage = ({ sections }) => (
+  <MenuContainer>
+    {sections.map(section => (
+      <MenuItem key={section.id} section={section} />
+    ))}
+  </MenuContainer>
+);
 
 HomePage.propTypes = {
-  fetchSectionsStart: PropTypes.func.isRequired,
+  sections: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      imageUrl: PropTypes.string,
+      id: PropTypes.number,
+      linkUrl: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 export default HomePage;
