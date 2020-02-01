@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../components/Spinner/Spinner';
-import { fetchCollectionsStartAction } from '../actions/shop.actions';
+import { fetchCollectionsStartAction } from '../store/actions/shop.actions';
 
 const CollectionsPage = lazy(() =>
-  import('../pages/CollectionsPage/CollectionsPage.container')
+  import('../containers/CollectionsPage/CollectionsPage.container')
 );
 const CollectionPage = lazy(() =>
-  import('../pages/CollectionPage/CollectionPage.container')
+  import('../containers/CollectionPage/CollectionPage.container')
 );
 
 const Shop = ({ match, fetchCollectionStart }) => {

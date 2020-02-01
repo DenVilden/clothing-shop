@@ -4,7 +4,7 @@ import {
   clearItemFromCartAction,
   addItemAction,
   removeItemAction,
-} from '../../actions/cart.actions';
+} from '../../store/actions/cart.actions';
 
 const mapDispatchToProps = {
   clearItemFromCart: item => clearItemFromCartAction(item),

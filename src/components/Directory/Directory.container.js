@@ -5,7 +5,7 @@ import Directory from './Directory';
 import {
   selectDirectorySections,
   selectIsDirectoryFetching,
-} from '../../selectors/directory.selectors';
+} from '../../store/selectors/directory.selectors';
 import WithSpinner from '../../containers/WithSpinner';
 
 const mapStateToProps = createStructuredSelector({

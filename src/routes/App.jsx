@@ -12,16 +12,18 @@ import GlobalStyle from '../styles';
 import Header from '../components/Header/Header.container';
 import Spinner from '../components/Spinner/Spinner';
 import ErrorBoundary from '../containers/ErrorBoundary/ErrorBoundary';
-import { selectCurrentUser } from '../selectors/user.selectors';
-import { checkUserSessionAction } from '../actions/user.actions';
+import { selectCurrentUser } from '../store/selectors/user.selectors';
+import { checkUserSessionAction } from '../store/actions/user.actions';
 
-const HomePage = lazy(() => import('../pages/HomePage/HomePage.container'));
+const HomePage = lazy(() =>
+  import('../containers/HomePage/HomePage.container')
+);
 const Shop = lazy(() => import('./Shop'));
 const CheckoutPage = lazy(() =>
-  import('../pages/CheckoutPage/CheckoutPage.container')
+  import('../containers/CheckoutPage/CheckoutPage.container')
 );
 const SignInAndSignUpPage = lazy(() =>
-  import('../pages/SignInAndSignUpPage/SignInAndSignUpPage')
+  import('../containers/SignInAndSignUpPage/SignInAndSignUpPage')
 );
 
 const App = ({ currentUser, checkUserSession }) => {

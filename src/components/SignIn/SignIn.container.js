@@ -3,7 +3,7 @@ import SignIn from './SignIn';
 import {
   googleSignInStartAction,
   emailSignInStartAction,
-} from '../../actions/user.actions';
+} from '../../store/actions/user.actions';
 
 const mapDispatchToProps = {
   googleSignInStart: () => googleSignInStartAction(),

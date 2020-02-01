@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SignUp from './SignUp';
-import { signUpStartAction } from '../../actions/user.actions';
+import { signUpStartAction } from '../../store/actions/user.actions';
 
 const mapDispatchToProps = {
   signUpStart: (email, password, displayName) => {
