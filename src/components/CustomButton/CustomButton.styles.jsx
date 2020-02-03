@@ -60,5 +60,5 @@ export const CustomButtonContainer = styled.button`
   text-transform: uppercase;
   width: auto;
 
-  ${getButtonStyles}
+  ${getButtonStyles};
 `;

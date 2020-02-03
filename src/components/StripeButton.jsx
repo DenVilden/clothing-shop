@@ -35,13 +35,9 @@ const StripeButton = ({ price, email }) => {
   );
 };
 
-StripeButton.defaultProps = {
-  email: null,
-};
-
 StripeButton.propTypes = {
   price: PropTypes.number.isRequired,
-  email: PropTypes.string,
+  email: PropTypes.string.isRequired,
 };
 
 export default StripeButton;

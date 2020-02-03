@@ -41,15 +41,13 @@ const CheckoutPage = () => {
             *Please use the following test credit card for payments*
             <br /> 4242 4242 4242 4242 - Exp: 01/20 - CVV: 123
           </WarningContainer>
-          <StripeButton
-            email={currentUser ? currentUser.email : null}
-            price={total}
-          />
+          <StripeButton email={currentUser.email} price={total} />
         </>
-      ) : null}
-      {total && !currentUser ? (
-        <WarningContainer>Please sign in to proceed</WarningContainer>
-      ) : null}
+      ) : (
+        !currentUser && (
+          <WarningContainer>Please sign in to proceed</WarningContainer>
+        )
+      )}
     </CheckoutPageContainer>
   );
 };

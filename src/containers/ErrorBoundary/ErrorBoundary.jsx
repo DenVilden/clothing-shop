@@ -9,24 +9,20 @@ import {
 export default class ErrorBoundary extends Component {
   state = { hasError: false };
 
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
+  static getDerivedStateFromError = () => ({ hasError: true });
 
   render() {
     const { hasError } = this.state;
     const { children } = this.props;
 
-    if (hasError) {
-      return (
-        <ErrorImageOverlay>
-          <ErrorImageContainer imageUrl="https://i.imgur.com/yW2W9SC.png" />
-          <ErrorImageText>Error: something went wrong</ErrorImageText>
-        </ErrorImageOverlay>
-      );
-    }
-
-    return children;
+    return hasError ? (
+      <ErrorImageOverlay>
+        <ErrorImageContainer imageUrl="https://i.imgur.com/yW2W9SC.png" />
+        <ErrorImageText>Error: something went wrong</ErrorImageText>
+      </ErrorImageOverlay>
+    ) : (
+      children
+    );
   }
 }
 
