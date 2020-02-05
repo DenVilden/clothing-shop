@@ -9,6 +9,17 @@ import {
   ContentSubtitle,
 } from './MenuItem.styles';
 
+const propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
+  match: PropTypes.shape({ url: PropTypes.string }).isRequired,
+  section: PropTypes.shape({
+    title: PropTypes.string,
+    imageUrl: PropTypes.string,
+    linkUrl: PropTypes.string,
+    size: PropTypes.string,
+  }).isRequired,
+};
+
 const MenuItem = ({
   history,
   match,
@@ -32,15 +43,6 @@ const MenuItem = ({
   </MenuItemContainer>
 );
 
-MenuItem.propTypes = {
-  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
-  match: PropTypes.shape({ url: PropTypes.string }).isRequired,
-  section: PropTypes.shape({
-    title: PropTypes.string,
-    imageUrl: PropTypes.string,
-    linkUrl: PropTypes.string,
-    size: PropTypes.string,
-  }).isRequired,
-};
+MenuItem.propTypes = propTypes;
 
 export default withRouter(MenuItem);

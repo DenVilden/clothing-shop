@@ -8,6 +8,23 @@ import {
 } from './CollectionPreview.styles';
 import CollectionItem from '../CollectionItem/CollectionItem';
 
+const propTypes = {
+  collection: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        imageUrl: PropTypes.string,
+        price: PropTypes.number,
+      })
+    ).isRequired,
+    routeName: PropTypes.string.isRequired,
+  }).isRequired,
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
+  match: PropTypes.shape({ url: PropTypes.string }).isRequired,
+};
+
 const CollectionPreview = ({
   history,
   match,
@@ -32,21 +49,6 @@ const CollectionPreview = ({
   </CollectionPreviewContainer>
 );
 
-CollectionPreview.propTypes = {
-  collection: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-        imageUrl: PropTypes.string,
-        price: PropTypes.number,
-      })
-    ).isRequired,
-    routeName: PropTypes.string.isRequired,
-  }).isRequired,
-  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
-  match: PropTypes.shape({ url: PropTypes.string }).isRequired,
-};
+CollectionPreview.propTypes = propTypes;
 
 export default withRouter(CollectionPreview);

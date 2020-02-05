@@ -6,6 +6,16 @@ import {
   ItemDetailsContainer,
 } from './CartItem.styles';
 
+const propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number,
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    quantity: PropTypes.number,
+  }).isRequired,
+};
+
 const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
   <CartItemContainer>
     <CartItemImage alt="item" src={imageUrl} />
@@ -18,14 +28,6 @@ const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
   </CartItemContainer>
 );
 
-CartItem.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.number,
-    imageUrl: PropTypes.string,
-    name: PropTypes.string,
-    price: PropTypes.number,
-    quantity: PropTypes.number,
-  }).isRequired,
-};
+CartItem.propTypes = propTypes;
 
 export default CartItem;

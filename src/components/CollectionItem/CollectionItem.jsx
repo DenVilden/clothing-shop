@@ -11,6 +11,15 @@ import {
 } from './CollectionItem.styles';
 import { addItemAction } from '../../store/actions/cart.actions';
 
+const propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    imageUrl: PropTypes.string,
+    price: PropTypes.number,
+  }).isRequired,
+};
+
 const CollectionItem = ({ item }) => {
   const dispatch = useDispatch();
 
@@ -28,13 +37,6 @@ const CollectionItem = ({ item }) => {
   );
 };
 
-CollectionItem.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    imageUrl: PropTypes.string,
-    price: PropTypes.number,
-  }).isRequired,
-};
+CollectionItem.propTypes = propTypes;
 
 export default CollectionItem;

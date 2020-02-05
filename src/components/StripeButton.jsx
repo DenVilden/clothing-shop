@@ -4,6 +4,11 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import logo from '../assets/logo.svg';
 
+const propTypes = {
+  price: PropTypes.number.isRequired,
+  email: PropTypes.string.isRequired,
+};
+
 const StripeButton = ({ price, email }) => {
   const amount = price * 100;
 
@@ -35,9 +40,6 @@ const StripeButton = ({ price, email }) => {
   );
 };
 
-StripeButton.propTypes = {
-  price: PropTypes.number.isRequired,
-  email: PropTypes.string.isRequired,
-};
+StripeButton.propTypes = propTypes;
 
 export default StripeButton;

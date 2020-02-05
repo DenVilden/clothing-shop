@@ -6,6 +6,10 @@ import {
   FormInputLabel,
 } from './FormInput.styles';
 
+const propTypes = {
+  label: PropTypes.string.isRequired,
+};
+
 const FormInput = ({ label, ...otherProps }) => (
   <GroupContainer>
     <FormInputContainer id={label} {...otherProps} />
@@ -13,8 +17,6 @@ const FormInput = ({ label, ...otherProps }) => (
   </GroupContainer>
 );
 
-FormInput.propTypes = {
-  label: PropTypes.string.isRequired,
-};
+FormInput.propTypes = propTypes;
 
 export default FormInput;

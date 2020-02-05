@@ -13,6 +13,14 @@ import {
 } from '../../../store/selectors/shop.selectors';
 import Spinner from '../../../components/Spinner/Spinner';
 
+const propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      collectionId: PropTypes.string,
+    }),
+  }).isRequired,
+};
+
 const CollectionPage = ({ match }) => {
   const loading = useSelector(selectIsCollectionsLoaded);
   const collection = useSelector(
@@ -33,12 +41,6 @@ const CollectionPage = ({ match }) => {
   );
 };
 
-CollectionPage.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      collectionId: PropTypes.string,
-    }),
-  }).isRequired,
-};
+CollectionPage.propTypes = propTypes;
 
 export default CollectionPage;

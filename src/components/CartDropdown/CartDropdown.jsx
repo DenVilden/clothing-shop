@@ -12,6 +12,10 @@ import CartItem from './CartItem/CartItem';
 import { selectCartItems } from '../../store/selectors/cart.selectors';
 import { toggleCartHiddenAction } from '../../store/actions/cart.actions';
 
+const propTypes = {
+  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
+};
+
 const CartDropdown = ({ history }) => {
   const cartItems = useSelector(selectCartItems);
   const dispatch = useDispatch();
@@ -39,8 +43,6 @@ const CartDropdown = ({ history }) => {
   );
 };
 
-CartDropdown.propTypes = {
-  history: PropTypes.shape({ push: PropTypes.func }).isRequired,
-};
+CartDropdown.propTypes = propTypes;
 
 export default withRouter(CartDropdown);

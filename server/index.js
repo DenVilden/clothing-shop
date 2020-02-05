@@ -14,8 +14,14 @@ app.use(express.urlencoded({ extended: true }));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
-  app.use('/', expressStaticGzip(buildPath, { enableBrotli: true }));
-  app.get('*', (req, res) => {
+  app.use(
+    '/',
+    expressStaticGzip(buildPath, {
+      enableBrotli: true,
+      orderPreference: ['br'],
+    })
+  );
+  app.get('*', (_, res) => {
     res.sendFile(`${buildPath}/index.html`);
   });
 }

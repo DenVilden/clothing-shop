@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   HeaderContainer,
@@ -8,11 +8,10 @@ import {
 } from './Header.styles';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import CartIcon from '../CartIcon/CartIcon';
+import CartDropdown from '../CartDropdown/CartDropdown';
 import { selectCartHidden } from '../../store/selectors/cart.selectors';
 import { selectCurrentUser } from '../../store/selectors/user.selectors';
 import { signOutStartAction } from '../../store/actions/user.actions';
-
-const CartDropdown = lazy(() => import('../CartDropdown/CartDropdown'));
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -38,7 +37,7 @@ const Header = () => {
         )}
         <CartIcon />
       </OptionsContainer>
-      <Suspense fallback={<></>}>{!hidden && <CartDropdown />}</Suspense>
+      {!hidden && <CartDropdown />}
     </HeaderContainer>
   );
 };

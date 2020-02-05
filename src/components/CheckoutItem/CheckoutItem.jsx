@@ -14,6 +14,16 @@ import {
   removeItemAction,
 } from '../../store/actions/cart.actions';
 
+const propTypes = {
+  cartItem: PropTypes.shape({
+    id: PropTypes.number,
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    quantity: PropTypes.number,
+  }).isRequired,
+};
+
 const CheckoutItem = ({ cartItem }) => {
   const dispatch = useDispatch();
 
@@ -55,14 +65,6 @@ const CheckoutItem = ({ cartItem }) => {
   );
 };
 
-CheckoutItem.propTypes = {
-  cartItem: PropTypes.shape({
-    id: PropTypes.number,
-    imageUrl: PropTypes.string,
-    name: PropTypes.string,
-    price: PropTypes.number,
-    quantity: PropTypes.number,
-  }).isRequired,
-};
+CheckoutItem.propTypes = propTypes;
 
 export default CheckoutItem;

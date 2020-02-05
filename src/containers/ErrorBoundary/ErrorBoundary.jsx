@@ -7,6 +7,10 @@ import {
 } from './ErrorBoundary.styles';
 
 export default class ErrorBoundary extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+  };
+
   state = { hasError: false };
 
   static getDerivedStateFromError = () => ({ hasError: true });
@@ -25,7 +29,3 @@ export default class ErrorBoundary extends Component {
     );
   }
 }
-
-ErrorBoundary.propTypes = {
-  children: PropTypes.node.isRequired,
-};
