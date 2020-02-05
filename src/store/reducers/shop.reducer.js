@@ -20,7 +20,12 @@ export default (state = initialState, { type, payload }) => {
       };
 
     case FETCH_COLLECTIONS_FAILURE:
-      return { ...state, isFetching: false, errorMessage: payload };
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: payload,
+        collections: null,
+      };
 
     default:
       return state;

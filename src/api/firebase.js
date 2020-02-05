@@ -70,6 +70,10 @@ export const updateFirebaseCart = async cartItems => {
 };
 
 export const convertCollectionsSnapshotToMap = collections => {
+  if (!collections.docs.length) {
+    throw new Error('Cannot reach collections');
+  }
+
   const transformedCollection = collections.docs.map(doc => {
     const { title, items } = doc.data();
 
@@ -88,6 +92,9 @@ export const convertCollectionsSnapshotToMap = collections => {
 };
 
 export const convertSectionsSnapshotToMap = sections => {
+  if (!sections.docs.length) {
+    throw new Error('Cannot reach sections');
+  }
   return sections.docs.map(doc => doc.data());
 };
 

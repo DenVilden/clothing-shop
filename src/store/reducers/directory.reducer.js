@@ -20,7 +20,12 @@ export default (state = initialState, { type, payload }) => {
       };
 
     case FETCH_SECTIONS_FAILURE:
-      return { ...state, isFetching: false, errorMessage: payload };
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: payload,
+        sections: null,
+      };
 
     default:
       return state;

@@ -40,7 +40,7 @@ describe('shopReducer', () => {
     });
   });
 
-  it('should set error and isFetching to false if error happens', () => {
+  it('should set error and data array to null if error happens', () => {
     const mockError = 'error';
     const reducer = shopReducer(initialState, {
       type: FETCH_COLLECTIONS_FAILURE,
@@ -50,6 +50,7 @@ describe('shopReducer', () => {
       ...initialState,
       isFetching: false,
       errorMessage: mockError,
+      collections: null,
     });
   });
 });

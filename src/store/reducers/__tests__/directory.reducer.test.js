@@ -36,7 +36,7 @@ describe('directoryReducer', () => {
     });
   });
 
-  it('should set error and isFetching to false if error happens', () => {
+  it('should set error and data array to null if error happens', () => {
     const mockError = 'error';
     const reducer = directoryReducer(initialState, {
       type: FETCH_SECTIONS_FAILURE,
@@ -46,6 +46,7 @@ describe('directoryReducer', () => {
       ...initialState,
       isFetching: false,
       errorMessage: mockError,
+      sections: null,
     });
   });
 });
