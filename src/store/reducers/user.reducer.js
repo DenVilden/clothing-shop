@@ -7,7 +7,7 @@ import {
   SIGN_UP_SUCCESS,
 } from '../types/user.types';
 
-const initialState = { currentUser: null, errorMessage: null };
+const initialState = { currentUser: null };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
@@ -15,17 +15,16 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         currentUser: { displayName: payload.displayName, email: payload.email },
-        errorMessage: null,
       };
 
     case SIGN_OUT_SUCCESS:
     case SIGN_UP_SUCCESS:
-      return { ...state, currentUser: null, errorMessage: null };
+      return { ...state, currentUser: null };
 
     case SIGN_IN_FAILURE:
     case SIGN_OUT_FAILURE:
     case SIGN_UP_FAILURE:
-      return { ...state, errorMessage: payload };
+      return { ...state, currentUser: null };
 
     default:
       return state;

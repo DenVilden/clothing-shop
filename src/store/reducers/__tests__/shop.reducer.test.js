@@ -9,7 +9,6 @@ describe('shopReducer', () => {
   const initialState = {
     collections: {},
     isFetching: false,
-    errorMessage: null,
   };
 
   it('should return initial state', () => {
@@ -41,15 +40,12 @@ describe('shopReducer', () => {
   });
 
   it('should set error and data array to null if error happens', () => {
-    const mockError = 'error';
     const reducer = shopReducer(initialState, {
       type: FETCH_COLLECTIONS_FAILURE,
-      payload: mockError,
     });
     expect(reducer).toEqual({
       ...initialState,
       isFetching: false,
-      errorMessage: mockError,
       collections: null,
     });
   });

@@ -56,7 +56,7 @@ describe('cart actions', () => {
   });
 
   it('should setup fetchCartItemsError', () => {
-    const action = fetchCartItemsErrorAction('error');
-    expect(action).toEqual({ type: FETCH_CART_ITEMS_ERROR, payload: 'error' });
+    const action = fetchCartItemsErrorAction();
+    expect(action).toEqual({ type: FETCH_CART_ITEMS_ERROR });
   });
 });

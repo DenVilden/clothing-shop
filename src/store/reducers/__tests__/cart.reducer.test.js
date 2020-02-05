@@ -10,7 +10,7 @@ import {
 import cartReducer from '../cart.reducer';
 
 describe('cartReducer', () => {
-  const initialState = { cartItems: [], hidden: true, errorMessage: null };
+  const initialState = { cartItems: [], hidden: true };
 
   it('should return initial state', () => {
     const reducer = cartReducer(undefined, {});
@@ -137,11 +137,9 @@ describe('cartReducer', () => {
   });
 
   it('should set error if error happens', () => {
-    const mockError = 'error';
     const reducer = cartReducer(initialState, {
       type: FETCH_CART_ITEMS_ERROR,
-      payload: mockError,
     });
-    expect(reducer).toEqual({ ...initialState, errorMessage: mockError });
+    expect(reducer).toEqual({ ...initialState, cartItems: null });
   });
 });

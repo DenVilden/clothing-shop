@@ -42,8 +42,8 @@ describe('fetchSectionsSaga', () => {
   it('should call fetchSectionsFailureAction if error happens', () => {
     const newGen = fetchSectionsSaga();
     newGen.next();
-    const eff = newGen.throw({ message: 'error' }).value;
-    const action = fetchSectionsFailureAction('error');
+    const eff = newGen.throw().value;
+    const action = fetchSectionsFailureAction();
     expect(eff).toEqual(put(action));
   });
 });

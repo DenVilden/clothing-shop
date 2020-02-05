@@ -1,5 +1,9 @@
 import { takeLatest, put, all, call, select } from 'redux-saga/effects';
-import { SIGN_OUT_SUCCESS, SIGN_IN_SUCCESS } from '../../types/user.types';
+import {
+  SIGN_OUT_SUCCESS,
+  SIGN_IN_SUCCESS,
+  SIGN_IN_FAILURE,
+} from '../../types/user.types';
 import {
   ADD_ITEM,
   REMOVE_ITEM,
@@ -14,6 +18,7 @@ import cartSagas, {
   clearCartOnSignOutSaga,
   fetchCartItemsOnSignInSaga,
   updateCartSaga,
+  resetCartOnSignInFailure,
 } from '../cart.sagas';
 import { updateFirebaseCart } from '../../../api/firebase';
 import { selectCartItems } from '../../selectors/cart.selectors';
@@ -29,6 +34,7 @@ describe('cartSagas', () => {
         takeLatest(ADD_ITEM, updateCartSaga),
         takeLatest(REMOVE_ITEM, updateCartSaga),
         takeLatest(CLEAR_ITEM_FROM_CART, updateCartSaga),
+        takeLatest(SIGN_IN_FAILURE, resetCartOnSignInFailure),
       ])
     );
   });
@@ -39,6 +45,15 @@ describe('clearCartOnSignOutSaga', () => {
     const gen = clearCartOnSignOutSaga();
     const eff = gen.next().value;
     const action = clearCartAction();
+    expect(eff).toEqual(put(action));
+  });
+});
+
+describe('resetCartOnSignInFailure', () => {
+  it('should call fetchCartItemsErrorAction', () => {
+    const gen = resetCartOnSignInFailure();
+    const eff = gen.next().value;
+    const action = fetchCartItemsErrorAction();
     expect(eff).toEqual(put(action));
   });
 });
@@ -58,8 +73,8 @@ describe('fetchCartItemsOnSignInSaga', () => {
   it('should call fetchCartItemsErrorAction if error happens', () => {
     const newGen = fetchCartItemsOnSignInSaga(mockAction);
     newGen.next();
-    const eff = newGen.throw({ message: 'error' }).value;
-    const action = fetchCartItemsErrorAction('error');
+    const eff = newGen.throw().value;
+    const action = fetchCartItemsErrorAction();
     expect(eff).toEqual(put(action));
   });
 });
@@ -81,8 +96,8 @@ describe('updateCartSaga', () => {
   it('should call fetchCartItemsErrorAction if error happens', () => {
     const newGen = updateCartSaga();
     newGen.next();
-    const eff = newGen.throw({ message: 'error' }).value;
-    const action = fetchCartItemsErrorAction('error');
+    const eff = newGen.throw().value;
+    const action = fetchCartItemsErrorAction();
     expect(eff).toEqual(put(action));
   });
 });

@@ -45,8 +45,8 @@ describe('fetchCollectionsSaga', () => {
   it('should call fetchCollectionsFailureAction if error happens', () => {
     const newGen = fetchCollectionsSaga();
     newGen.next();
-    const eff = newGen.throw({ message: 'error' }).value;
-    const action = fetchCollectionsFailureAction('error');
+    const eff = newGen.throw().value;
+    const action = fetchCollectionsFailureAction();
     expect(eff).toEqual(put(action));
   });
 });

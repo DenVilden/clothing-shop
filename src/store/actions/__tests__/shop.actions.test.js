@@ -25,11 +25,9 @@ describe('fetchCollections actions', () => {
   });
 
   it('should setup fetchCollectionsFailure', () => {
-    const mockError = 'error';
-    const action = fetchCollectionsFailureAction(mockError);
+    const action = fetchCollectionsFailureAction();
     expect(action).toEqual({
       type: FETCH_COLLECTIONS_FAILURE,
-      payload: mockError,
     });
   });
 });

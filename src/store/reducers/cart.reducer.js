@@ -9,7 +9,7 @@ import {
 } from '../types/cart.types';
 import { addItemToCard, removeItemFromCard } from './cart.reducer.utils';
 
-const initialState = { cartItems: [], hidden: true, errorMessage: null };
+const initialState = { cartItems: [], hidden: true };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
@@ -40,10 +40,10 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, cartItems: [] };
 
     case FETCH_CART_ITEMS_SUCCESS:
-      return { ...state, cartItems: payload || [], errorMessage: null };
+      return { ...state, cartItems: payload || [] };
 
     case FETCH_CART_ITEMS_ERROR:
-      return { ...state, errorMessage: payload };
+      return { ...state, cartItems: null };
 
     default:
       return state;

@@ -31,7 +31,7 @@ export function* getSnapshotFromUserAuthSaga(userAuth, additionalData) {
     if (!userData) return;
     yield put(signInSuccessAction(userData));
   } catch (error) {
-    yield put(signInFailureAction(error.message));
+    yield put(signInFailureAction());
   }
 }
 
@@ -40,7 +40,7 @@ export function* signInWithGoogleSaga() {
     const { user } = yield auth.signInWithPopup(googleProvider);
     yield getSnapshotFromUserAuthSaga(user);
   } catch (error) {
-    yield put(signInFailureAction(error.message));
+    yield put(signInFailureAction());
   }
 }
 
@@ -49,7 +49,7 @@ export function* signInWithEmailSaga({ payload: { email, password } }) {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     yield getSnapshotFromUserAuthSaga(user);
   } catch (error) {
-    yield put(signInFailureAction(error.message));
+    yield put(signInFailureAction());
   }
 }
 
@@ -58,7 +58,7 @@ export function* isUserAuthenticatedSaga() {
     const user = yield getCurrentUser();
     yield getSnapshotFromUserAuthSaga(user);
   } catch (error) {
-    yield put(signInFailureAction(error.message));
+    yield put(signInFailureAction());
   }
 }
 
@@ -67,7 +67,7 @@ export function* signOutSaga() {
     yield auth.signOut();
     yield put(signOutSuccessAction());
   } catch (error) {
-    yield put(signOutFailureAction(error.message));
+    yield put(signOutFailureAction());
   }
 }
 
@@ -77,7 +77,7 @@ export function* signUpSaga({ payload: { email, password, displayName } }) {
     yield put(signUpSuccessAction());
     yield getSnapshotFromUserAuthSaga(user, { displayName });
   } catch (error) {
-    yield put(signUpFailureAction(error.message));
+    yield put(signUpFailureAction());
   }
 }
 

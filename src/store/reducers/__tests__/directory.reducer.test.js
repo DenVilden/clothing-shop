@@ -6,7 +6,7 @@ import {
 import directoryReducer from '../directory.reducer';
 
 describe('directoryReducer', () => {
-  const initialState = { sections: [], isFetching: false, errorMessage: null };
+  const initialState = { sections: [], isFetching: false };
 
   it('should return initial state', () => {
     const reducer = directoryReducer(undefined, {});
@@ -36,16 +36,13 @@ describe('directoryReducer', () => {
     });
   });
 
-  it('should set error and data array to null if error happens', () => {
-    const mockError = 'error';
+  it('should set data array to null if error happens', () => {
     const reducer = directoryReducer(initialState, {
       type: FETCH_SECTIONS_FAILURE,
-      payload: mockError,
     });
     expect(reducer).toEqual({
       ...initialState,
       isFetching: false,
-      errorMessage: mockError,
       sections: null,
     });
   });

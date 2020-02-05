@@ -13,7 +13,6 @@ export const fetchSectionsSuccessAction = sectionsMap => ({
   payload: sectionsMap,
 });
 
-export const fetchSectionsFailureAction = errorMessage => ({
+export const fetchSectionsFailureAction = () => ({
   type: FETCH_SECTIONS_FAILURE,
-  payload: errorMessage,
 });

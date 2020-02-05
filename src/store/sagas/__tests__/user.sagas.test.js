@@ -80,8 +80,8 @@ describe('getSnapshotFromUserAuthSaga', () => {
       mockAdditionalData
     );
     newGen.next();
-    const eff = newGen.throw({ message: 'error' }).value;
-    const action = signInFailureAction('error');
+    const eff = newGen.throw().value;
+    const action = signInFailureAction();
     expect(eff).toEqual(put(action));
   });
 });
@@ -104,8 +104,8 @@ describe('signInWithGoogleSaga', () => {
   it('should call signInFailureAction if error happens', () => {
     const newGenerator = signInWithGoogleSaga();
     newGenerator.next();
-    const eff = newGenerator.throw({ message: 'error' }).value;
-    const action = signInFailureAction('error');
+    const eff = newGenerator.throw().value;
+    const action = signInFailureAction();
     expect(eff).toEqual(put(action));
   });
 });
@@ -133,8 +133,8 @@ describe('signInWithEmailSaga', () => {
   it('should call signInFailureAction if error happens', () => {
     const newGenerator = signInWithEmailSaga(mockAction);
     newGenerator.next();
-    const eff = newGenerator.throw({ message: 'error' }).value;
-    const action = signInFailureAction('error');
+    const eff = newGenerator.throw().value;
+    const action = signInFailureAction();
     expect(eff).toEqual(put(action));
   });
 });
@@ -156,8 +156,8 @@ describe('isUserAuthenticatedSaga', () => {
   it('should call signInFailureAction if error happens', () => {
     const newGenerator = isUserAuthenticatedSaga();
     newGenerator.next();
-    const eff = newGenerator.throw({ message: 'error' }).value;
-    const action = signInFailureAction('error');
+    const eff = newGenerator.throw().value;
+    const action = signInFailureAction();
     expect(eff).toEqual(put(action));
   });
 });
@@ -180,8 +180,8 @@ describe('signOutSaga', () => {
   it('should call signOutFailureAction if error happens', () => {
     const newGenerator = signOutSaga();
     newGenerator.next();
-    const eff = newGenerator.throw({ message: 'error' }).value;
-    const action = signOutFailureAction('error');
+    const eff = newGenerator.throw().value;
+    const action = signOutFailureAction();
     expect(eff).toEqual(put(action));
   });
 });
@@ -221,8 +221,8 @@ describe('signUpSaga', () => {
   it('should call signOutFailure if error happens', () => {
     const newGenerator = signUpSaga(mockAction);
     newGenerator.next();
-    const eff = newGenerator.throw({ message: 'error' }).value;
-    const action = signUpFailureAction('error');
+    const eff = newGenerator.throw().value;
+    const action = signUpFailureAction();
     expect(eff).toEqual(put(action));
   });
 });

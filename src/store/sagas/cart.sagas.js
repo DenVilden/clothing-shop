@@ -1,5 +1,9 @@
 import { takeLatest, put, all, select, call } from 'redux-saga/effects';
-import { SIGN_OUT_SUCCESS, SIGN_IN_SUCCESS } from '../types/user.types';
+import {
+  SIGN_OUT_SUCCESS,
+  SIGN_IN_SUCCESS,
+  SIGN_IN_FAILURE,
+} from '../types/user.types';
 import {
   ADD_ITEM,
   REMOVE_ITEM,
@@ -17,11 +21,15 @@ export function* clearCartOnSignOutSaga() {
   yield put(clearCartAction());
 }
 
+export function* resetCartOnSignInFailure() {
+  yield put(fetchCartItemsErrorAction());
+}
+
 export function* fetchCartItemsOnSignInSaga({ payload: { cartItems } }) {
   try {
     yield put(fetchCartItemsAction(cartItems));
   } catch (error) {
-    yield put(fetchCartItemsErrorAction(error.message));
+    yield put(fetchCartItemsErrorAction());
   }
 }
 
@@ -30,7 +38,7 @@ export function* updateCartSaga() {
     const cartItems = yield select(selectCartItems);
     yield call(updateFirebaseCart, cartItems);
   } catch (error) {
-    yield put(fetchCartItemsErrorAction(error.message));
+    yield put(fetchCartItemsErrorAction());
   }
 }
 
@@ -41,5 +49,6 @@ export default function*() {
     takeLatest(ADD_ITEM, updateCartSaga),
     takeLatest(REMOVE_ITEM, updateCartSaga),
     takeLatest(CLEAR_ITEM_FROM_CART, updateCartSaga),
+    takeLatest(SIGN_IN_FAILURE, resetCartOnSignInFailure),
   ]);
 }

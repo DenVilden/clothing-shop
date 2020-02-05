@@ -52,9 +52,8 @@ describe('signUp actions', () => {
   });
 
   it('should setup signUpFailure', () => {
-    const mockError = 'error';
-    const action = signUpFailureAction(mockError);
-    expect(action).toEqual({ type: SIGN_UP_FAILURE, payload: mockError });
+    const action = signUpFailureAction();
+    expect(action).toEqual({ type: SIGN_UP_FAILURE });
   });
 });
 
@@ -84,9 +83,8 @@ describe('signIn actions', () => {
   });
 
   it('should setup signInFailure', () => {
-    const mockError = 'error';
-    const action = signInFailureAction(mockError);
-    expect(action).toEqual({ type: SIGN_IN_FAILURE, payload: mockError });
+    const action = signInFailureAction();
+    expect(action).toEqual({ type: SIGN_IN_FAILURE });
   });
 });
 
@@ -102,8 +100,7 @@ describe('signOut actions', () => {
   });
 
   it('should setup signOutFailure', () => {
-    const mockError = 'error';
-    const action = signOutFailureAction(mockError);
-    expect(action).toEqual({ type: SIGN_OUT_FAILURE, payload: mockError });
+    const action = signOutFailureAction();
+    expect(action).toEqual({ type: SIGN_OUT_FAILURE });
   });
 });

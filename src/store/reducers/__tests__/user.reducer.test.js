@@ -8,10 +8,7 @@ import {
 import userReducer from '../user.reducer';
 
 describe('userReducer', () => {
-  const initialState = {
-    currentUser: null,
-    errorMessage: null,
-  };
+  const initialState = { currentUser: null };
 
   it('should return initial state', () => {
     const reducer = userReducer(undefined, {});
@@ -42,21 +39,17 @@ describe('userReducer', () => {
   });
 
   it('should set error if error happens', () => {
-    const mockError = 'error';
     const signIn = userReducer(initialState, {
       type: SIGN_IN_FAILURE,
-      payload: mockError,
     });
     const signUp = userReducer(initialState, {
       type: SIGN_UP_FAILURE,
-      payload: mockError,
     });
     const signOut = userReducer(initialState, {
       type: SIGN_OUT_FAILURE,
-      payload: mockError,
     });
-    expect(signIn).toEqual({ ...initialState, errorMessage: mockError });
-    expect(signUp).toEqual({ ...initialState, errorMessage: mockError });
-    expect(signOut).toEqual({ ...initialState, errorMessage: mockError });
+    expect(signIn).toEqual({ ...initialState });
+    expect(signUp).toEqual({ ...initialState });
+    expect(signOut).toEqual({ ...initialState });
   });
 });

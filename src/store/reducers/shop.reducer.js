@@ -4,26 +4,24 @@ import {
   FETCH_COLLECTIONS_FAILURE,
 } from '../types/shop.types';
 
-const initialState = { collections: {}, isFetching: false, errorMessage: null };
+const initialState = { collections: {}, isFetching: false };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_COLLECTIONS_START:
-      return { ...state, isFetching: true, errorMessage: null };
+      return { ...state, isFetching: true };
 
     case FETCH_COLLECTIONS_SUCCESS:
       return {
         ...state,
         isFetching: false,
         collections: payload,
-        errorMessage: null,
       };
 
     case FETCH_COLLECTIONS_FAILURE:
       return {
         ...state,
         isFetching: false,
-        errorMessage: payload,
         collections: null,
       };
 

@@ -36,7 +36,6 @@ export const fetchCartItemsAction = cartItems => ({
   payload: cartItems,
 });
 
-export const fetchCartItemsErrorAction = errorMessage => ({
+export const fetchCartItemsErrorAction = () => ({
   type: FETCH_CART_ITEMS_ERROR,
-  payload: errorMessage,
 });

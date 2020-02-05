@@ -15,6 +15,11 @@ export default class ErrorBoundary extends Component {
 
   static getDerivedStateFromError = () => ({ hasError: true });
 
+  componentDidCatch(error) {
+    // eslint-disable-next-line no-console
+    console.log(error);
+  }
+
   render() {
     const { hasError } = this.state;
     const { children } = this.props;

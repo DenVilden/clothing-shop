@@ -13,7 +13,7 @@ export function* fetchSectionsSaga() {
     const sectionsMap = yield call(convertSectionsSnapshotToMap, snapshot);
     yield put(fetchSectionsSuccessAction(sectionsMap));
   } catch (error) {
-    yield put(fetchSectionsFailureAction(error.message));
+    yield put(fetchSectionsFailureAction());
   }
 }
 

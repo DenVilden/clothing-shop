@@ -16,7 +16,7 @@ export function* fetchCollectionsSaga() {
     );
     yield put(fetchCollectionsSuccessAction(collectionsMap));
   } catch (error) {
-    yield put(fetchCollectionsFailureAction(error.message));
+    yield put(fetchCollectionsFailureAction());
   }
 }
 

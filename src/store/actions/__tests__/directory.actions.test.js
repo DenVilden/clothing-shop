@@ -25,11 +25,9 @@ describe('fetchSections actions', () => {
   });
 
   it('should setup fetchSectionsFailure', () => {
-    const mockError = 'error';
-    const action = fetchSectionsFailureAction(mockError);
+    const action = fetchSectionsFailureAction();
     expect(action).toEqual({
       type: FETCH_SECTIONS_FAILURE,
-      payload: mockError,
     });
   });
 });

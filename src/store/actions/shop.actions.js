@@ -13,7 +13,6 @@ export const fetchCollectionsSuccessAction = collectionsMap => ({
   payload: collectionsMap,
 });
 
-export const fetchCollectionsFailureAction = errorMessage => ({
+export const fetchCollectionsFailureAction = () => ({
   type: FETCH_COLLECTIONS_FAILURE,
-  payload: errorMessage,
 });
