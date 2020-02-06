@@ -11,37 +11,40 @@ import cartReducer from './reducers/cart.reducer';
 import directoryReducer from './reducers/directory.reducer';
 import shopReducer from './reducers/shop.reducer';
 
-const sagaMiddleware = createSagaMiddleware();
+const configureStore = async () => {
+  const sagaMiddleware = createSagaMiddleware();
 
-const middlewares = [sagaMiddleware];
+  const middlewares = [sagaMiddleware];
 
-if (process.env.NODE_ENV === 'development') {
-  // eslint-disable-next-line global-require
-  const logger = require('redux-logger').default;
-  middlewares.push(logger);
-}
+  if (process.env.NODE_ENV === 'development') {
+    const { logger } = await import('redux-logger');
+    middlewares.push(logger);
+  }
 
-const rootReducer = combineReducers({
-  user: userReducer,
-  cart: cartReducer,
-  directory: directoryReducer,
-  shop: shopReducer,
-});
+  const rootReducer = combineReducers({
+    user: userReducer,
+    cart: cartReducer,
+    directory: directoryReducer,
+    shop: shopReducer,
+  });
 
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(...middlewares))
-);
+  const store = createStore(
+    rootReducer,
+    composeWithDevTools(applyMiddleware(...middlewares))
+  );
 
-function* rootSaga() {
-  yield all([
-    call(shopSagas),
-    call(userSagas),
-    call(cartSagas),
-    call(directorySagas),
-  ]);
-}
+  function* rootSaga() {
+    yield all([
+      call(shopSagas),
+      call(userSagas),
+      call(cartSagas),
+      call(directorySagas),
+    ]);
+  }
 
-sagaMiddleware.run(rootSaga);
+  sagaMiddleware.run(rootSaga);
 
-export default store;
+  return store;
+};
+
+export default configureStore;
