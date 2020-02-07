@@ -6,7 +6,6 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import GlobalStyle from './styles';
 import Header from './components/Header/Header';
 import Spinner from './components/Spinner/Spinner';
 import ErrorBoundary from './containers/ErrorBoundary/ErrorBoundary';
@@ -32,7 +31,6 @@ const App = () => {
 
   return (
     <Router>
-      <GlobalStyle />
       <Header />
       <ErrorBoundary>
         <Suspense fallback={<Spinner />}>

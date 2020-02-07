@@ -10,13 +10,40 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="preconnect" href="https://firebasestorage.googleapis.com" />
     <link rel="preconnect" href="https://firestore.googleapis.com" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap"
+      onload="this.rel='stylesheet'"
+    />
     <title>Clothing Shop</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <style>
-      @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap');
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Open Sans Condensed', sans-serif;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        margin: 0;
+        padding: 20px 40px;
+      }
+
+      @media (max-width: 800px) {
+        body {
+          padding: 10px;
+        }
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
     </style>
   </body>
 </html>
