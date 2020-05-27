@@ -6,10 +6,6 @@ const mainColor = 'black';
 export const GroupContainer = styled.div`
   margin: 45px 0;
   position: relative;
-
-  input[type='password'] {
-    letter-spacing: 0.3em;
-  }
 `;
 
 const shrinkLabelStyles = css`

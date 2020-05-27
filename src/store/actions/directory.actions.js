@@ -8,7 +8,7 @@ export const fetchSectionsStartAction = () => ({
   type: FETCH_SECTIONS_START,
 });
 
-export const fetchSectionsSuccessAction = sectionsMap => ({
+export const fetchSectionsSuccessAction = (sectionsMap) => ({
   type: FETCH_SECTIONS_SUCCESS,
   payload: sectionsMap,
 });

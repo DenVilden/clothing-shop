@@ -17,6 +17,6 @@ export function* fetchSectionsSaga() {
   }
 }
 
-export default function*() {
+export default function* () {
   yield all([takeLatest(FETCH_SECTIONS_START, fetchSectionsSaga)]);
 }

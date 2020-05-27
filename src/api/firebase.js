@@ -20,7 +20,7 @@ export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export const getCurrentUser = () =>
   new Promise((resolve, reject) => {
-    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
       unsubscribe();
       resolve(userAuth);
     }, reject);
@@ -55,7 +55,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return { id: snapshot.id, ...snapshot.data() };
 };
 
-export const updateFirebaseCart = async cartItems => {
+export const updateFirebaseCart = async (cartItems) => {
   if (!auth.currentUser) return;
 
   const { uid } = auth.currentUser;
@@ -69,12 +69,12 @@ export const updateFirebaseCart = async cartItems => {
   }
 };
 
-export const convertCollectionsSnapshotToMap = collections => {
+export const convertCollectionsSnapshotToMap = (collections) => {
   if (!collections.docs.length) {
     throw new Error('Cannot reach collections');
   }
 
-  const transformedCollection = collections.docs.map(doc => {
+  const transformedCollection = collections.docs.map((doc) => {
     const { title, items } = doc.data();
 
     return {
@@ -91,11 +91,11 @@ export const convertCollectionsSnapshotToMap = collections => {
   }, {});
 };
 
-export const convertSectionsSnapshotToMap = sections => {
+export const convertSectionsSnapshotToMap = (sections) => {
   if (!sections.docs.length) {
     throw new Error('Cannot reach sections');
   }
-  return sections.docs.map(doc => doc.data());
+  return sections.docs.map((doc) => doc.data());
 };
 
 export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
@@ -103,7 +103,7 @@ export const addCollectionAndDocuments = async (collectionKey, objectToAdd) => {
 
   const batch = firestore.batch();
 
-  objectToAdd.forEach(obj => {
+  objectToAdd.forEach((obj) => {
     const newDocRef = collectionRef.doc();
     batch.set(newDocRef, obj);
   });

@@ -20,6 +20,6 @@ export function* fetchCollectionsSaga() {
   }
 }
 
-export default function*() {
+export default function* () {
   yield all([takeLatest(FETCH_COLLECTIONS_START, fetchCollectionsSaga)]);
 }

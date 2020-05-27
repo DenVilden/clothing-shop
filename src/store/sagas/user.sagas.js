@@ -81,7 +81,7 @@ export function* signUpSaga({ payload: { email, password, displayName } }) {
   }
 }
 
-export default function*() {
+export default function* () {
   yield all([
     takeLatest(GOOGLE_SIGN_IN_START, signInWithGoogleSaga),
     takeLatest(EMAIL_SIGN_IN_START, signInWithEmailSaga),

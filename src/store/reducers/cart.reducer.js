@@ -32,7 +32,7 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         cartItems: state.cartItems.filter(
-          cartItem => cartItem.id !== payload.id
+          (cartItem) => cartItem.id !== payload.id
         ),
       };
 

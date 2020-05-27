@@ -8,7 +8,7 @@ export const fetchCollectionsStartAction = () => ({
   type: FETCH_COLLECTIONS_START,
 });
 
-export const fetchCollectionsSuccessAction = collectionsMap => ({
+export const fetchCollectionsSuccessAction = (collectionsMap) => ({
   type: FETCH_COLLECTIONS_SUCCESS,
   payload: collectionsMap,
 });

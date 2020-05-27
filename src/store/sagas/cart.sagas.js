@@ -42,7 +42,7 @@ export function* updateCartSaga() {
   }
 }
 
-export default function*() {
+export default function* () {
   yield all([
     takeLatest(SIGN_OUT_SUCCESS, clearCartOnSignOutSaga),
     takeLatest(SIGN_IN_SUCCESS, fetchCartItemsOnSignInSaga),
