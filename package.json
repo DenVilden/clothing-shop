@@ -19,7 +19,7 @@
     "postbuild": "precompress build -s -e txt"
   },
   "dependencies": {
-    "axios": "0.21.1",
+    "axios": "0.21.2",
     "express": "^4.17.1",
     "express-sslify": "^1.2.0",
     "express-static-gzip": "^2.0.6",
