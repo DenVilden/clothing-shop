@@ -4,8 +4,19 @@
   "private": true,
   "proxy": "http://localhost:5000",
   "engines": {
-    "node": "14.x",
     "yarn": "1.x"
+  },
+  "scripts": {
+    "client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "nodemon -r dotenv/config server/index.js",
+    "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "node server/index.js",
+    "lint": "eslint src --ext js --fix,jsx && eslint server --fix && stylelint src",
+    "coverage": "yarn test --coverage --watchAll=false",
+    "postbuild": "precompress build -s -e txt"
   },
   "dependencies": {
     "axios": "0.21.1",
@@ -38,47 +49,6 @@
     "prettier": "^2.0.5",
     "stylelint": "13.5.0",
     "stylelint-config-sass-guidelines": "^7.0.0"
-  },
-  "scripts": {
-    "client": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "server": "nodemon -r dotenv/config server/index.js",
-    "serve": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "start": "node server/index.js",
-    "lint": "eslint src --ext js --fix,jsx && eslint server --fix && stylelint src",
-    "coverage": "yarn test --coverage --watchAll=false",
-    "postbuild": "precompress build -s -e txt"
-  },
-  "eslintIgnore": [
-    "serviceWorker.js"
-  ],
-  "eslintConfig": {
-    "extends": [
-      "airbnb",
-      "react-app",
-      "plugin:prettier/recommended",
-      "prettier/react"
-    ],
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "singleQuote": true
-        }
-      ],
-      "react/jsx-sort-props": "warn",
-      "react/state-in-constructor": "off",
-      "react/jsx-props-no-spreading": "off",
-      "react/static-property-placement": "off"
-    }
-  },
-  "stylelint": {
-    "extends": "stylelint-config-sass-guidelines",
-    "ignoreFiles": [
-      "**/*.svg"
-    ]
   },
   "browserslist": {
     "production": [

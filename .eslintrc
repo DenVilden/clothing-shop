@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "airbnb",
+    "react-app",
+    "plugin:prettier/recommended",
+    "prettier/react"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true
+      }
+    ],
+    "react/jsx-sort-props": "warn",
+    "react/state-in-constructor": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/static-property-placement": "off"
+  }
+}
